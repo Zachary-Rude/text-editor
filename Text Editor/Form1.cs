@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+using System.Reflection;
 
 namespace Text_Editor
 {
@@ -197,6 +198,17 @@ namespace Text_Editor
                     QuickReplace(mainEditor, searchForm.txtSearchString.Text, searchForm.txtReplaceString.Text);
                 }
             }
+        }
+
+        private void menuItem27_Click(object sender, EventArgs e)
+        {
+            //This will give us the full name path of the executable file:
+            //i.e. C:\Program Files\MyApplication\MyApplication.exe
+            string strExeFilePath = Assembly.GetExecutingAssembly().Location;
+            //This will strip just the working path name:
+            //C:\Program Files\MyApplication
+            string strWorkPath = Path.GetDirectoryName(strExeFilePath);
+            Help.ShowHelp(this, Path.Combine(strWorkPath, "textedit-help.chm"));
         }
     }
 }

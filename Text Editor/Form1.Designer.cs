@@ -59,6 +59,8 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.mainEditor = new System.Windows.Forms.RichTextBox();
             this.menuItem26 = new System.Windows.Forms.MenuItem();
+            this.menuItem27 = new System.Windows.Forms.MenuItem();
+            this.menuItem28 = new System.Windows.Forms.MenuItem();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -239,12 +241,14 @@
             // 
             this.menuItem23.Index = 4;
             this.menuItem23.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
+            this.menuItem27,
+            this.menuItem28,
             this.menuItem24});
             this.menuItem23.Text = "Help";
             // 
             // menuItem24
             // 
-            this.menuItem24.Index = 0;
+            this.menuItem24.Index = 2;
             this.menuItem24.Text = "About";
             this.menuItem24.Click += new System.EventHandler(this.menuItem24_Click);
             // 
@@ -276,6 +280,17 @@
             this.menuItem26.Shortcut = System.Windows.Forms.Shortcut.CtrlH;
             this.menuItem26.Text = "Replace...";
             this.menuItem26.Click += new System.EventHandler(this.menuItem26_Click);
+            // 
+            // menuItem27
+            // 
+            this.menuItem27.Index = 0;
+            this.menuItem27.Text = "Help Topics";
+            this.menuItem27.Click += new System.EventHandler(this.menuItem27_Click);
+            // 
+            // menuItem28
+            // 
+            this.menuItem28.Index = 1;
+            this.menuItem28.Text = "-";
             // 
             // Form1
             // 
@@ -323,6 +338,8 @@
         private System.Windows.Forms.RichTextBox mainEditor;
         private System.Windows.Forms.MenuItem menuItem25;
         private System.Windows.Forms.MenuItem menuItem26;
+        private System.Windows.Forms.MenuItem menuItem27;
+        private System.Windows.Forms.MenuItem menuItem28;
     }
 }
 
