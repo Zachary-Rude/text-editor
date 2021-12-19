@@ -15,11 +15,6 @@ namespace Text_Editor
         public SearchForm()
         {
             InitializeComponent();
-            string searchString = txtSearchString.Text;
-            string replaceString = txtReplaceString.Text;
         }
-
-        public string searchString;
-        public string replaceString;
     }
 }

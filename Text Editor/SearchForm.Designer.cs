@@ -106,6 +106,8 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "SearchForm";
+            this.ShowInTaskbar = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Replace";
             this.ResumeLayout(false);
             this.PerformLayout();
