@@ -44,6 +44,7 @@
             this.menuItem11 = new System.Windows.Forms.MenuItem();
             this.menuItem12 = new System.Windows.Forms.MenuItem();
             this.menuItem13 = new System.Windows.Forms.MenuItem();
+            this.menuItem25 = new System.Windows.Forms.MenuItem();
             this.menuItem14 = new System.Windows.Forms.MenuItem();
             this.menuItem15 = new System.Windows.Forms.MenuItem();
             this.menuItem16 = new System.Windows.Forms.MenuItem();
@@ -57,6 +58,7 @@
             this.menuItem24 = new System.Windows.Forms.MenuItem();
             this.panel1 = new System.Windows.Forms.Panel();
             this.mainEditor = new System.Windows.Forms.RichTextBox();
+            this.menuItem26 = new System.Windows.Forms.MenuItem();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -137,6 +139,8 @@
             this.menuItem12,
             this.menuItem13,
             this.menuItem14,
+            this.menuItem25,
+            this.menuItem26,
             this.menuItem15,
             this.menuItem16});
             this.menuItem9.Text = "Edit";
@@ -167,6 +171,11 @@
             this.menuItem13.Text = "Copy";
             this.menuItem13.Click += new System.EventHandler(this.menuItem13_Click);
             // 
+            // menuItem25
+            // 
+            this.menuItem25.Index = 5;
+            this.menuItem25.Text = "-";
+            // 
             // menuItem14
             // 
             this.menuItem14.Index = 4;
@@ -176,12 +185,12 @@
             // 
             // menuItem15
             // 
-            this.menuItem15.Index = 5;
+            this.menuItem15.Index = 7;
             this.menuItem15.Text = "-";
             // 
             // menuItem16
             // 
-            this.menuItem16.Index = 6;
+            this.menuItem16.Index = 8;
             this.menuItem16.Shortcut = System.Windows.Forms.Shortcut.CtrlA;
             this.menuItem16.Text = "Select All";
             this.menuItem16.Click += new System.EventHandler(this.menuItem16_Click);
@@ -260,6 +269,13 @@
             this.mainEditor.TabIndex = 1;
             this.mainEditor.Text = "";
             // 
+            // menuItem26
+            // 
+            this.menuItem26.Index = 6;
+            this.menuItem26.Shortcut = System.Windows.Forms.Shortcut.CtrlH;
+            this.menuItem26.Text = "Replace...";
+            this.menuItem26.Click += new System.EventHandler(this.menuItem26_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -304,6 +320,8 @@
         private System.Windows.Forms.MenuItem menuItem24;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.RichTextBox mainEditor;
+        private System.Windows.Forms.MenuItem menuItem25;
+        private System.Windows.Forms.MenuItem menuItem26;
     }
 }
 

@@ -18,6 +18,12 @@ namespace Text_Editor
         {
             InitializeComponent();
             menuItem18.Checked = Properties.Settings.Default.EnableWordWrap;
+            mainEditor.WordWrap = Properties.Settings.Default.EnableWordWrap;
+        }
+
+        public static void QuickReplace(RichTextBox rtb, String word, String word2)
+        {
+            rtb.Text = rtb.Text.Replace(word, word2);
         }
 
         private void menuItem2_Click(object sender, EventArgs e)
@@ -158,6 +164,7 @@ namespace Text_Editor
             menuItem18.Checked = !menuItem18.Checked;
             Properties.Settings.Default.EnableWordWrap = menuItem18.Checked;
             Properties.Settings.Default.Save();
+            mainEditor.WordWrap = Properties.Settings.Default.EnableWordWrap;
         }
 
         private void menuItem20_Click(object sender, EventArgs e)
@@ -179,6 +186,17 @@ namespace Text_Editor
         {
             AboutForm aboutForm = new AboutForm();
             aboutForm.ShowDialog();
+        }
+
+        private void menuItem26_Click(object sender, EventArgs e)
+        {
+            using (SearchForm searchForm = new SearchForm())
+            {
+                if (searchForm.ShowDialog() == DialogResult.OK)
+                {
+                    QuickReplace(mainEditor, searchForm.txtSearchString.Text, searchForm.txtReplaceString.Text);
+                }
+            }
         }
     }
 }

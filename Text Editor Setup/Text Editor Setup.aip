@@ -11,10 +11,10 @@
     <ROW Property="ARPCOMMENTS" Value="This installer database contains the logic and data required to install [|ProductName]." ValueLocId="*"/>
     <ROW Property="ARPPRODUCTICON" Value="icon72.exe" Type="8"/>
     <ROW Property="Manufacturer" Value="Zach, Inc."/>
-    <ROW Property="ProductCode" Value="1033:{8D8754D1-3E4C-4777-AA4B-4B8A8E046CE9} " Type="16"/>
+    <ROW Property="ProductCode" Value="1033:{2C39E84D-4784-46EC-BDE7-1453512F0D8B} " Type="16"/>
     <ROW Property="ProductLanguage" Value="1033"/>
     <ROW Property="ProductName" Value="Text Editor"/>
-    <ROW Property="ProductVersion" Value="1.0.0" Type="32"/>
+    <ROW Property="ProductVersion" Value="1.0.2" Type="32"/>
     <ROW Property="SecureCustomProperties" Value="OLDPRODUCTS;AI_NEWERPRODUCTFOUND"/>
     <ROW Property="UpgradeCode" Value="{6F659083-3442-43A7-8DA3-D7192D778487}"/>
     <ROW Property="WindowsType9X" MultiBuildValue="DefaultBuild:Windows 9x/ME" ValueLocId="-"/>
@@ -55,7 +55,7 @@
     <ROW BootstrOptKey="GlobalOptions" DownloadFolder="[AppDataFolder][|Manufacturer]\[|ProductName]\prerequisites" Options="2"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.BuildComponent">
-    <ROW BuildKey="DefaultBuild" BuildName="DefaultBuild" BuildOrder="1" BuildType="0" PackageFileName="Text_Editor_1_0_0_Setup" Languages="en" InstallationType="4" UseLargeSchema="true"/>
+    <ROW BuildKey="DefaultBuild" BuildName="DefaultBuild" BuildOrder="1" BuildType="0" PackageFileName="Text_Editor_1_0_2_Setup" Languages="en" InstallationType="4" UseLargeSchema="true"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.DictionaryComponent">
     <ROW Path="&lt;AI_DICTS&gt;ui.ail"/>
