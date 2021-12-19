@@ -76,7 +76,7 @@ namespace Text_Editor
                             path = sfd.FileName;
                             using (StreamWriter sw = new StreamWriter(sfd.FileName))
                             {
-                                await sw.WriteLineAsync(mainEditor.Text);//Write data to text file
+                                await sw.WriteLineAsync(mainEditor.Rtf);//Write data to text file
                                 this.Text = Path.GetFileName(sfd.FileName) + " - Text Editor";
                             }
                         }
@@ -93,7 +93,7 @@ namespace Text_Editor
                 {
                     using (StreamWriter sw = new StreamWriter(path))
                     {
-                        await sw.WriteLineAsync(mainEditor.Text);//Write data to text file
+                        await sw.WriteLineAsync(mainEditor.Rtf);//Write data to text file
                     }
                 }
                 catch (Exception ex)
@@ -114,7 +114,7 @@ namespace Text_Editor
                         path = sfd.FileName;
                         using (StreamWriter sw = new StreamWriter(sfd.FileName))
                         {
-                            await sw.WriteLineAsync(mainEditor.Text);//Write data to text file
+                            await sw.WriteLineAsync(mainEditor.Rtf);//Write data to text file
                             this.Text = Path.GetFileName(sfd.FileName) + " - Text Editor";
                         }
                     }
