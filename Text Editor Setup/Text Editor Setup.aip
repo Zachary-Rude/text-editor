@@ -38,7 +38,7 @@
     <ROW Component="ProductInformation" ComponentId="{DD656B20-9BFE-4393-8082-078C3F25A65A}" Directory_="APPDIR" Attributes="4" KeyPath="Version"/>
     <ROW Component="SHORTCUTDIR" ComponentId="{03E97EB5-E5A0-4D06-9603-BB9784B260C6}" Directory_="SHORTCUTDIR" Attributes="0"/>
     <ROW Component="TextEditor_PrimaryOutput" ComponentId="{3EE37E95-C1A9-40CE-AF7D-8975FC015A94}" Directory_="APPDIR" Attributes="0" KeyPath="TextEditor.exe.config"/>
-    <ROW Component="textedithelp.chm" ComponentId="{F10D0C5C-F6C5-4DDC-B9D9-0F046FBCF4E5}" Directory_="APPDIR" Attributes="0" KeyPath="textedithelp.chm" Type="1"/>
+    <ROW Component="textedithelp.chm" ComponentId="{34AD4CF7-F007-48A3-94AD-8EF85657C9D9}" Directory_="APPDIR" Attributes="0" KeyPath="textedithelp.chm" Type="1"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiFeatsComponent">
     <ROW Feature="MainFeature" Title="MainFeature" Description="Description" Display="1" Level="1" Directory_="APPDIR" Attributes="0"/>

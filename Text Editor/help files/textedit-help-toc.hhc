@@ -11,12 +11,12 @@
 	<UL>
 		<LI> <OBJECT type="text/sitemap">
 			<param name="Name" value="Adding Text">
-			<param name="Local" value="source\repos\Text Editor\Text Editor\help files\addtext.html">
+			<param name="Local" value="C:\Users\zacha\source\repos\Text Editor\Text Editor\help files\addtext.html">
 			<param name="Local" value="addtext.html">
 			</OBJECT>
 		<LI> <OBJECT type="text/sitemap">
 			<param name="Name" value="Saving Your Work">
-			<param name="Local" value="saving.html">
+			<param name="Local" value="C:\Users\zacha\source\repos\Text Editor\Text Editor\help files\saving.html">
 			<param name="Local" value="saving.html">
 			</OBJECT>
 	</UL>
@@ -26,7 +26,7 @@
 	<UL>
 		<LI> <OBJECT type="text/sitemap">
 			<param name="Name" value="Cutting, Copying, Pasting, and Selecting All Text">
-			<param name="Local" value="copypastecut.htm">
+			<param name="Local" value="C:\Users\zacha\source\repos\Text Editor\Text Editor\help files\copypastecut.htm">
 			<param name="Local" value="copypastecut.htm">
 			</OBJECT>
 	</UL>
