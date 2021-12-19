@@ -54,6 +54,7 @@ namespace Text_Editor
                             path = ofd.FileName;
                             Task<string> text = sr.ReadToEndAsync();
                             mainEditor.Text = text.Result;
+                            this.Text = this.Text.Replace("*", "");
                         }
                     }
                     catch (Exception ex)
@@ -95,6 +96,7 @@ namespace Text_Editor
                     using (StreamWriter sw = new StreamWriter(path))
                     {
                         await sw.WriteLineAsync(mainEditor.Text);//Write data to text file
+                        this.Text = this.Text.Replace("*", "");
                     }
                 }
                 catch (Exception ex)
@@ -209,6 +211,35 @@ namespace Text_Editor
             //C:\Program Files\MyApplication
             string strWorkPath = Path.GetDirectoryName(strExeFilePath);
             Help.ShowHelp(this, Path.Combine(strWorkPath, "textedit-help.chm"));
+        }
+
+        private void mainEditor_TextChanged(object sender, EventArgs e)
+        {
+            if (!this.Text.Contains("*"))
+            {
+                this.Text = "*" + this.Text;
+            }
+        }
+
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (this.Text.Contains("*"))
+            {
+
+                switch (e.CloseReason)
+                {
+                    case CloseReason.UserClosing:
+                        if (MessageBox.Show("Your file has unsaved changes. Are you sure you want to exit?",
+                                            "Unsaved changes",
+                                            MessageBoxButtons.YesNo,
+                                            MessageBoxIcon.Question) == DialogResult.No)
+                        {
+                            e.Cancel = true;
+                            this.menuItem5.PerformClick();
+                        }
+                        break;
+                }
+            }
         }
     }
 }

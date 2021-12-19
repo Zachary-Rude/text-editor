@@ -44,8 +44,9 @@
             this.menuItem11 = new System.Windows.Forms.MenuItem();
             this.menuItem12 = new System.Windows.Forms.MenuItem();
             this.menuItem13 = new System.Windows.Forms.MenuItem();
-            this.menuItem25 = new System.Windows.Forms.MenuItem();
             this.menuItem14 = new System.Windows.Forms.MenuItem();
+            this.menuItem25 = new System.Windows.Forms.MenuItem();
+            this.menuItem26 = new System.Windows.Forms.MenuItem();
             this.menuItem15 = new System.Windows.Forms.MenuItem();
             this.menuItem16 = new System.Windows.Forms.MenuItem();
             this.menuItem17 = new System.Windows.Forms.MenuItem();
@@ -55,12 +56,11 @@
             this.menuItem21 = new System.Windows.Forms.MenuItem();
             this.menuItem22 = new System.Windows.Forms.MenuItem();
             this.menuItem23 = new System.Windows.Forms.MenuItem();
+            this.menuItem27 = new System.Windows.Forms.MenuItem();
+            this.menuItem28 = new System.Windows.Forms.MenuItem();
             this.menuItem24 = new System.Windows.Forms.MenuItem();
             this.panel1 = new System.Windows.Forms.Panel();
             this.mainEditor = new System.Windows.Forms.RichTextBox();
-            this.menuItem26 = new System.Windows.Forms.MenuItem();
-            this.menuItem27 = new System.Windows.Forms.MenuItem();
-            this.menuItem28 = new System.Windows.Forms.MenuItem();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -173,17 +173,24 @@
             this.menuItem13.Text = "Copy";
             this.menuItem13.Click += new System.EventHandler(this.menuItem13_Click);
             // 
-            // menuItem25
-            // 
-            this.menuItem25.Index = 5;
-            this.menuItem25.Text = "-";
-            // 
             // menuItem14
             // 
             this.menuItem14.Index = 4;
             this.menuItem14.Shortcut = System.Windows.Forms.Shortcut.CtrlV;
             this.menuItem14.Text = "Paste";
             this.menuItem14.Click += new System.EventHandler(this.menuItem14_Click);
+            // 
+            // menuItem25
+            // 
+            this.menuItem25.Index = 5;
+            this.menuItem25.Text = "-";
+            // 
+            // menuItem26
+            // 
+            this.menuItem26.Index = 6;
+            this.menuItem26.Shortcut = System.Windows.Forms.Shortcut.CtrlH;
+            this.menuItem26.Text = "Replace...";
+            this.menuItem26.Click += new System.EventHandler(this.menuItem26_Click);
             // 
             // menuItem15
             // 
@@ -246,6 +253,17 @@
             this.menuItem24});
             this.menuItem23.Text = "Help";
             // 
+            // menuItem27
+            // 
+            this.menuItem27.Index = 0;
+            this.menuItem27.Text = "Help Topics";
+            this.menuItem27.Click += new System.EventHandler(this.menuItem27_Click);
+            // 
+            // menuItem28
+            // 
+            this.menuItem28.Index = 1;
+            this.menuItem28.Text = "-";
+            // 
             // menuItem24
             // 
             this.menuItem24.Index = 2;
@@ -273,24 +291,7 @@
             this.mainEditor.Size = new System.Drawing.Size(798, 448);
             this.mainEditor.TabIndex = 1;
             this.mainEditor.Text = "";
-            // 
-            // menuItem26
-            // 
-            this.menuItem26.Index = 6;
-            this.menuItem26.Shortcut = System.Windows.Forms.Shortcut.CtrlH;
-            this.menuItem26.Text = "Replace...";
-            this.menuItem26.Click += new System.EventHandler(this.menuItem26_Click);
-            // 
-            // menuItem27
-            // 
-            this.menuItem27.Index = 0;
-            this.menuItem27.Text = "Help Topics";
-            this.menuItem27.Click += new System.EventHandler(this.menuItem27_Click);
-            // 
-            // menuItem28
-            // 
-            this.menuItem28.Index = 1;
-            this.menuItem28.Text = "-";
+            this.mainEditor.TextChanged += new System.EventHandler(this.mainEditor_TextChanged);
             // 
             // Form1
             // 
@@ -302,6 +303,7 @@
             this.Menu = this.mainMenu1;
             this.Name = "Form1";
             this.Text = "Untitled - Text Editor";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
