@@ -230,13 +230,14 @@ namespace Text_Editor
                 switch (e.CloseReason)
                 {
                     case CloseReason.UserClosing:
-                        if (MessageBox.Show("Your file has unsaved changes. Are you sure you want to exit?",
-                                            "Unsaved changes",
-                                            MessageBoxButtons.YesNo,
-                                            MessageBoxIcon.Question) == DialogResult.No)
+                        DialogResult dr = MessageBox.Show("Your file has unsaved changes. Do you want to save them?", "Unsaved changes", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
+                        if (dr == DialogResult.Yes)
+                        {
+                            this.menuItem5.PerformClick();
+                        }
+                        else if (dr == DialogResult.Cancel)
                         {
                             e.Cancel = true;
-                            this.menuItem5.PerformClick();
                         }
                         break;
                 }
