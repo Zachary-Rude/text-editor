@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 using System.Reflection;
+using System.Text.RegularExpressions;
 
 namespace Text_Editor
 {
@@ -216,7 +217,7 @@ namespace Text_Editor
 
         private void mainEditor_TextChanged(object sender, EventArgs e)
         {
-            if (!this.Text.Contains("*"))
+            if (!this.Text.StartsWith("*"))
             {
                 this.Text = "*" + this.Text;
             }
@@ -224,13 +225,16 @@ namespace Text_Editor
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (this.Text.Contains("*"))
+            if (this.Text.StartsWith("*"))
             {
 
                 switch (e.CloseReason)
                 {
                     case CloseReason.UserClosing:
-                        DialogResult dr = MessageBox.Show("Your file has unsaved changes. Do you want to save them?", "Unsaved changes", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
+                        string fileNameOld = this.Text.Replace(" - Text Editor", "");
+                        var regex = new Regex(Regex.Escape("*"));
+                        string fileName = regex.Replace(fileNameOld, "", 1);
+                        DialogResult dr = MessageBox.Show(fileName + " has unsaved changes. Do you want to save them?", "Unsaved changes", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
                         if (dr == DialogResult.Yes)
                         {
                             this.menuItem5.PerformClick();
