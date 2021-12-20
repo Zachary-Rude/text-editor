@@ -30,6 +30,7 @@ namespace Text_Editor
         private void menuItem2_Click(object sender, EventArgs e)
         {
             this.Text = "Untitled - Text Editor";
+            this.Text = this.Text.Replace("*", "");
             path = string.Empty;
             mainEditor.Clear();
         }
