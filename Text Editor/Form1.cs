@@ -23,6 +23,33 @@ namespace Text_Editor
             mainEditor.WordWrap = Properties.Settings.Default.EnableWordWrap;
         }
 
+        public Form1(string fileName) : this()
+        {
+            if (fileName == null)
+                return;
+
+            if (!File.Exists(fileName))
+            {
+                MessageBox.Show("Invalid file name.", "Cannot open file", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            try
+            {
+                this.Text = Path.GetFileName(fileName) + " - Text Editor";
+                using (StreamReader sr = new StreamReader(fileName))
+                {
+                    path = fileName;
+                    Task<string> text = sr.ReadToEndAsync();
+                    mainEditor.Text = text.Result;
+                    this.Text = this.Text.Replace("*", "");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Cannot open file", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
         public static void QuickReplace(RichTextBox rtb, String word, String word2)
         {
             rtb.Text = rtb.Text.Replace(word, word2);

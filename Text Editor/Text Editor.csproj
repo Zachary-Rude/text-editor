@@ -107,5 +107,8 @@
   <ItemGroup>
     <None Include="Resources\icon-72.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Inno\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
