@@ -5,5 +5,8 @@
     <Setting Name="EnableWordWrap" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
+    <Setting Name="Font" Type="System.Drawing.Font" Scope="User">
+      <Value Profile="(Default)">Consolas, 11.25pt</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

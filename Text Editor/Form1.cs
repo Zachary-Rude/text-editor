@@ -21,6 +21,7 @@ namespace Text_Editor
             InitializeComponent();
             menuItem18.Checked = Properties.Settings.Default.EnableWordWrap;
             mainEditor.WordWrap = Properties.Settings.Default.EnableWordWrap;
+            mainEditor.Font = Properties.Settings.Default.Font;
         }
 
         public Form1(string fileName) : this()
@@ -271,6 +272,20 @@ namespace Text_Editor
                             e.Cancel = true;
                         }
                         break;
+                }
+            }
+        }
+
+        private void menuItem29_Click(object sender, EventArgs e)
+        {
+            using (FontDialog fd = new FontDialog() { Font = Properties.Settings.Default.Font })
+            {
+                if (fd.ShowDialog() == DialogResult.OK)
+                {
+                    Properties.Settings.Default.Font = fd.Font;
+                    Properties.Settings.Default.Save();
+                    mainEditor.Font = Properties.Settings.Default.Font;
+                    this.Text = this.Text.Replace("*", "");
                 }
             }
         }

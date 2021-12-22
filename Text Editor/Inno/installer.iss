@@ -2,7 +2,7 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 #define MyAppName "Text Editor"
-#define MyAppVersion "1.1.2"
+#define MyAppVersion "1.1.3"
 #define MyAppPublisher "Zach, Inc."
 #define MyAppExeName "Text Editor.exe"
 #define MyAppAssocName "Text File"
@@ -17,14 +17,15 @@ AppName={#MyAppName}
 AppVersion={#MyAppVersion}
 ;AppVerName={#MyAppName} {#MyAppVersion}
 AppPublisher={#MyAppPublisher}
-DefaultDirName=C:\Program Files (x86)\{#MyAppName}
+DefaultDirName={autopf}\{#MyAppName}
 ChangesAssociations=yes
 DisableProgramGroupPage=yes
+DisableWelcomePage=no
 LicenseFile=C:\Users\zacha\Documents\License Agreement.rtf
 ; Uncomment the following line to run in non administrative install mode (install for current user only.)
 ;PrivilegesRequired=lowest
 OutputDir=C:\Users\zacha\source\repos\Text Editor\Text Editor\Inno
-OutputBaseFilename=Text_Editor_1_1_2_Setup
+OutputBaseFilename=Text_Editor_1_1_3_Setup
 Compression=lzma
 SolidCompression=yes
 WizardStyle=modern
@@ -45,6 +46,7 @@ Root: HKCR; Subkey: "{#MyAppAssocExt}\OpenWithProgids"; ValueType: string; Value
 Root: HKCR; Subkey: "{#MyAppAssocKey}"; ValueType: string; ValueName: ""; ValueData: "{#MyAppAssocName}"; Flags: uninsdeletekey
 Root: HKCR; Subkey: "{#MyAppAssocKey}\DefaultIcon"; ValueType: string; ValueName: ""; ValueData: "C:\Windows\System32\imageres.dll,246"
 Root: HKCR; Subkey: "{#MyAppAssocKey}\shell\open\command"; ValueType: string; ValueName: ""; ValueData: """{app}\{#MyAppExeName}"" ""%1"""
+Root: HKCR; Subkey: "{#MyAppAssocKey}\shell\edit\command"; ValueType: string; ValueName: ""; ValueData: """{app}\{#MyAppExeName}"" ""%1"""
 Root: HKCR; Subkey: "Applications\{#MyAppExeName}\SupportedTypes"; ValueType: string; ValueName: ".txt"; ValueData: ""
 
 [Icons]

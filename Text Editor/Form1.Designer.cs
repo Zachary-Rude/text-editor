@@ -61,6 +61,7 @@
             this.menuItem24 = new System.Windows.Forms.MenuItem();
             this.panel1 = new System.Windows.Forms.Panel();
             this.mainEditor = new System.Windows.Forms.RichTextBox();
+            this.menuItem29 = new System.Windows.Forms.MenuItem();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -208,7 +209,8 @@
             // 
             this.menuItem17.Index = 2;
             this.menuItem17.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
-            this.menuItem18});
+            this.menuItem18,
+            this.menuItem29});
             this.menuItem17.Text = "View";
             // 
             // menuItem18
@@ -293,6 +295,12 @@
             this.mainEditor.Text = "";
             this.mainEditor.TextChanged += new System.EventHandler(this.mainEditor_TextChanged);
             // 
+            // menuItem29
+            // 
+            this.menuItem29.Index = 1;
+            this.menuItem29.Text = "Change Font...";
+            this.menuItem29.Click += new System.EventHandler(this.menuItem29_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -342,6 +350,7 @@
         private System.Windows.Forms.MenuItem menuItem26;
         private System.Windows.Forms.MenuItem menuItem27;
         private System.Windows.Forms.MenuItem menuItem28;
+        private System.Windows.Forms.MenuItem menuItem29;
     }
 }
 
