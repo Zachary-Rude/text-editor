@@ -58,6 +58,7 @@
             this.menuItem24 = new System.Windows.Forms.MenuItem();
             this.panel1 = new System.Windows.Forms.Panel();
             this.mainEditor = new Text_Editor.FixedRichTextBox();
+            this.menuItem19 = new System.Windows.Forms.MenuItem();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -133,6 +134,7 @@
             this.menuItem9.Index = 1;
             this.menuItem9.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
             this.menuItem10,
+            this.menuItem19,
             this.menuItem11,
             this.menuItem12,
             this.menuItem13,
@@ -152,50 +154,50 @@
             // 
             // menuItem11
             // 
-            this.menuItem11.Index = 1;
+            this.menuItem11.Index = 2;
             this.menuItem11.Text = "-";
             // 
             // menuItem12
             // 
-            this.menuItem12.Index = 2;
+            this.menuItem12.Index = 3;
             this.menuItem12.Shortcut = System.Windows.Forms.Shortcut.CtrlX;
             this.menuItem12.Text = "Cut";
             this.menuItem12.Click += new System.EventHandler(this.menuItem12_Click);
             // 
             // menuItem13
             // 
-            this.menuItem13.Index = 3;
+            this.menuItem13.Index = 4;
             this.menuItem13.Shortcut = System.Windows.Forms.Shortcut.CtrlC;
             this.menuItem13.Text = "Copy";
             this.menuItem13.Click += new System.EventHandler(this.menuItem13_Click);
             // 
             // menuItem14
             // 
-            this.menuItem14.Index = 4;
+            this.menuItem14.Index = 5;
             this.menuItem14.Shortcut = System.Windows.Forms.Shortcut.CtrlV;
             this.menuItem14.Text = "Paste";
             this.menuItem14.Click += new System.EventHandler(this.menuItem14_Click);
             // 
             // menuItem25
             // 
-            this.menuItem25.Index = 5;
+            this.menuItem25.Index = 6;
             this.menuItem25.Text = "-";
             // 
             // menuItem26
             // 
-            this.menuItem26.Index = 6;
+            this.menuItem26.Index = 7;
             this.menuItem26.Shortcut = System.Windows.Forms.Shortcut.CtrlH;
             this.menuItem26.Text = "Replace...";
             this.menuItem26.Click += new System.EventHandler(this.menuItem26_Click);
             // 
             // menuItem15
             // 
-            this.menuItem15.Index = 7;
+            this.menuItem15.Index = 8;
             this.menuItem15.Text = "-";
             // 
             // menuItem16
             // 
-            this.menuItem16.Index = 8;
+            this.menuItem16.Index = 9;
             this.menuItem16.Shortcut = System.Windows.Forms.Shortcut.CtrlA;
             this.menuItem16.Text = "Select All";
             this.menuItem16.Click += new System.EventHandler(this.menuItem16_Click);
@@ -271,6 +273,13 @@
             this.mainEditor.WordWrap = false;
             this.mainEditor.TextChanged += new System.EventHandler(this.mainEditor_TextChanged);
             // 
+            // menuItem19
+            // 
+            this.menuItem19.Index = 1;
+            this.menuItem19.Shortcut = System.Windows.Forms.Shortcut.CtrlY;
+            this.menuItem19.Text = "Redo";
+            this.menuItem19.Click += new System.EventHandler(this.menuItem19_Click);
+            // 
             // Form1
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -318,6 +327,7 @@
         private System.Windows.Forms.MenuItem menuItem29;
         private System.Windows.Forms.Panel panel1;
         private FixedRichTextBox mainEditor;
+        private System.Windows.Forms.MenuItem menuItem19;
     }
 }
 

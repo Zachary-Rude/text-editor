@@ -307,5 +307,13 @@ namespace Text_Editor
                 }
             }
         }
+
+        private void menuItem19_Click(object sender, EventArgs e)
+        {
+            if (mainEditor.CanRedo)
+            {
+                mainEditor.Redo();
+            }
+        }
     }
 }
