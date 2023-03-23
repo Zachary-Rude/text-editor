@@ -51,17 +51,13 @@
             this.menuItem16 = new System.Windows.Forms.MenuItem();
             this.menuItem17 = new System.Windows.Forms.MenuItem();
             this.menuItem18 = new System.Windows.Forms.MenuItem();
-            this.menuItem19 = new System.Windows.Forms.MenuItem();
-            this.menuItem20 = new System.Windows.Forms.MenuItem();
-            this.menuItem21 = new System.Windows.Forms.MenuItem();
-            this.menuItem22 = new System.Windows.Forms.MenuItem();
+            this.menuItem29 = new System.Windows.Forms.MenuItem();
             this.menuItem23 = new System.Windows.Forms.MenuItem();
             this.menuItem27 = new System.Windows.Forms.MenuItem();
             this.menuItem28 = new System.Windows.Forms.MenuItem();
             this.menuItem24 = new System.Windows.Forms.MenuItem();
             this.panel1 = new System.Windows.Forms.Panel();
             this.mainEditor = new System.Windows.Forms.RichTextBox();
-            this.menuItem29 = new System.Windows.Forms.MenuItem();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -71,7 +67,6 @@
             this.menuItem1,
             this.menuItem9,
             this.menuItem17,
-            this.menuItem19,
             this.menuItem23});
             // 
             // menuItem1
@@ -219,36 +214,15 @@
             this.menuItem18.Text = "Word Wrap";
             this.menuItem18.Click += new System.EventHandler(this.menuItem18_Click);
             // 
-            // menuItem19
+            // menuItem29
             // 
-            this.menuItem19.Index = 3;
-            this.menuItem19.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
-            this.menuItem20,
-            this.menuItem21,
-            this.menuItem22});
-            this.menuItem19.Text = "Window";
-            // 
-            // menuItem20
-            // 
-            this.menuItem20.Index = 0;
-            this.menuItem20.Text = "Maximize";
-            this.menuItem20.Click += new System.EventHandler(this.menuItem20_Click);
-            // 
-            // menuItem21
-            // 
-            this.menuItem21.Index = 1;
-            this.menuItem21.Text = "Minimize";
-            this.menuItem21.Click += new System.EventHandler(this.menuItem21_Click);
-            // 
-            // menuItem22
-            // 
-            this.menuItem22.Index = 2;
-            this.menuItem22.Text = "Close";
-            this.menuItem22.Click += new System.EventHandler(this.menuItem22_Click);
+            this.menuItem29.Index = 1;
+            this.menuItem29.Text = "Change Font...";
+            this.menuItem29.Click += new System.EventHandler(this.menuItem29_Click);
             // 
             // menuItem23
             // 
-            this.menuItem23.Index = 4;
+            this.menuItem23.Index = 3;
             this.menuItem23.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
             this.menuItem27,
             this.menuItem28,
@@ -258,6 +232,7 @@
             // menuItem27
             // 
             this.menuItem27.Index = 0;
+            this.menuItem27.Shortcut = System.Windows.Forms.Shortcut.F1;
             this.menuItem27.Text = "Help Topics";
             this.menuItem27.Click += new System.EventHandler(this.menuItem27_Click);
             // 
@@ -269,7 +244,8 @@
             // menuItem24
             // 
             this.menuItem24.Index = 2;
-            this.menuItem24.Text = "About";
+            this.menuItem24.Shortcut = System.Windows.Forms.Shortcut.ShiftF1;
+            this.menuItem24.Text = "About Text Editor";
             this.menuItem24.Click += new System.EventHandler(this.menuItem24_Click);
             // 
             // panel1
@@ -295,22 +271,15 @@
             this.mainEditor.Text = "";
             this.mainEditor.TextChanged += new System.EventHandler(this.mainEditor_TextChanged);
             // 
-            // menuItem29
-            // 
-            this.menuItem29.Index = 1;
-            this.menuItem29.Text = "Change Font...";
-            this.menuItem29.Click += new System.EventHandler(this.menuItem29_Click);
-            // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.panel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Menu = this.mainMenu1;
             this.Name = "Form1";
-            this.Text = "Untitled - Text Editor";
+            this.Text = "Untitled - Notepad.NET";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -338,10 +307,6 @@
         private System.Windows.Forms.MenuItem menuItem16;
         private System.Windows.Forms.MenuItem menuItem17;
         private System.Windows.Forms.MenuItem menuItem18;
-        private System.Windows.Forms.MenuItem menuItem19;
-        private System.Windows.Forms.MenuItem menuItem20;
-        private System.Windows.Forms.MenuItem menuItem21;
-        private System.Windows.Forms.MenuItem menuItem22;
         private System.Windows.Forms.MenuItem menuItem23;
         private System.Windows.Forms.MenuItem menuItem24;
         private System.Windows.Forms.Panel panel1;
