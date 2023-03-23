@@ -297,7 +297,10 @@ namespace Text_Editor
                     Properties.Settings.Default.Save();
                     mainEditor.TextChanged -= mainEditor_TextChanged;
                     mainEditor.Font = Properties.Settings.Default.Font;
-                    mainEditor.TextChanged += mainEditor_TextChanged;
+                    if (!this.Text.StartsWith("*"))
+                    {
+                        this.Text = this.Text.Replace("*", "");
+                    }
                 }
             }
         }
