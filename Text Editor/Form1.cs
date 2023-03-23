@@ -66,14 +66,15 @@ namespace Text_Editor
             if (this.Text.StartsWith("*"))
             {
                 DialogResult dr = MessageBox.Show(path + " has unsaved changes.\r\nDo you want to save them?", "Unsaved changes", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                if (dr == DialogResult.Yes)
+                if (dr != DialogResult.Yes)
                 {
-                    this.Text = "Untitled - Notepad.NET";
-                    path = string.Empty;
-                    mainEditor.Clear();
-                    this.Text = this.Text.Replace("*", "");
+                    return;
                 }
             }
+            this.Text = "Untitled - Notepad.NET";
+            path = string.Empty;
+            mainEditor.Clear();
+            this.Text = this.Text.Replace("*", "");
         }
 
         private void menuItem3_Click(object sender, EventArgs e)
@@ -297,10 +298,11 @@ namespace Text_Editor
                     Properties.Settings.Default.Save();
                     mainEditor.TextChanged -= mainEditor_TextChanged;
                     mainEditor.Font = Properties.Settings.Default.Font;
-                    if (!this.Text.StartsWith("*"))
-                    {
-                        this.Text = this.Text.Replace("*", "");
-                    }
+                    mainEditor.TextChanged += mainEditor_TextChanged;
+                    //if (!this.Text.StartsWith("*"))
+                    //{
+                    //    this.Text = this.Text.Replace("*", "");
+                    //}
                 }
             }
         }
