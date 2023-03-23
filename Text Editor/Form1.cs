@@ -25,6 +25,7 @@ namespace Text_Editor
             mainEditor.WordWrap = Properties.Settings.Default.EnableWordWrap;
             mainEditor.Font = Properties.Settings.Default.Font;
             mainEditor.AutoWordSelection = false;
+            path = "Untitled";
         }
 
         public Form1(string fileName) : this()
@@ -72,7 +73,7 @@ namespace Text_Editor
                 }
             }
             this.Text = "Untitled - Notepad.NET";
-            path = string.Empty;
+            path = "Untitled";
             mainEditor.Clear();
             this.Text = this.Text.Replace("*", "");
         }
