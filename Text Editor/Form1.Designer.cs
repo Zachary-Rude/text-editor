@@ -245,7 +245,7 @@
             // 
             this.menuItem24.Index = 2;
             this.menuItem24.Shortcut = System.Windows.Forms.Shortcut.ShiftF1;
-            this.menuItem24.Text = "About Text Editor";
+            this.menuItem24.Text = "About Notepad.NET";
             this.menuItem24.Click += new System.EventHandler(this.menuItem24_Click);
             // 
             // panel1
