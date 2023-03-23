@@ -250,7 +250,6 @@
             // 
             // panel1
             // 
-            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel1.Controls.Add(this.mainEditor);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
@@ -266,7 +265,7 @@
             this.mainEditor.Font = new System.Drawing.Font("Consolas", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.mainEditor.Location = new System.Drawing.Point(0, 0);
             this.mainEditor.Name = "mainEditor";
-            this.mainEditor.Size = new System.Drawing.Size(798, 448);
+            this.mainEditor.Size = new System.Drawing.Size(800, 450);
             this.mainEditor.TabIndex = 1;
             this.mainEditor.Text = "";
             this.mainEditor.TextChanged += new System.EventHandler(this.mainEditor_TextChanged);
