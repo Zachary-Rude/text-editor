@@ -23,6 +23,7 @@ namespace Text_Editor
             menuItem18.Checked = Properties.Settings.Default.EnableWordWrap;
             mainEditor.WordWrap = Properties.Settings.Default.EnableWordWrap;
             mainEditor.Font = Properties.Settings.Default.Font;
+            mainEditor.AutoWordSelection = false;
         }
 
         public Form1(string fileName) : this()
