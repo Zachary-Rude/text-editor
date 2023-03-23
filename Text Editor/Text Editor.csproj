@@ -114,7 +114,9 @@
   <ItemGroup>
     <None Include="Resources\icon-72.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="bin\Debug\" />
+  </ItemGroup>
   <ItemGroup>
     <Content Include="help files\addtext.html" />
     <Content Include="help files\copypastecut.htm" />
