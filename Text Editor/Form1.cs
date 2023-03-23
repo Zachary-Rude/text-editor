@@ -66,9 +66,9 @@ namespace Text_Editor
             if (this.Text.StartsWith("*"))
             {
                 DialogResult dr = MessageBox.Show(path + " has unsaved changes.\r\nDo you want to save them?", "Unsaved changes", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                if (dr != DialogResult.Yes)
+                if (dr == DialogResult.Yes)
                 {
-                    return;
+                    menuItem5.PerformClick();
                 }
             }
             this.Text = "Untitled - Notepad.NET";
