@@ -20,6 +20,7 @@ namespace Text_Editor
         public Form1()
         {
             InitializeComponent();
+            this.MinimumSize = new Size(0, 0);
             menuItem18.Checked = Properties.Settings.Default.EnableWordWrap;
             mainEditor.WordWrap = Properties.Settings.Default.EnableWordWrap;
             mainEditor.Font = Properties.Settings.Default.Font;
@@ -294,7 +295,9 @@ namespace Text_Editor
                 {
                     Properties.Settings.Default.Font = fd.Font;
                     Properties.Settings.Default.Save();
+                    mainEditor.TextChanged -= mainEditor_TextChanged;
                     mainEditor.Font = Properties.Settings.Default.Font;
+                    mainEditor.TextChanged += mainEditor_TextChanged;
                 }
             }
         }
