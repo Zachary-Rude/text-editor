@@ -276,6 +276,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.panel1);
+            this.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Menu = this.mainMenu1;
             this.Name = "Form1";
@@ -309,13 +310,13 @@
         private System.Windows.Forms.MenuItem menuItem18;
         private System.Windows.Forms.MenuItem menuItem23;
         private System.Windows.Forms.MenuItem menuItem24;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.RichTextBox mainEditor;
         private System.Windows.Forms.MenuItem menuItem25;
         private System.Windows.Forms.MenuItem menuItem26;
         private System.Windows.Forms.MenuItem menuItem27;
         private System.Windows.Forms.MenuItem menuItem28;
         private System.Windows.Forms.MenuItem menuItem29;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.RichTextBox mainEditor;
     }
 }
 

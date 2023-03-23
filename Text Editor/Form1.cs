@@ -294,7 +294,6 @@ namespace Text_Editor
                     Properties.Settings.Default.Font = fd.Font;
                     Properties.Settings.Default.Save();
                     mainEditor.Font = Properties.Settings.Default.Font;
-                    this.Text = this.Text.Replace("*", "");
                 }
             }
         }
