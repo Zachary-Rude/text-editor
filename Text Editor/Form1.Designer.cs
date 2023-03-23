@@ -254,7 +254,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(800, 435);
+            this.panel1.Size = new System.Drawing.Size(800, 457);
             this.panel1.TabIndex = 0;
             // 
             // mainEditor
@@ -265,7 +265,7 @@
             this.mainEditor.Font = new System.Drawing.Font("Consolas", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.mainEditor.Location = new System.Drawing.Point(0, 0);
             this.mainEditor.Name = "mainEditor";
-            this.mainEditor.Size = new System.Drawing.Size(800, 435);
+            this.mainEditor.Size = new System.Drawing.Size(800, 457);
             this.mainEditor.TabIndex = 0;
             this.mainEditor.Text = "";
             this.mainEditor.WordWrap = false;
@@ -274,11 +274,12 @@
             // Form1
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.ClientSize = new System.Drawing.Size(800, 435);
+            this.ClientSize = new System.Drawing.Size(800, 457);
             this.Controls.Add(this.panel1);
             this.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Menu = this.mainMenu1;
+            this.MinimumSize = new System.Drawing.Size(0, 496);
             this.Name = "Form1";
             this.Text = "Untitled - Notepad.NET";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
