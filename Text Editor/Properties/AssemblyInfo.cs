@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Text Editor")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("Notepad.NET")]
+[assembly: AssemblyDescription("Notepad.NET")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Zach, Inc.")]
-[assembly: AssemblyProduct("Text Editor")]
+[assembly: AssemblyProduct("Notepad.NET")]
 [assembly: AssemblyCopyright("Copyright © 2021-2023 Zach, Inc.")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
