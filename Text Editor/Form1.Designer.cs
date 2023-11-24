@@ -48,11 +48,13 @@
             this.menuItem14 = new System.Windows.Forms.MenuItem();
             this.menuItem25 = new System.Windows.Forms.MenuItem();
             this.menuItem26 = new System.Windows.Forms.MenuItem();
+            this.menuItem30 = new System.Windows.Forms.MenuItem();
             this.menuItem15 = new System.Windows.Forms.MenuItem();
             this.menuItem16 = new System.Windows.Forms.MenuItem();
             this.menuItem17 = new System.Windows.Forms.MenuItem();
             this.menuItem18 = new System.Windows.Forms.MenuItem();
             this.menuItem29 = new System.Windows.Forms.MenuItem();
+            this.menuItem31 = new System.Windows.Forms.MenuItem();
             this.menuItem23 = new System.Windows.Forms.MenuItem();
             this.menuItem27 = new System.Windows.Forms.MenuItem();
             this.menuItem28 = new System.Windows.Forms.MenuItem();
@@ -64,6 +66,9 @@
             this.menuItem21 = new System.Windows.Forms.MenuItem();
             this.menuItem22 = new System.Windows.Forms.MenuItem();
             this.vistaMenu = new wyDay.Controls.VistaMenu(this.components);
+            this.menuItem32 = new System.Windows.Forms.MenuItem();
+            this.menuItem33 = new System.Windows.Forms.MenuItem();
+            this.menuItem34 = new System.Windows.Forms.MenuItem();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.vistaMenu)).BeginInit();
             this.SuspendLayout();
@@ -153,6 +158,7 @@
             this.menuItem14,
             this.menuItem25,
             this.menuItem26,
+            this.menuItem30,
             this.menuItem15,
             this.menuItem16});
             this.menuItem9.Text = "&Edit";
@@ -211,18 +217,24 @@
             // 
             this.vistaMenu.SetImage(this.menuItem26, global::Text_Editor.Properties.Resources.baseline_find_in_page_black_24dp);
             this.menuItem26.Index = 7;
-            this.menuItem26.Shortcut = System.Windows.Forms.Shortcut.CtrlF;
             this.menuItem26.Text = "&Find...";
-            this.menuItem26.Click += new System.EventHandler(this.menuItem26_Click);
+            // 
+            // menuItem30
+            // 
+            this.vistaMenu.SetImage(this.menuItem30, global::Text_Editor.Properties.Resources.baseline_find_replace_black_24dp);
+            this.menuItem30.Index = 8;
+            this.menuItem30.Shortcut = System.Windows.Forms.Shortcut.CtrlH;
+            this.menuItem30.Text = "&Replace...";
+            this.menuItem30.Click += new System.EventHandler(this.menuItem30_Click);
             // 
             // menuItem15
             // 
-            this.menuItem15.Index = 8;
+            this.menuItem15.Index = 9;
             this.menuItem15.Text = "-";
             // 
             // menuItem16
             // 
-            this.menuItem16.Index = 9;
+            this.menuItem16.Index = 10;
             this.menuItem16.Shortcut = System.Windows.Forms.Shortcut.CtrlA;
             this.menuItem16.Text = "Select &All";
             this.menuItem16.Click += new System.EventHandler(this.menuItem16_Click);
@@ -231,6 +243,10 @@
             // 
             this.menuItem17.Index = 2;
             this.menuItem17.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
+            this.menuItem32,
+            this.menuItem33,
+            this.menuItem34,
+            this.menuItem31,
             this.menuItem18,
             this.menuItem29});
             this.menuItem17.Text = "&View";
@@ -238,16 +254,21 @@
             // menuItem18
             // 
             this.vistaMenu.SetImage(this.menuItem18, global::Text_Editor.Properties.Resources.baseline_wrap_text_black_24dp);
-            this.menuItem18.Index = 0;
+            this.menuItem18.Index = 4;
             this.menuItem18.Text = "&Word Wrap";
             this.menuItem18.Click += new System.EventHandler(this.menuItem18_Click);
             // 
             // menuItem29
             // 
             this.vistaMenu.SetImage(this.menuItem29, global::Text_Editor.Properties.Resources.baseline_text_fields_black_24dp);
-            this.menuItem29.Index = 1;
+            this.menuItem29.Index = 5;
             this.menuItem29.Text = "&Font...";
             this.menuItem29.Click += new System.EventHandler(this.menuItem29_Click);
+            // 
+            // menuItem31
+            // 
+            this.menuItem31.Index = 3;
+            this.menuItem31.Text = "-";
             // 
             // menuItem23
             // 
@@ -330,6 +351,27 @@
             // 
             this.vistaMenu.ContainerControl = this;
             // 
+            // menuItem32
+            // 
+            this.vistaMenu.SetImage(this.menuItem32, global::Text_Editor.Properties.Resources.baseline_zoom_in_black_24dp);
+            this.menuItem32.Index = 0;
+            this.menuItem32.Text = "Zoom &In";
+            this.menuItem32.Click += new System.EventHandler(this.menuItem32_Click);
+            // 
+            // menuItem33
+            // 
+            this.vistaMenu.SetImage(this.menuItem33, global::Text_Editor.Properties.Resources.baseline_zoom_out_black_24dp);
+            this.menuItem33.Index = 1;
+            this.menuItem33.Text = "Zoom &Out";
+            this.menuItem33.Click += new System.EventHandler(this.menuItem33_Click);
+            // 
+            // menuItem34
+            // 
+            this.menuItem34.Index = 2;
+            this.menuItem34.Shortcut = System.Windows.Forms.Shortcut.Ctrl0;
+            this.menuItem34.Text = "&Restore Default Zoom";
+            this.menuItem34.Click += new System.EventHandler(this.menuItem34_Click);
+            // 
             // Form1
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -372,7 +414,6 @@
         private System.Windows.Forms.MenuItem menuItem23;
         private System.Windows.Forms.MenuItem menuItem24;
         private System.Windows.Forms.MenuItem menuItem25;
-        private System.Windows.Forms.MenuItem menuItem26;
         private System.Windows.Forms.MenuItem menuItem27;
         private System.Windows.Forms.MenuItem menuItem28;
         private System.Windows.Forms.MenuItem menuItem29;
@@ -384,6 +425,12 @@
         private System.Windows.Forms.MenuItem menuItem22;
         private wyDay.Controls.VistaMenu vistaMenu;
         public FixedRichTextBox mainEditor;
+        private System.Windows.Forms.MenuItem menuItem26;
+        private System.Windows.Forms.MenuItem menuItem30;
+        private System.Windows.Forms.MenuItem menuItem31;
+        private System.Windows.Forms.MenuItem menuItem32;
+        private System.Windows.Forms.MenuItem menuItem33;
+        private System.Windows.Forms.MenuItem menuItem34;
     }
 }
 

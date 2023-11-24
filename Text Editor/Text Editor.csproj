@@ -95,6 +95,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ReplaceForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ReplaceForm.Designer.cs">
+      <DependentUpon>ReplaceForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="SearchForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -117,6 +123,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="ReplaceForm.resx">
+      <DependentUpon>ReplaceForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="SearchForm.resx">
       <DependentUpon>SearchForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -151,6 +160,8 @@
     <Content Include="help files\copypastecut.htm" />
     <Content Include="help files\saving.html" />
     <Content Include="Inno\installer.iss" />
+    <None Include="Resources\baseline_zoom_out_black_24dp.png" />
+    <None Include="Resources\baseline_zoom_in_black_24dp.png" />
     <None Include="Resources\baseline_info_black_24dp.png" />
     <None Include="Resources\baseline_help_black_24dp.png" />
     <None Include="Resources\baseline_wrap_text_black_24dp.png" />

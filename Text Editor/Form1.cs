@@ -317,5 +317,31 @@ namespace Text_Editor
                 mainEditor.Redo();
             }
         }
+
+        private void menuItem30_Click(object sender, EventArgs e)
+        {
+            new ReplaceForm().Show(this);
+        }
+
+        private void menuItem32_Click(object sender, EventArgs e)
+        {
+            if (mainEditor.ZoomFactor < 64.0F)
+            {
+                mainEditor.ZoomFactor += 1.0F;
+            }
+        }
+
+        private void menuItem33_Click(object sender, EventArgs e)
+        {
+            if (mainEditor.ZoomFactor > 1.0F)
+            {
+                mainEditor.ZoomFactor -= 1.0F;
+            }
+        }
+
+        private void menuItem34_Click(object sender, EventArgs e)
+        {
+            mainEditor.ZoomFactor = 1.0F;
+        }
     }
 }

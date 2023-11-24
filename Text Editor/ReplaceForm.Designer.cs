@@ -1,6 +1,6 @@
 ﻿namespace Text_Editor
 {
-    partial class SearchForm
+    partial class ReplaceForm
     {
         /// <summary>
         /// Required designer variable.
@@ -33,6 +33,10 @@
             this.btnFindNext = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             this.chkMatchCase = new System.Windows.Forms.CheckBox();
+            this.btnReplace = new System.Windows.Forms.Button();
+            this.btnReplaceAll = new System.Windows.Forms.Button();
+            this.txtReplacementText = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -46,9 +50,9 @@
             // 
             // txtSearchTerm
             // 
-            this.txtSearchTerm.Location = new System.Drawing.Point(80, 6);
+            this.txtSearchTerm.Location = new System.Drawing.Point(95, 6);
             this.txtSearchTerm.Name = "txtSearchTerm";
-            this.txtSearchTerm.Size = new System.Drawing.Size(163, 23);
+            this.txtSearchTerm.Size = new System.Drawing.Size(148, 23);
             this.txtSearchTerm.TabIndex = 1;
             this.txtSearchTerm.TextChanged += new System.EventHandler(this.txtSearchTerm_TextChanged);
             // 
@@ -67,7 +71,7 @@
             // 
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.btnCancel.Location = new System.Drawing.Point(249, 35);
+            this.btnCancel.Location = new System.Drawing.Point(249, 93);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
             this.btnCancel.TabIndex = 3;
@@ -79,7 +83,7 @@
             // 
             this.chkMatchCase.AutoSize = true;
             this.chkMatchCase.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.chkMatchCase.Location = new System.Drawing.Point(12, 39);
+            this.chkMatchCase.Location = new System.Drawing.Point(12, 96);
             this.chkMatchCase.Name = "chkMatchCase";
             this.chkMatchCase.Size = new System.Drawing.Size(92, 20);
             this.chkMatchCase.TabIndex = 4;
@@ -87,13 +91,57 @@
             this.chkMatchCase.UseVisualStyleBackColor = true;
             this.chkMatchCase.CheckedChanged += new System.EventHandler(this.chkMatchCase_CheckedChanged);
             // 
-            // SearchForm
+            // btnReplace
+            // 
+            this.btnReplace.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnReplace.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.btnReplace.Location = new System.Drawing.Point(249, 35);
+            this.btnReplace.Name = "btnReplace";
+            this.btnReplace.Size = new System.Drawing.Size(75, 23);
+            this.btnReplace.TabIndex = 3;
+            this.btnReplace.Text = "&Replace";
+            this.btnReplace.UseVisualStyleBackColor = true;
+            this.btnReplace.Click += new System.EventHandler(this.btnReplace_Click);
+            // 
+            // btnReplaceAll
+            // 
+            this.btnReplaceAll.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnReplaceAll.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.btnReplaceAll.Location = new System.Drawing.Point(249, 64);
+            this.btnReplaceAll.Name = "btnReplaceAll";
+            this.btnReplaceAll.Size = new System.Drawing.Size(75, 23);
+            this.btnReplaceAll.TabIndex = 5;
+            this.btnReplaceAll.Text = "Replace &All";
+            this.btnReplaceAll.UseVisualStyleBackColor = true;
+            this.btnReplaceAll.Click += new System.EventHandler(this.btnReplaceAll_Click);
+            // 
+            // txtReplacementText
+            // 
+            this.txtReplacementText.Location = new System.Drawing.Point(95, 35);
+            this.txtReplacementText.Name = "txtReplacementText";
+            this.txtReplacementText.Size = new System.Drawing.Size(148, 23);
+            this.txtReplacementText.TabIndex = 7;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(12, 38);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(77, 15);
+            this.label2.TabIndex = 6;
+            this.label2.Text = "Replace with:";
+            // 
+            // ReplaceForm
             // 
             this.AcceptButton = this.btnFindNext;
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.CancelButton = this.btnCancel;
-            this.ClientSize = new System.Drawing.Size(336, 71);
+            this.ClientSize = new System.Drawing.Size(336, 127);
+            this.Controls.Add(this.txtReplacementText);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.btnReplaceAll);
             this.Controls.Add(this.chkMatchCase);
+            this.Controls.Add(this.btnReplace);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnFindNext);
             this.Controls.Add(this.txtSearchTerm);
@@ -102,11 +150,11 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "SearchForm";
+            this.Name = "ReplaceForm";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Find";
+            this.Text = "Replace";
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -119,5 +167,9 @@
         private System.Windows.Forms.Button btnFindNext;
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.CheckBox chkMatchCase;
+        private System.Windows.Forms.Button btnReplace;
+        private System.Windows.Forms.Button btnReplaceAll;
+        private System.Windows.Forms.TextBox txtReplacementText;
+        private System.Windows.Forms.Label label2;
     }
 }
