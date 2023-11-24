@@ -41,6 +41,7 @@
             this.menuItem8 = new System.Windows.Forms.MenuItem();
             this.menuItem9 = new System.Windows.Forms.MenuItem();
             this.menuItem10 = new System.Windows.Forms.MenuItem();
+            this.menuItem19 = new System.Windows.Forms.MenuItem();
             this.menuItem11 = new System.Windows.Forms.MenuItem();
             this.menuItem12 = new System.Windows.Forms.MenuItem();
             this.menuItem13 = new System.Windows.Forms.MenuItem();
@@ -58,7 +59,10 @@
             this.menuItem24 = new System.Windows.Forms.MenuItem();
             this.panel1 = new System.Windows.Forms.Panel();
             this.mainEditor = new Text_Editor.FixedRichTextBox();
-            this.menuItem19 = new System.Windows.Forms.MenuItem();
+            this.contextMenu1 = new System.Windows.Forms.ContextMenu();
+            this.menuItem20 = new System.Windows.Forms.MenuItem();
+            this.menuItem21 = new System.Windows.Forms.MenuItem();
+            this.menuItem22 = new System.Windows.Forms.MenuItem();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -151,6 +155,13 @@
             this.menuItem10.Shortcut = System.Windows.Forms.Shortcut.CtrlZ;
             this.menuItem10.Text = "Undo";
             this.menuItem10.Click += new System.EventHandler(this.menuItem10_Click);
+            // 
+            // menuItem19
+            // 
+            this.menuItem19.Index = 1;
+            this.menuItem19.Shortcut = System.Windows.Forms.Shortcut.CtrlY;
+            this.menuItem19.Text = "Redo";
+            this.menuItem19.Click += new System.EventHandler(this.menuItem19_Click);
             // 
             // menuItem11
             // 
@@ -273,12 +284,29 @@
             this.mainEditor.WordWrap = false;
             this.mainEditor.TextChanged += new System.EventHandler(this.mainEditor_TextChanged);
             // 
-            // menuItem19
+            // contextMenu1
             // 
-            this.menuItem19.Index = 1;
-            this.menuItem19.Shortcut = System.Windows.Forms.Shortcut.CtrlY;
-            this.menuItem19.Text = "Redo";
-            this.menuItem19.Click += new System.EventHandler(this.menuItem19_Click);
+            this.contextMenu1.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
+            this.menuItem20,
+            this.menuItem21,
+            this.menuItem22});
+            // 
+            // menuItem20
+            // 
+            this.menuItem20.Index = 0;
+            this.menuItem20.Text = "Undo";
+            this.menuItem20.Click += new System.EventHandler(this.menuItem10_Click);
+            // 
+            // menuItem21
+            // 
+            this.menuItem21.Index = 1;
+            this.menuItem21.Text = "Redo";
+            this.menuItem21.Click += new System.EventHandler(this.menuItem19_Click);
+            // 
+            // menuItem22
+            // 
+            this.menuItem22.Index = 2;
+            this.menuItem22.Text = "-";
             // 
             // Form1
             // 
@@ -328,6 +356,10 @@
         private System.Windows.Forms.Panel panel1;
         private FixedRichTextBox mainEditor;
         private System.Windows.Forms.MenuItem menuItem19;
+        private System.Windows.Forms.ContextMenu contextMenu1;
+        private System.Windows.Forms.MenuItem menuItem20;
+        private System.Windows.Forms.MenuItem menuItem21;
+        private System.Windows.Forms.MenuItem menuItem22;
     }
 }
 

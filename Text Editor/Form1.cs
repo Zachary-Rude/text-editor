@@ -25,7 +25,7 @@ namespace Text_Editor
             mainEditor.WordWrap = Properties.Settings.Default.EnableWordWrap;
             mainEditor.Font = Properties.Settings.Default.Font;
             mainEditor.AutoWordSelection = false;
-            path = "Untitled";
+            path = null;
         }
 
         public Form1(string fileName) : this()
@@ -66,14 +66,18 @@ namespace Text_Editor
         {
             if (this.Text.StartsWith("*"))
             {
-                DialogResult dr = MessageBox.Show(path + " has unsaved changes.\r\nDo you want to save them?", "Unsaved changes", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                DialogResult dr = MessageBox.Show(path + " has unsaved changes.\r\nDo you want to save them?", "Unsaved changes", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Warning);
                 if (dr == DialogResult.Yes)
                 {
                     menuItem5.PerformClick();
                 }
+                else if (dr == DialogResult.Cancel)
+                {
+                    return;
+                }
             }
             this.Text = "Untitled - Notepad.NET";
-            path = "Untitled";
+            path = null;
             mainEditor.Clear();
             this.Text = this.Text.Replace("*", "");
         }
@@ -85,7 +89,7 @@ namespace Text_Editor
 
         private void menuItem4_Click(object sender, EventArgs e)
         {
-            using (OpenFileDialog ofd = new OpenFileDialog() { DefaultExt = ".txt", Filter = "Text Files (*.txt)|*.txt|All Files (*.*)|*.*", ValidateNames = true, Multiselect = false })
+            using (OpenFileDialog ofd = new OpenFileDialog() { DefaultExt = ".txt", Filter = "Text Files|*.txt|All Files|*.*", ValidateNames = true, Multiselect = false })
             {
                 if (ofd.ShowDialog() == DialogResult.OK)
                 {
@@ -112,7 +116,7 @@ namespace Text_Editor
         {
             if (string.IsNullOrEmpty(path))
             {
-                using (SaveFileDialog sfd = new SaveFileDialog() { Filter = "Text Files (*.txt)|*.txt|All Files (*.*)|*.*", ValidateNames = true, FileName = "Untitled.txt" })
+                using (SaveFileDialog sfd = new SaveFileDialog() { Filter = "Text Files|*.txt|All Files|*.*", ValidateNames = true, FileName = path ?? "Untitled.txt" })
                 {
                     if (sfd.ShowDialog() == DialogResult.OK)
                     {
@@ -139,7 +143,8 @@ namespace Text_Editor
                     using (StreamWriter sw = new StreamWriter(path))
                     {
                         await sw.WriteLineAsync(mainEditor.Text.Replace("\n", "\r\n"));//Write data to text file
-                        this.Text = this.Text.Replace("*", "");
+                        var regex = new Regex(Regex.Escape("*"));
+                        this.Text = regex.Replace(this.Text, "", 1);
                     }
                 }
                 catch (Exception ex)
@@ -151,7 +156,7 @@ namespace Text_Editor
 
         private async void menuItem6_Click(object sender, EventArgs e)
         {
-            using (SaveFileDialog sfd = new SaveFileDialog() { Filter = "Text Files (*.txt)|*.txt|All Files (*.*)|*.*", ValidateNames = true, FileName = this.Text.Replace(" - Notepad.NET", "").Replace("*", "") })
+            using (SaveFileDialog sfd = new SaveFileDialog() { Filter = "Text Files|*.txt|All Files|*.*", ValidateNames = true, FileName = this.Text.Replace(" - Notepad.NET", "").Replace("*", "") })
             {
                 if (sfd.ShowDialog() == DialogResult.OK)
                 {
@@ -272,10 +277,11 @@ namespace Text_Editor
                 switch (e.CloseReason)
                 {
                     case CloseReason.UserClosing:
+                    case CloseReason.WindowsShutDown:
                         string fileNameOld = this.Text.Replace(" - Notepad.NET", "");
                         var regex = new Regex(Regex.Escape("*"));
                         string fileName = regex.Replace(fileNameOld, "", 1);
-                        DialogResult dr = MessageBox.Show(fileName + " has unsaved changes.\r\nDo you want to save them?", "Unsaved changes", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
+                        DialogResult dr = MessageBox.Show(fileName + " has unsaved changes.\r\nDo you want to save them?", "Unsaved changes", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Warning);
                         if (dr == DialogResult.Yes)
                         {
                             this.menuItem5.PerformClick();
