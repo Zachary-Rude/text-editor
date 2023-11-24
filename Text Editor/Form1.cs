@@ -38,8 +38,30 @@ namespace Text_Editor
 
             if (!File.Exists(fileName))
             {
-                MessageBox.Show("Invalid file name.", "Cannot open file", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
+                DialogResult dr = MessageBox.Show(string.Format("Could not find the {0} file.\r\nDo you want to create it?", fileName), "Notepad.NET", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (dr == DialogResult.Yes)
+                {
+                    try
+                    {
+                        File.Create(fileName).Close();
+                        this.Text = Path.GetFileName(fileName) + " - Notepad.NET";
+                        using (StreamReader sr = new StreamReader(fileName))
+                        {
+                            path = fileName;
+                            Task<string> text = sr.ReadToEndAsync();
+                            mainEditor.Text = text.Result;
+                            this.Text = this.Text.Replace("*", "");
+                        }
+                    }
+                    catch (Exception e)
+                    {
+                        MessageBox.Show(e.Message, "Cannot create file", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+                else
+                {
+                    return;
+                }
             }
             try
             {
