@@ -155,20 +155,22 @@
             this.menuItem26,
             this.menuItem15,
             this.menuItem16});
-            this.menuItem9.Text = "Edit";
+            this.menuItem9.Text = "&Edit";
             // 
             // menuItem10
             // 
+            this.vistaMenu.SetImage(this.menuItem10, global::Text_Editor.Properties.Resources.baseline_undo_black_24dp);
             this.menuItem10.Index = 0;
             this.menuItem10.Shortcut = System.Windows.Forms.Shortcut.CtrlZ;
-            this.menuItem10.Text = "Undo";
+            this.menuItem10.Text = "&Undo";
             this.menuItem10.Click += new System.EventHandler(this.menuItem10_Click);
             // 
             // menuItem19
             // 
+            this.vistaMenu.SetImage(this.menuItem19, global::Text_Editor.Properties.Resources.baseline_redo_black_24dp);
             this.menuItem19.Index = 1;
             this.menuItem19.Shortcut = System.Windows.Forms.Shortcut.CtrlY;
-            this.menuItem19.Text = "Redo";
+            this.menuItem19.Text = "&Redo";
             this.menuItem19.Click += new System.EventHandler(this.menuItem19_Click);
             // 
             // menuItem11
@@ -178,23 +180,26 @@
             // 
             // menuItem12
             // 
+            this.vistaMenu.SetImage(this.menuItem12, global::Text_Editor.Properties.Resources.baseline_content_cut_black_24dp);
             this.menuItem12.Index = 3;
             this.menuItem12.Shortcut = System.Windows.Forms.Shortcut.CtrlX;
-            this.menuItem12.Text = "Cut";
+            this.menuItem12.Text = "Cu&t";
             this.menuItem12.Click += new System.EventHandler(this.menuItem12_Click);
             // 
             // menuItem13
             // 
+            this.vistaMenu.SetImage(this.menuItem13, global::Text_Editor.Properties.Resources.baseline_content_copy_black_24dp);
             this.menuItem13.Index = 4;
             this.menuItem13.Shortcut = System.Windows.Forms.Shortcut.CtrlC;
-            this.menuItem13.Text = "Copy";
+            this.menuItem13.Text = "&Copy";
             this.menuItem13.Click += new System.EventHandler(this.menuItem13_Click);
             // 
             // menuItem14
             // 
+            this.vistaMenu.SetImage(this.menuItem14, global::Text_Editor.Properties.Resources.baseline_content_paste_black_24dp);
             this.menuItem14.Index = 5;
             this.menuItem14.Shortcut = System.Windows.Forms.Shortcut.CtrlV;
-            this.menuItem14.Text = "Paste";
+            this.menuItem14.Text = "&Paste";
             this.menuItem14.Click += new System.EventHandler(this.menuItem14_Click);
             // 
             // menuItem25
@@ -204,9 +209,10 @@
             // 
             // menuItem26
             // 
+            this.vistaMenu.SetImage(this.menuItem26, global::Text_Editor.Properties.Resources.baseline_find_in_page_black_24dp);
             this.menuItem26.Index = 7;
             this.menuItem26.Shortcut = System.Windows.Forms.Shortcut.CtrlF;
-            this.menuItem26.Text = "Find...";
+            this.menuItem26.Text = "&Find...";
             this.menuItem26.Click += new System.EventHandler(this.menuItem26_Click);
             // 
             // menuItem15
@@ -218,7 +224,7 @@
             // 
             this.menuItem16.Index = 9;
             this.menuItem16.Shortcut = System.Windows.Forms.Shortcut.CtrlA;
-            this.menuItem16.Text = "Select All";
+            this.menuItem16.Text = "Select &All";
             this.menuItem16.Click += new System.EventHandler(this.menuItem16_Click);
             // 
             // menuItem17

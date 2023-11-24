@@ -150,6 +150,10 @@
     <Content Include="help files\copypastecut.htm" />
     <Content Include="help files\saving.html" />
     <Content Include="Inno\installer.iss" />
+    <None Include="Resources\baseline_undo_black_24dp.png" />
+    <None Include="Resources\baseline_redo_black_24dp.png" />
+    <None Include="Resources\baseline_find_replace_black_24dp.png" />
+    <None Include="Resources\baseline_find_in_page_black_24dp.png" />
     <None Include="Resources\baseline_open_in_new_black_24dp.png" />
     <None Include="Resources\baseline_close_black_24dp.png" />
     <None Include="Resources\baseline_save_black_24dp.png" />

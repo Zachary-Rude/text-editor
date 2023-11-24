@@ -123,9 +123,39 @@ namespace Text_Editor.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap baseline_find_in_page_black_24dp {
+            get {
+                object obj = ResourceManager.GetObject("baseline_find_in_page_black_24dp", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap baseline_find_replace_black_24dp {
+            get {
+                object obj = ResourceManager.GetObject("baseline_find_replace_black_24dp", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap baseline_open_in_new_black_24dp {
             get {
                 object obj = ResourceManager.GetObject("baseline_open_in_new_black_24dp", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap baseline_redo_black_24dp {
+            get {
+                object obj = ResourceManager.GetObject("baseline_redo_black_24dp", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -146,6 +176,16 @@ namespace Text_Editor.Properties {
         internal static System.Drawing.Bitmap baseline_save_black_24dp {
             get {
                 object obj = ResourceManager.GetObject("baseline_save_black_24dp", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap baseline_undo_black_24dp {
+            get {
+                object obj = ResourceManager.GetObject("baseline_undo_black_24dp", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
