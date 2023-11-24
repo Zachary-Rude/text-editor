@@ -27,6 +27,7 @@ namespace Text_Editor
             mainEditor.Font = Properties.Settings.Default.Font;
             mainEditor.AutoWordSelection = false;
             mainEditor.ContextMenu = contextMenu1;
+            enableDisableTimer.Start();
             path = null;
         }
 
@@ -186,10 +187,7 @@ namespace Text_Editor
 
         private void menuItem10_Click(object sender, EventArgs e)
         {
-            if (mainEditor.CanUndo)
-            {
-                mainEditor.Undo();
-            }
+            mainEditor.Undo();
         }
 
         private void menuItem12_Click(object sender, EventArgs e)
@@ -289,6 +287,7 @@ namespace Text_Editor
                         break;
                 }
             }
+            enableDisableTimer.Stop();
         }
 
         private void menuItem29_Click(object sender, EventArgs e)
@@ -312,10 +311,7 @@ namespace Text_Editor
 
         private void menuItem19_Click(object sender, EventArgs e)
         {
-            if (mainEditor.CanRedo)
-            {
-                mainEditor.Redo();
-            }
+            mainEditor.Redo();
         }
 
         private void menuItem30_Click(object sender, EventArgs e)
@@ -325,23 +321,38 @@ namespace Text_Editor
 
         private void menuItem32_Click(object sender, EventArgs e)
         {
-            if (mainEditor.ZoomFactor < 64.0F)
-            {
-                mainEditor.ZoomFactor += 1.0F;
-            }
+            mainEditor.ZoomFactor += 1.0F;
         }
 
         private void menuItem33_Click(object sender, EventArgs e)
         {
-            if (mainEditor.ZoomFactor > 1.0F)
-            {
-                mainEditor.ZoomFactor -= 1.0F;
-            }
+            mainEditor.ZoomFactor -= 1.0F;
         }
 
         private void menuItem34_Click(object sender, EventArgs e)
         {
             mainEditor.ZoomFactor = 1.0F;
+        }
+
+        private void enableDisableTimer_Tick(object sender, EventArgs e)
+        {
+            // Enable the menu items for undo and redo only when you are able to undo and redo (gray them out otherwise)
+            menuItem10.Enabled = mainEditor.CanUndo;
+            menuItem19.Enabled = mainEditor.CanRedo;
+            menuItem20.Enabled = menuItem10.Enabled;
+            menuItem21.Enabled = menuItem19.Enabled;
+
+            // Disable the menu items for cut and copy if no text is selected
+            menuItem12.Enabled = mainEditor.SelectedText.Length > 0;
+            menuItem13.Enabled = menuItem12.Enabled;
+            menuItem35.Enabled = menuItem12.Enabled;
+            menuItem36.Enabled = menuItem12.Enabled;
+
+            // Disable the menu item for zooming in if the user has reached the maximum zoom level
+            menuItem32.Enabled = mainEditor.ZoomFactor < 63.0F;
+
+            // Disable the menu item for zooming out if the user has reached the minimum zoom level
+            menuItem33.Enabled = mainEditor.ZoomFactor > 1.0F;
         }
     }
 }
