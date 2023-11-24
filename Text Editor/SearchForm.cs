@@ -30,6 +30,7 @@ namespace Text_Editor
             }
             ((Form1)this.Owner).mainEditor.Select(searchStart, txtSearchTerm.Text.Length);
             ((Form1)this.Owner).mainEditor.ScrollToCaret();
+            ((Form1)this.Owner).Focus();
             searchStart += txtSearchTerm.Text.Length + 1;
         }
 
