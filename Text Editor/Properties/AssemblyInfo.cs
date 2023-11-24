@@ -10,7 +10,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Zach, Inc.")]
 [assembly: AssemblyProduct("Text Editor")]
-[assembly: AssemblyCopyright("Copyright © 2021-2022 Zach, Inc.")]
+[assembly: AssemblyCopyright("Copyright © 2021-2023 Zach, Inc.")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

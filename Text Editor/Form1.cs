@@ -11,6 +11,7 @@ using System.IO;
 using System.Reflection;
 using System.Text.RegularExpressions;
 using System.Diagnostics;
+using Microsoft.VisualBasic;
 
 namespace Text_Editor
 {

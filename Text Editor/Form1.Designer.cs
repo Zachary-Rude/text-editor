@@ -87,41 +87,46 @@
             this.menuItem6,
             this.menuItem7,
             this.menuItem8});
-            this.menuItem1.Text = "File";
+            this.menuItem1.Text = "&File";
             // 
             // menuItem2
             // 
+            this.vistaMenu.SetImage(this.menuItem2, global::Text_Editor.Properties.Resources.baseline_create_black_24dp);
             this.menuItem2.Index = 0;
             this.menuItem2.Shortcut = System.Windows.Forms.Shortcut.CtrlN;
-            this.menuItem2.Text = "New";
+            this.menuItem2.Text = "&New";
             this.menuItem2.Click += new System.EventHandler(this.menuItem2_Click);
             // 
             // menuItem3
             // 
+            this.vistaMenu.SetImage(this.menuItem3, global::Text_Editor.Properties.Resources.baseline_open_in_new_black_24dp);
             this.menuItem3.Index = 1;
             this.menuItem3.Shortcut = System.Windows.Forms.Shortcut.CtrlShiftN;
-            this.menuItem3.Text = "New Window";
+            this.menuItem3.Text = "New &Window";
             this.menuItem3.Click += new System.EventHandler(this.menuItem3_Click);
             // 
             // menuItem4
             // 
+            this.vistaMenu.SetImage(this.menuItem4, global::Text_Editor.Properties.Resources.baseline_file_open_black_24dp);
             this.menuItem4.Index = 2;
             this.menuItem4.Shortcut = System.Windows.Forms.Shortcut.CtrlO;
-            this.menuItem4.Text = "Open...";
+            this.menuItem4.Text = "&Open...";
             this.menuItem4.Click += new System.EventHandler(this.menuItem4_Click);
             // 
             // menuItem5
             // 
+            this.vistaMenu.SetImage(this.menuItem5, global::Text_Editor.Properties.Resources.baseline_save_black_24dp);
             this.menuItem5.Index = 3;
             this.menuItem5.Shortcut = System.Windows.Forms.Shortcut.CtrlS;
-            this.menuItem5.Text = "Save";
+            this.menuItem5.Text = "&Save";
             this.menuItem5.Click += new System.EventHandler(this.menuItem5_Click);
             // 
             // menuItem6
             // 
+            this.vistaMenu.SetImage(this.menuItem6, global::Text_Editor.Properties.Resources.baseline_save_as_black_24dp);
             this.menuItem6.Index = 4;
             this.menuItem6.Shortcut = System.Windows.Forms.Shortcut.CtrlShiftS;
-            this.menuItem6.Text = "Save As...";
+            this.menuItem6.Text = "Save &As...";
             this.menuItem6.Click += new System.EventHandler(this.menuItem6_Click);
             // 
             // menuItem7
@@ -131,8 +136,9 @@
             // 
             // menuItem8
             // 
+            this.vistaMenu.SetImage(this.menuItem8, global::Text_Editor.Properties.Resources.baseline_close_black_24dp);
             this.menuItem8.Index = 6;
-            this.menuItem8.Text = "Exit";
+            this.menuItem8.Text = "E&xit";
             this.menuItem8.Click += new System.EventHandler(this.menuItem8_Click);
             // 
             // menuItem9
@@ -361,13 +367,13 @@
         private System.Windows.Forms.MenuItem menuItem28;
         private System.Windows.Forms.MenuItem menuItem29;
         private System.Windows.Forms.Panel panel1;
-        private FixedRichTextBox mainEditor;
         private System.Windows.Forms.MenuItem menuItem19;
         private System.Windows.Forms.ContextMenu contextMenu1;
         private System.Windows.Forms.MenuItem menuItem20;
         private System.Windows.Forms.MenuItem menuItem21;
         private System.Windows.Forms.MenuItem menuItem22;
         private wyDay.Controls.VistaMenu vistaMenu;
+        public FixedRichTextBox mainEditor;
     }
 }
 
