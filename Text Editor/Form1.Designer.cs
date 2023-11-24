@@ -554,6 +554,7 @@
             this.vistaMenu.SetImage(this.menuItem50, global::Text_Editor.Properties.Resources.baseline_backspace_black_24dp);
             this.menuItem50.Index = 6;
             this.menuItem50.Text = "&Delete";
+            this.menuItem50.Click += new System.EventHandler(this.menuItem49_Click);
             // 
             // mainEditor
             // 

@@ -541,6 +541,7 @@ namespace Text_Editor
             menuItem35.Enabled = menuItem12.Enabled;
             menuItem36.Enabled = menuItem12.Enabled;
             menuItem49.Enabled = menuItem12.Enabled;
+            menuItem50.Enabled = menuItem12.Enabled;
 
             // Disable the menu item for zooming in if the user has reached the maximum zoom level
             menuItem32.Enabled = mainEditor.ZoomFactor < 5.0F;
