@@ -48,6 +48,9 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="VistaMenu">
+      <HintPath>..\VistaMenu\bin\Release\VistaMenu.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AboutForm.cs">
@@ -122,6 +125,15 @@
     <Content Include="help files\copypastecut.htm" />
     <Content Include="help files\saving.html" />
     <Content Include="Inno\installer.iss" />
+    <None Include="Resources\baseline_open_in_new_black_24dp.png" />
+    <None Include="Resources\baseline_close_black_24dp.png" />
+    <None Include="Resources\baseline_save_black_24dp.png" />
+    <None Include="Resources\baseline_save_as_black_24dp.png" />
+    <None Include="Resources\baseline_file_open_black_24dp.png" />
+    <None Include="Resources\baseline_create_black_24dp.png" />
+    <None Include="Resources\baseline_content_paste_black_24dp.png" />
+    <None Include="Resources\baseline_content_cut_black_24dp.png" />
+    <None Include="Resources\baseline_content_copy_black_24dp.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

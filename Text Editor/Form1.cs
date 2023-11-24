@@ -25,6 +25,7 @@ namespace Text_Editor
             mainEditor.WordWrap = Properties.Settings.Default.EnableWordWrap;
             mainEditor.Font = Properties.Settings.Default.Font;
             mainEditor.AutoWordSelection = false;
+            mainEditor.ContextMenu = contextMenu1;
             path = null;
         }
 
