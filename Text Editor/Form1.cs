@@ -259,7 +259,7 @@ namespace Text_Editor
                             path = sfd.FileName;
                             using (StreamWriter sw = new StreamWriter(sfd.FileName))
                             {
-                                await sw.WriteLineAsync(mainEditor.Text.Replace("\n", "\r\n"));//Write data to text file
+                                await sw.WriteAsync(mainEditor.Text.Replace("\n", "\r\n")); // Write data to text file
                                 this.Text = Path.GetFileName(sfd.FileName) + " - Notepad.NET";
                             }
                             if (Properties.Settings.Default.SaveRecentFiles)
@@ -290,7 +290,7 @@ namespace Text_Editor
                 {
                     using (StreamWriter sw = new StreamWriter(path))
                     {
-                        await sw.WriteLineAsync(mainEditor.Text.Replace("\n", "\r\n"));//Write data to text file
+                        await sw.WriteAsync(mainEditor.Text.Replace("\n", "\r\n")); // Write data to text file
                         var regex = new Regex(Regex.Escape("*"));
                         this.Text = regex.Replace(this.Text, "", 1);
                     }
@@ -313,7 +313,7 @@ namespace Text_Editor
                         path = sfd.FileName;
                         using (StreamWriter sw = new StreamWriter(sfd.FileName))
                         {
-                            await sw.WriteLineAsync(mainEditor.Text); // Write data to text file
+                            await sw.WriteAsync(mainEditor.Text); // Write data to text file
                             this.Text = Path.GetFileName(sfd.FileName) + " - Notepad.NET";
                         }
                         if (Properties.Settings.Default.SaveRecentFiles)
