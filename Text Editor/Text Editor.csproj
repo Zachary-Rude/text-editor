@@ -150,6 +150,8 @@
     <Content Include="help files\copypastecut.htm" />
     <Content Include="help files\saving.html" />
     <Content Include="Inno\installer.iss" />
+    <None Include="Resources\baseline_info_black_24dp.png" />
+    <None Include="Resources\baseline_help_black_24dp.png" />
     <None Include="Resources\baseline_wrap_text_black_24dp.png" />
     <None Include="Resources\baseline_text_fields_black_24dp.png" />
     <None Include="Resources\baseline_undo_black_24dp.png" />

@@ -256,13 +256,14 @@
             this.menuItem27,
             this.menuItem28,
             this.menuItem24});
-            this.menuItem23.Text = "Help";
+            this.menuItem23.Text = "&Help";
             // 
             // menuItem27
             // 
+            this.vistaMenu.SetImage(this.menuItem27, global::Text_Editor.Properties.Resources.baseline_help_black_24dp);
             this.menuItem27.Index = 0;
             this.menuItem27.Shortcut = System.Windows.Forms.Shortcut.F1;
-            this.menuItem27.Text = "Help Topics";
+            this.menuItem27.Text = "&Help Topics";
             this.menuItem27.Click += new System.EventHandler(this.menuItem27_Click);
             // 
             // menuItem28
@@ -272,9 +273,10 @@
             // 
             // menuItem24
             // 
+            this.vistaMenu.SetImage(this.menuItem24, global::Text_Editor.Properties.Resources.baseline_info_black_24dp);
             this.menuItem24.Index = 2;
             this.menuItem24.Shortcut = System.Windows.Forms.Shortcut.ShiftF1;
-            this.menuItem24.Text = "About Notepad.NET";
+            this.menuItem24.Text = "&About Notepad.NET";
             this.menuItem24.Click += new System.EventHandler(this.menuItem24_Click);
             // 
             // panel1
