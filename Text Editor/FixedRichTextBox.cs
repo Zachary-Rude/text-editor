@@ -135,10 +135,10 @@ namespace Text_Editor
         protected override void OnHandleCreated(EventArgs e)
         {
             base.OnHandleCreated(e);
-            if (!base.AutoWordSelection)
+            if (!AutoWordSelection)
             {
-                base.AutoWordSelection = true;
-                base.AutoWordSelection = false;
+                AutoWordSelection = true;
+                AutoWordSelection = false;
             }
             this.MouseWheel += this.OnMouseWheel;
         }

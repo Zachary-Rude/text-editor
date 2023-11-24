@@ -71,7 +71,6 @@
             this.menuItem28 = new System.Windows.Forms.MenuItem();
             this.menuItem24 = new System.Windows.Forms.MenuItem();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.mainEditor = new Text_Editor.FixedRichTextBox();
             this.contextMenu1 = new System.Windows.Forms.ContextMenu();
             this.menuItem20 = new System.Windows.Forms.MenuItem();
             this.menuItem21 = new System.Windows.Forms.MenuItem();
@@ -84,8 +83,16 @@
             this.vistaMenu = new wyDay.Controls.VistaMenu(this.components);
             this.enableDisableTimer = new System.Windows.Forms.Timer(this.components);
             this.printDocument1 = new System.Drawing.Printing.PrintDocument();
+            this.statusBar1 = new System.Windows.Forms.StatusBar();
+            this.menuItem47 = new System.Windows.Forms.MenuItem();
+            this.menuItem48 = new System.Windows.Forms.MenuItem();
+            this.sbpLineCol = new System.Windows.Forms.StatusBarPanel();
+            this.mainEditor = new Text_Editor.FixedRichTextBox();
+            this.sbpZoomPercent = new System.Windows.Forms.StatusBarPanel();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.vistaMenu)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sbpLineCol)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sbpZoomPercent)).BeginInit();
             this.SuspendLayout();
             // 
             // mainMenu1
@@ -324,7 +331,9 @@
             this.menuItem34,
             this.menuItem31,
             this.menuItem18,
-            this.menuItem29});
+            this.menuItem29,
+            this.menuItem47,
+            this.menuItem48});
             this.menuItem17.Text = "&View";
             // 
             // menuItem32
@@ -399,26 +408,13 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.statusBar1);
             this.panel1.Controls.Add(this.mainEditor);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(800, 457);
             this.panel1.TabIndex = 0;
-            // 
-            // mainEditor
-            // 
-            this.mainEditor.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.mainEditor.DetectUrls = false;
-            this.mainEditor.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.mainEditor.Font = new System.Drawing.Font("Consolas", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.mainEditor.Location = new System.Drawing.Point(0, 0);
-            this.mainEditor.Name = "mainEditor";
-            this.mainEditor.Size = new System.Drawing.Size(800, 457);
-            this.mainEditor.TabIndex = 0;
-            this.mainEditor.Text = "";
-            this.mainEditor.WordWrap = false;
-            this.mainEditor.TextChanged += new System.EventHandler(this.mainEditor_TextChanged);
             // 
             // contextMenu1
             // 
@@ -498,6 +494,53 @@
             this.printDocument1.EndPrint += new System.Drawing.Printing.PrintEventHandler(this.printDocument1_EndPrint);
             this.printDocument1.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocument1_PrintPage);
             // 
+            // statusBar1
+            // 
+            this.statusBar1.Location = new System.Drawing.Point(0, 435);
+            this.statusBar1.Name = "statusBar1";
+            this.statusBar1.Panels.AddRange(new System.Windows.Forms.StatusBarPanel[] {
+            this.sbpLineCol,
+            this.sbpZoomPercent});
+            this.statusBar1.ShowPanels = true;
+            this.statusBar1.Size = new System.Drawing.Size(800, 22);
+            this.statusBar1.TabIndex = 2;
+            // 
+            // menuItem47
+            // 
+            this.menuItem47.Index = 6;
+            this.menuItem47.Text = "-";
+            // 
+            // menuItem48
+            // 
+            this.menuItem48.Index = 7;
+            this.menuItem48.Text = "&Status Bar";
+            this.menuItem48.Click += new System.EventHandler(this.menuItem48_Click);
+            // 
+            // sbpLineCol
+            // 
+            this.sbpLineCol.Name = "sbpLineCol";
+            this.sbpLineCol.Text = "Ln 1, Col 1";
+            this.sbpLineCol.Width = 150;
+            // 
+            // mainEditor
+            // 
+            this.mainEditor.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.mainEditor.DetectUrls = false;
+            this.mainEditor.Font = new System.Drawing.Font("Consolas", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.mainEditor.Location = new System.Drawing.Point(0, 0);
+            this.mainEditor.Name = "mainEditor";
+            this.mainEditor.Size = new System.Drawing.Size(800, 435);
+            this.mainEditor.TabIndex = 0;
+            this.mainEditor.Text = "";
+            this.mainEditor.WordWrap = false;
+            this.mainEditor.TextChanged += new System.EventHandler(this.mainEditor_TextChanged);
+            // 
+            // sbpZoomPercent
+            // 
+            this.sbpZoomPercent.Name = "sbpZoomPercent";
+            this.sbpZoomPercent.Text = "100%";
+            this.sbpZoomPercent.Width = 45;
+            // 
             // Form1
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -512,6 +555,8 @@
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.vistaMenu)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sbpLineCol)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sbpZoomPercent)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -572,6 +617,11 @@
         private System.Windows.Forms.MenuItem menuItem44;
         private System.Windows.Forms.MenuItem menuItem45;
         private System.Windows.Forms.MenuItem menuItem46;
+        private System.Windows.Forms.StatusBar statusBar1;
+        private System.Windows.Forms.MenuItem menuItem47;
+        private System.Windows.Forms.MenuItem menuItem48;
+        private System.Windows.Forms.StatusBarPanel sbpLineCol;
+        private System.Windows.Forms.StatusBarPanel sbpZoomPercent;
     }
 }
 

@@ -481,12 +481,12 @@ namespace Text_Editor
 
         private void menuItem32_Click(object sender, EventArgs e)
         {
-            mainEditor.ZoomFactor += 1.0F;
+            mainEditor.ZoomFactor += 0.25F;
         }
 
         private void menuItem33_Click(object sender, EventArgs e)
         {
-            mainEditor.ZoomFactor -= 1.0F;
+            mainEditor.ZoomFactor -= 0.25F;
         }
 
         private void menuItem34_Click(object sender, EventArgs e)
@@ -509,10 +509,26 @@ namespace Text_Editor
             menuItem36.Enabled = menuItem12.Enabled;
 
             // Disable the menu item for zooming in if the user has reached the maximum zoom level
-            menuItem32.Enabled = mainEditor.ZoomFactor < 63.0F;
+            menuItem32.Enabled = mainEditor.ZoomFactor < 5.0F;
 
             // Disable the menu item for zooming out if the user has reached the minimum zoom level
             menuItem33.Enabled = mainEditor.ZoomFactor > 1.0F;
+
+            // Automatically show/hide the status bar based on the user's preferences
+            statusBar1.Visible = Properties.Settings.Default.ShowStatusBar;
+            menuItem48.Checked = Properties.Settings.Default.ShowStatusBar;
+
+            // Set the main RichTextBox's dock style to Fill if the status bar is visible; otherwise, disable the docking for it and instead set the anchor to all 4 sides
+            if (statusBar1.Visible)
+            {
+                mainEditor.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+                mainEditor.Dock = DockStyle.None;
+            }
+            else
+            {
+                mainEditor.Anchor = AnchorStyles.Top | AnchorStyles.Left;
+                mainEditor.Dock = DockStyle.Fill;
+            }
         }
 
         private void menuItem43_Click(object sender, EventArgs e)
@@ -580,6 +596,11 @@ namespace Text_Editor
             {
                 pageSetup.ShowDialog();
             }
+        }
+
+        private void menuItem48_Click(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.ShowStatusBar ^= true;
         }
     }
 }
