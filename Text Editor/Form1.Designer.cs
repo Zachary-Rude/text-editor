@@ -90,8 +90,8 @@
             this.vistaMenu = new wyDay.Controls.VistaMenu(this.components);
             this.enableDisableTimer = new System.Windows.Forms.Timer(this.components);
             this.printDocument1 = new System.Drawing.Printing.PrintDocument();
-            this.mainEditor = new Text_Editor.FixedRichTextBox();
             this.menuItem50 = new System.Windows.Forms.MenuItem();
+            this.mainEditor = new Text_Editor.FixedRichTextBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.sbpLineCol)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sbpZoomPercent)).BeginInit();
@@ -549,8 +549,15 @@
             this.printDocument1.EndPrint += new System.Drawing.Printing.PrintEventHandler(this.printDocument1_EndPrint);
             this.printDocument1.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocument1_PrintPage);
             // 
+            // menuItem50
+            // 
+            this.vistaMenu.SetImage(this.menuItem50, global::Text_Editor.Properties.Resources.baseline_backspace_black_24dp);
+            this.menuItem50.Index = 6;
+            this.menuItem50.Text = "&Delete";
+            // 
             // mainEditor
             // 
+            this.mainEditor.AcceptsTab = true;
             this.mainEditor.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.mainEditor.DetectUrls = false;
             this.mainEditor.Font = new System.Drawing.Font("Consolas", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -561,12 +568,6 @@
             this.mainEditor.Text = "";
             this.mainEditor.WordWrap = false;
             this.mainEditor.TextChanged += new System.EventHandler(this.mainEditor_TextChanged);
-            // 
-            // menuItem50
-            // 
-            this.vistaMenu.SetImage(this.menuItem50, global::Text_Editor.Properties.Resources.baseline_backspace_black_24dp);
-            this.menuItem50.Index = 6;
-            this.menuItem50.Text = "&Delete";
             // 
             // Form1
             // 
