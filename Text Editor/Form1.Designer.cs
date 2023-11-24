@@ -71,6 +71,7 @@
             this.menuItem28 = new System.Windows.Forms.MenuItem();
             this.menuItem24 = new System.Windows.Forms.MenuItem();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.mainEditor = new Text_Editor.FixedRichTextBox();
             this.contextMenu1 = new System.Windows.Forms.ContextMenu();
             this.menuItem20 = new System.Windows.Forms.MenuItem();
             this.menuItem21 = new System.Windows.Forms.MenuItem();
@@ -83,7 +84,6 @@
             this.vistaMenu = new wyDay.Controls.VistaMenu(this.components);
             this.enableDisableTimer = new System.Windows.Forms.Timer(this.components);
             this.printDocument1 = new System.Drawing.Printing.PrintDocument();
-            this.mainEditor = new Text_Editor.FixedRichTextBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.vistaMenu)).BeginInit();
             this.SuspendLayout();
@@ -406,6 +406,20 @@
             this.panel1.Size = new System.Drawing.Size(800, 457);
             this.panel1.TabIndex = 0;
             // 
+            // mainEditor
+            // 
+            this.mainEditor.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.mainEditor.DetectUrls = false;
+            this.mainEditor.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.mainEditor.Font = new System.Drawing.Font("Consolas", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.mainEditor.Location = new System.Drawing.Point(0, 0);
+            this.mainEditor.Name = "mainEditor";
+            this.mainEditor.Size = new System.Drawing.Size(800, 457);
+            this.mainEditor.TabIndex = 0;
+            this.mainEditor.Text = "";
+            this.mainEditor.WordWrap = false;
+            this.mainEditor.TextChanged += new System.EventHandler(this.mainEditor_TextChanged);
+            // 
             // contextMenu1
             // 
             this.contextMenu1.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
@@ -483,20 +497,6 @@
             this.printDocument1.BeginPrint += new System.Drawing.Printing.PrintEventHandler(this.printDocument1_BeginPrint);
             this.printDocument1.EndPrint += new System.Drawing.Printing.PrintEventHandler(this.printDocument1_EndPrint);
             this.printDocument1.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocument1_PrintPage);
-            // 
-            // mainEditor
-            // 
-            this.mainEditor.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.mainEditor.DetectUrls = false;
-            this.mainEditor.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.mainEditor.Font = new System.Drawing.Font("Consolas", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.mainEditor.Location = new System.Drawing.Point(0, 0);
-            this.mainEditor.Name = "mainEditor";
-            this.mainEditor.Size = new System.Drawing.Size(800, 457);
-            this.mainEditor.TabIndex = 0;
-            this.mainEditor.Text = "";
-            this.mainEditor.WordWrap = false;
-            this.mainEditor.TextChanged += new System.EventHandler(this.mainEditor_TextChanged);
             // 
             // Form1
             // 

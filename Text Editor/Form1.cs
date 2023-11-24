@@ -25,6 +25,7 @@ namespace Text_Editor
         {
             InitializeComponent();
             this.MinimumSize = new Size(0, 0);
+            this.Icon = Properties.Resources.icon_72;
             menuItem18.Checked = Properties.Settings.Default.EnableWordWrap;
             mainEditor.WordWrap = Properties.Settings.Default.EnableWordWrap;
             mainEditor.Font = Properties.Settings.Default.Font;

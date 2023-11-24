@@ -36,6 +36,9 @@
   <PropertyGroup>
     <ApplicationIcon>Resources\icon-72.ico</ApplicationIcon>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>Text_Editor.Program</StartupObject>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.VisualBasic">
       <Private>True</Private>
