@@ -173,6 +173,7 @@
     <Content Include="help files\copypastecut.htm" />
     <Content Include="help files\saving.html" />
     <Content Include="Inno\installer.iss" />
+    <None Include="Resources\baseline_backspace_black_24dp.png" />
     <None Include="Resources\baseline_description_black_24dp.png" />
     <None Include="Resources\baseline_print_black_24dp.png" />
     <None Include="Resources\baseline_settings_black_24dp.png" />

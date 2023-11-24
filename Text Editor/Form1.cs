@@ -535,11 +535,12 @@ namespace Text_Editor
             menuItem20.Enabled = menuItem10.Enabled;
             menuItem21.Enabled = menuItem19.Enabled;
 
-            // Disable the menu items for cut and copy if no text is selected
+            // Disable the menu items for cut, copy, and delete if no text is selected
             menuItem12.Enabled = mainEditor.SelectedText.Length > 0;
             menuItem13.Enabled = menuItem12.Enabled;
             menuItem35.Enabled = menuItem12.Enabled;
             menuItem36.Enabled = menuItem12.Enabled;
+            menuItem49.Enabled = menuItem12.Enabled;
 
             // Disable the menu item for zooming in if the user has reached the maximum zoom level
             menuItem32.Enabled = mainEditor.ZoomFactor < 5.0F;
@@ -703,6 +704,7 @@ namespace Text_Editor
                 {
                     openedFromDrop = true;
                     path = list[0];
+                    mainEditor.Clear();
                     mainEditor.LoadFile(list[0], RichTextBoxStreamType.PlainText);
                     this.Text = this.Text.Replace("*", "");
                     this.Text = string.Format("{0} - Notepad.NET", Path.GetFileName(list[0]));
@@ -723,6 +725,11 @@ namespace Text_Editor
                 }
             }
             mainEditor.TextChanged += mainEditor_TextChanged;
+        }
+
+        private void menuItem49_Click(object sender, EventArgs e)
+        {
+            mainEditor.SelectedText = "";
         }
     }
 }

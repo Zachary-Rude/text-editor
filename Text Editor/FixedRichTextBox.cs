@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Drawing;
 using System.Drawing.Printing;
 using System.Runtime.InteropServices;
@@ -178,21 +179,25 @@ namespace Text_Editor
                 base.OnSelectionChanged(e);
         }
 
+        [Browsable(false)]
         public int CurrentColumn
         {
             get { return CursorPosition.Column(this, SelectionStart); }
         }
 
+        [Browsable(false)]
         public int CurrentLine
         {
             get { return CursorPosition.Line(this, SelectionStart); }
         }
 
+        [Browsable(false)]
         public int CurrentPosition
         {
             get { return this.SelectionStart; }
         }
 
+        [Browsable(false)]
         public int SelectionEnd
         {
             get { return SelectionStart + SelectionLength; }
