@@ -107,6 +107,13 @@
     <Compile Include="SearchForm.Designer.cs">
       <DependentUpon>SearchForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Settings.cs" />
+    <Compile Include="SettingsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SettingsForm.Designer.cs">
+      <DependentUpon>SettingsForm.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="AboutForm.resx">
       <DependentUpon>AboutForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -128,6 +135,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="SearchForm.resx">
       <DependentUpon>SearchForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SettingsForm.resx">
+      <DependentUpon>SettingsForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="help files\textedit-help-toc.hhc" />
     <None Include="help files\textedit-help.chm" />
@@ -160,6 +170,7 @@
     <Content Include="help files\copypastecut.htm" />
     <Content Include="help files\saving.html" />
     <Content Include="Inno\installer.iss" />
+    <None Include="Resources\baseline_settings_black_24dp.png" />
     <None Include="Resources\baseline_history_black_24dp.png" />
     <None Include="Resources\baseline_select_all_black_24dp.png" />
     <None Include="Resources\baseline_zoom_out_black_24dp.png" />

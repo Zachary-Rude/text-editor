@@ -71,5 +71,29 @@ namespace Text_Editor.Properties {
                 this["MaxRecentFiles"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool SaveRecentFiles {
+            get {
+                return ((bool)(this["SaveRecentFiles"]));
+            }
+            set {
+                this["SaveRecentFiles"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Ctrl+Y")]
+        public string RedoShortcut {
+            get {
+                return ((string)(this["RedoShortcut"]));
+            }
+            set {
+                this["RedoShortcut"] = value;
+            }
+        }
     }
 }

@@ -54,6 +54,8 @@
             this.menuItem30 = new System.Windows.Forms.MenuItem();
             this.menuItem15 = new System.Windows.Forms.MenuItem();
             this.menuItem16 = new System.Windows.Forms.MenuItem();
+            this.menuItem42 = new System.Windows.Forms.MenuItem();
+            this.menuItem43 = new System.Windows.Forms.MenuItem();
             this.menuItem17 = new System.Windows.Forms.MenuItem();
             this.menuItem32 = new System.Windows.Forms.MenuItem();
             this.menuItem33 = new System.Windows.Forms.MenuItem();
@@ -66,7 +68,6 @@
             this.menuItem28 = new System.Windows.Forms.MenuItem();
             this.menuItem24 = new System.Windows.Forms.MenuItem();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.mainEditor = new Text_Editor.FixedRichTextBox();
             this.contextMenu1 = new System.Windows.Forms.ContextMenu();
             this.menuItem20 = new System.Windows.Forms.MenuItem();
             this.menuItem21 = new System.Windows.Forms.MenuItem();
@@ -78,6 +79,8 @@
             this.menuItem39 = new System.Windows.Forms.MenuItem();
             this.vistaMenu = new wyDay.Controls.VistaMenu(this.components);
             this.enableDisableTimer = new System.Windows.Forms.Timer(this.components);
+            this.mainEditor = new Text_Editor.FixedRichTextBox();
+            this.printDocument1 = new System.Drawing.Printing.PrintDocument();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.vistaMenu)).BeginInit();
             this.SuspendLayout();
@@ -190,7 +193,9 @@
             this.menuItem26,
             this.menuItem30,
             this.menuItem15,
-            this.menuItem16});
+            this.menuItem16,
+            this.menuItem42,
+            this.menuItem43});
             this.menuItem9.Text = "&Edit";
             // 
             // menuItem10
@@ -271,6 +276,19 @@
             this.menuItem16.Shortcut = System.Windows.Forms.Shortcut.CtrlA;
             this.menuItem16.Text = "Select &All";
             this.menuItem16.Click += new System.EventHandler(this.menuItem16_Click);
+            // 
+            // menuItem42
+            // 
+            this.menuItem42.Index = 11;
+            this.menuItem42.Text = "-";
+            // 
+            // menuItem43
+            // 
+            this.vistaMenu.SetImage(this.menuItem43, global::Text_Editor.Properties.Resources.baseline_settings_black_24dp);
+            this.menuItem43.Index = 12;
+            this.menuItem43.Shortcut = System.Windows.Forms.Shortcut.CtrlP;
+            this.menuItem43.Text = "&Preferences";
+            this.menuItem43.Click += new System.EventHandler(this.menuItem43_Click);
             // 
             // menuItem17
             // 
@@ -363,20 +381,6 @@
             this.panel1.Size = new System.Drawing.Size(800, 457);
             this.panel1.TabIndex = 0;
             // 
-            // mainEditor
-            // 
-            this.mainEditor.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.mainEditor.DetectUrls = false;
-            this.mainEditor.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.mainEditor.Font = new System.Drawing.Font("Consolas", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.mainEditor.Location = new System.Drawing.Point(0, 0);
-            this.mainEditor.Name = "mainEditor";
-            this.mainEditor.Size = new System.Drawing.Size(800, 457);
-            this.mainEditor.TabIndex = 0;
-            this.mainEditor.Text = "";
-            this.mainEditor.WordWrap = false;
-            this.mainEditor.TextChanged += new System.EventHandler(this.mainEditor_TextChanged);
-            // 
             // contextMenu1
             // 
             this.contextMenu1.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
@@ -449,6 +453,20 @@
             // 
             this.enableDisableTimer.Tick += new System.EventHandler(this.enableDisableTimer_Tick);
             // 
+            // mainEditor
+            // 
+            this.mainEditor.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.mainEditor.DetectUrls = false;
+            this.mainEditor.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.mainEditor.Font = new System.Drawing.Font("Consolas", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.mainEditor.Location = new System.Drawing.Point(0, 0);
+            this.mainEditor.Name = "mainEditor";
+            this.mainEditor.Size = new System.Drawing.Size(800, 457);
+            this.mainEditor.TabIndex = 0;
+            this.mainEditor.Text = "";
+            this.mainEditor.WordWrap = false;
+            this.mainEditor.TextChanged += new System.EventHandler(this.mainEditor_TextChanged);
+            // 
             // Form1
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -517,6 +535,9 @@
         private System.Windows.Forms.MenuItem menuItem40;
         private System.Windows.Forms.MenuItem menuItem41;
         private System.Windows.Forms.MenuItem menuClear;
+        private System.Windows.Forms.MenuItem menuItem42;
+        private System.Windows.Forms.MenuItem menuItem43;
+        private System.Drawing.Printing.PrintDocument printDocument1;
     }
 }
 

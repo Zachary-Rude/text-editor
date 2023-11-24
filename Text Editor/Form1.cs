@@ -28,6 +28,16 @@ namespace Text_Editor
             mainEditor.Font = Properties.Settings.Default.Font;
             mainEditor.AutoWordSelection = false;
             mainEditor.ContextMenu = contextMenu1;
+            switch (Properties.Settings.Default.RedoShortcut)
+            {
+                case "Ctrl+Y":
+                case "Both":
+                    menuItem19.Shortcut = Shortcut.CtrlY;
+                    break;
+                case "Ctrl+Shift+Z":
+                    menuItem19.Shortcut = Shortcut.CtrlShiftZ;
+                    break;
+            }
             enableDisableTimer.Start();
             UpdateRecentFileList();
             path = null;
@@ -54,16 +64,19 @@ namespace Text_Editor
                             mainEditor.Text = text.Result;
                             this.Text = this.Text.Replace("*", "");
                         }
-                        if (Properties.Settings.Default.RecentFiles.Count > Properties.Settings.Default.MaxRecentFiles - 1)
+                        if (Properties.Settings.Default.SaveRecentFiles)
                         {
-                            Properties.Settings.Default.RecentFiles.RemoveAt(Properties.Settings.Default.MaxRecentFiles - 1);
+                            if (Properties.Settings.Default.RecentFiles.Count > Properties.Settings.Default.MaxRecentFiles - 1)
+                            {
+                                Properties.Settings.Default.RecentFiles.RemoveAt(Properties.Settings.Default.MaxRecentFiles - 1);
+                            }
+                            if (Properties.Settings.Default.RecentFiles.Contains(fileName))
+                            {
+                                Properties.Settings.Default.RecentFiles.Remove(fileName);
+                            }
+                            Properties.Settings.Default.RecentFiles.Insert(0, fileName);
+                            Properties.Settings.Default.Save();
                         }
-                        if (Properties.Settings.Default.RecentFiles.Contains(fileName))
-                        {
-                            Properties.Settings.Default.RecentFiles.Remove(fileName);
-                        }
-                        Properties.Settings.Default.RecentFiles.Insert(0, fileName);
-                        Properties.Settings.Default.Save();
                         UpdateRecentFileList();
                     }
                     catch (Exception e)
@@ -134,16 +147,19 @@ namespace Text_Editor
                     mainEditor.Text = text.Result;
                     this.Text = this.Text.Replace("*", "");
                 }
-                if (Properties.Settings.Default.RecentFiles.Count > Properties.Settings.Default.MaxRecentFiles - 1)
+                if (Properties.Settings.Default.SaveRecentFiles)
                 {
-                    Properties.Settings.Default.RecentFiles.RemoveAt(Properties.Settings.Default.MaxRecentFiles - 1);
+                    if (Properties.Settings.Default.RecentFiles.Count > Properties.Settings.Default.MaxRecentFiles - 1)
+                    {
+                        Properties.Settings.Default.RecentFiles.RemoveAt(Properties.Settings.Default.MaxRecentFiles - 1);
+                    }
+                    if (Properties.Settings.Default.RecentFiles.Contains(((MenuItem)sender).Text))
+                    {
+                        Properties.Settings.Default.RecentFiles.Remove(((MenuItem)sender).Text);
+                    }
+                    Properties.Settings.Default.RecentFiles.Insert(0, ((MenuItem)sender).Text);
+                    Properties.Settings.Default.Save();
                 }
-                if (Properties.Settings.Default.RecentFiles.Contains(((MenuItem)sender).Text))
-                {
-                    Properties.Settings.Default.RecentFiles.Remove(((MenuItem)sender).Text);
-                }
-                Properties.Settings.Default.RecentFiles.Insert(0, ((MenuItem)sender).Text);
-                Properties.Settings.Default.Save();
                 UpdateRecentFileList();
             }
             catch (Exception ex)
@@ -205,16 +221,19 @@ namespace Text_Editor
                             mainEditor.Text = text.Result;
                             this.Text = this.Text.Replace("*", "");
                         }
-                        if (Properties.Settings.Default.RecentFiles.Count > Properties.Settings.Default.MaxRecentFiles - 1)
+                        if (Properties.Settings.Default.SaveRecentFiles)
                         {
-                            Properties.Settings.Default.RecentFiles.RemoveAt(Properties.Settings.Default.MaxRecentFiles - 1);
+                            if (Properties.Settings.Default.RecentFiles.Count > Properties.Settings.Default.MaxRecentFiles - 1)
+                            {
+                                Properties.Settings.Default.RecentFiles.RemoveAt(Properties.Settings.Default.MaxRecentFiles - 1);
+                            }
+                            if (Properties.Settings.Default.RecentFiles.Contains(ofd.FileName))
+                            {
+                                Properties.Settings.Default.RecentFiles.Remove(ofd.FileName);
+                            }
+                            Properties.Settings.Default.RecentFiles.Insert(0, ofd.FileName);
+                            Properties.Settings.Default.Save();
                         }
-                        if (Properties.Settings.Default.RecentFiles.Contains(ofd.FileName))
-                        {
-                            Properties.Settings.Default.RecentFiles.Remove(ofd.FileName);
-                        }
-                        Properties.Settings.Default.RecentFiles.Insert(0, ofd.FileName);
-                        Properties.Settings.Default.Save();
                         UpdateRecentFileList();
                     }
                     catch (Exception ex)
@@ -241,16 +260,19 @@ namespace Text_Editor
                                 await sw.WriteLineAsync(mainEditor.Text.Replace("\n", "\r\n"));//Write data to text file
                                 this.Text = Path.GetFileName(sfd.FileName) + " - Notepad.NET";
                             }
-                            if (Properties.Settings.Default.RecentFiles.Count > Properties.Settings.Default.MaxRecentFiles - 1)
+                            if (Properties.Settings.Default.SaveRecentFiles)
                             {
-                                Properties.Settings.Default.RecentFiles.RemoveAt(Properties.Settings.Default.MaxRecentFiles - 1);
+                                if (Properties.Settings.Default.RecentFiles.Count > Properties.Settings.Default.MaxRecentFiles - 1)
+                                {
+                                    Properties.Settings.Default.RecentFiles.RemoveAt(Properties.Settings.Default.MaxRecentFiles - 1);
+                                }
+                                if (Properties.Settings.Default.RecentFiles.Contains(sfd.FileName))
+                                {
+                                    Properties.Settings.Default.RecentFiles.Remove(sfd.FileName);
+                                }
+                                Properties.Settings.Default.RecentFiles.Insert(0, sfd.FileName);
+                                Properties.Settings.Default.Save();
                             }
-                            if (Properties.Settings.Default.RecentFiles.Contains(sfd.FileName))
-                            {
-                                Properties.Settings.Default.RecentFiles.Remove(sfd.FileName);
-                            }
-                            Properties.Settings.Default.RecentFiles.Insert(0, sfd.FileName);
-                            Properties.Settings.Default.Save();
                             UpdateRecentFileList();
                         }
                         catch (Exception ex)
@@ -280,7 +302,7 @@ namespace Text_Editor
 
         private async void menuItem6_Click(object sender, EventArgs e)
         {
-            using (SaveFileDialog sfd = new SaveFileDialog() { Filter = "Text Files|*.txt|All Files|*.*", ValidateNames = true, FileName = this.Text.Replace(" - Notepad.NET", "").Replace("*", "") })
+            using (SaveFileDialog sfd = new SaveFileDialog() { Filter = "Text Files|*.txt|All Files|*.*", ValidateNames = true, FileName = path ?? "Untitled.txt" })
             {
                 if (sfd.ShowDialog() == DialogResult.OK)
                 {
@@ -292,16 +314,19 @@ namespace Text_Editor
                             await sw.WriteLineAsync(mainEditor.Text); // Write data to text file
                             this.Text = Path.GetFileName(sfd.FileName) + " - Notepad.NET";
                         }
-                        if (Properties.Settings.Default.RecentFiles.Count > Properties.Settings.Default.MaxRecentFiles - 1)
+                        if (Properties.Settings.Default.SaveRecentFiles)
                         {
-                            Properties.Settings.Default.RecentFiles.RemoveAt(Properties.Settings.Default.MaxRecentFiles - 1);
+                            if (Properties.Settings.Default.RecentFiles.Count > Properties.Settings.Default.MaxRecentFiles - 1)
+                            {
+                                Properties.Settings.Default.RecentFiles.RemoveAt(Properties.Settings.Default.MaxRecentFiles - 1);
+                            }
+                            if (Properties.Settings.Default.RecentFiles.Contains(sfd.FileName))
+                            {
+                                Properties.Settings.Default.RecentFiles.Remove(sfd.FileName);
+                            }
+                            Properties.Settings.Default.RecentFiles.Insert(0, sfd.FileName);
+                            Properties.Settings.Default.Save();
                         }
-                        if (Properties.Settings.Default.RecentFiles.Contains(sfd.FileName))
-                        {
-                            Properties.Settings.Default.RecentFiles.Remove(sfd.FileName);
-                        }
-                        Properties.Settings.Default.RecentFiles.Insert(0, sfd.FileName);
-                        Properties.Settings.Default.Save();
                         UpdateRecentFileList();
                     }
                     catch (Exception ex)
@@ -485,6 +510,35 @@ namespace Text_Editor
 
             // Disable the menu item for zooming out if the user has reached the minimum zoom level
             menuItem33.Enabled = mainEditor.ZoomFactor > 1.0F;
+        }
+
+        private void menuItem43_Click(object sender, EventArgs e)
+        {
+            new SettingsForm().ShowDialog();
+            switch (Properties.Settings.Default.RedoShortcut)
+            {
+                case "Ctrl+Y":
+                case "Both":
+                    menuItem19.Shortcut = Shortcut.CtrlY;
+                    break;
+                case "Ctrl+Shift+Z":
+                    menuItem19.Shortcut = Shortcut.CtrlShiftZ;
+                    break;
+            }
+        }
+
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        {
+            switch (keyData)
+            {
+                case Keys.Control | Keys.Shift | Keys.Z:
+                    if (Properties.Settings.Default.RedoShortcut == "Both" && mainEditor.CanRedo)
+                    {
+                        mainEditor.Redo();
+                    }
+                    return true;
+            }
+            return base.ProcessCmdKey(ref msg, keyData);
         }
     }
 }

@@ -15,5 +15,11 @@
     <Setting Name="MaxRecentFiles" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">10</Value>
     </Setting>
+    <Setting Name="SaveRecentFiles" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="RedoShortcut" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Ctrl+Y</Value>
+    </Setting>
   </Settings>
 </SettingsFile>
