@@ -20,6 +20,7 @@ namespace Text_Editor
     {
         string path;
         private int firstCharOnPage;
+        private string currentEncoding;
 
         public Form1()
         {
@@ -44,6 +45,7 @@ namespace Text_Editor
             enableDisableTimer.Start();
             UpdateRecentFileList();
             path = null;
+            currentEncoding = "Unicode (UTF-8)";
         }
 
         public Form1(string fileName) : this()
@@ -60,9 +62,11 @@ namespace Text_Editor
                     {
                         File.Create(fileName).Close();
                         this.Text = Path.GetFileName(fileName) + " - Notepad.NET";
-                        using (StreamReader sr = new StreamReader(fileName))
+                        using (StreamReader sr = new StreamReader(fileName, true))
                         {
                             path = fileName;
+                            sr.Peek();
+                            currentEncoding = sr.CurrentEncoding.EncodingName;
                             Task<string> text = sr.ReadToEndAsync();
                             mainEditor.Text = text.Result;
                             this.Text = this.Text.Replace("*", "");
@@ -98,10 +102,26 @@ namespace Text_Editor
                 using (StreamReader sr = new StreamReader(fileName))
                 {
                     path = fileName;
+                    sr.Peek();
+                    currentEncoding = sr.CurrentEncoding.EncodingName;
                     Task<string> text = sr.ReadToEndAsync();
                     mainEditor.Text = text.Result;
                     this.Text = this.Text.Replace("*", "");
                 }
+                if (Properties.Settings.Default.SaveRecentFiles)
+                {
+                    if (Properties.Settings.Default.RecentFiles.Count > Properties.Settings.Default.MaxRecentFiles - 1)
+                    {
+                        Properties.Settings.Default.RecentFiles.RemoveAt(Properties.Settings.Default.MaxRecentFiles - 1);
+                    }
+                    if (Properties.Settings.Default.RecentFiles.Contains(fileName))
+                    {
+                        Properties.Settings.Default.RecentFiles.Remove(fileName);
+                    }
+                    Properties.Settings.Default.RecentFiles.Insert(0, fileName);
+                    Properties.Settings.Default.Save();
+                }
+                UpdateRecentFileList();
             }
             catch (Exception ex)
             {
@@ -201,6 +221,7 @@ namespace Text_Editor
             path = null;
             mainEditor.Clear();
             this.Text = this.Text.Replace("*", "");
+            currentEncoding = "Unicode (UTF-8)";
         }
 
         private void menuItem3_Click(object sender, EventArgs e)
@@ -220,6 +241,8 @@ namespace Text_Editor
                         using (StreamReader sr = new StreamReader(ofd.FileName))
                         {
                             path = ofd.FileName;
+                            sr.Peek();
+                            currentEncoding = sr.CurrentEncoding.EncodingName;
                             Task<string> text = sr.ReadToEndAsync();
                             mainEditor.Text = text.Result;
                             this.Text = this.Text.Replace("*", "");
@@ -529,6 +552,12 @@ namespace Text_Editor
                 mainEditor.Anchor = AnchorStyles.Top | AnchorStyles.Left;
                 mainEditor.Dock = DockStyle.Fill;
             }
+
+            #region Status Bar
+            sbpLineCol.Text = string.Format("Ln {0}, Col {1}", mainEditor.CurrentLine, mainEditor.CurrentColumn);
+            sbpZoomPercent.Text = string.Format("{0}%", (int)(mainEditor.ZoomFactor * 100));
+            sbpTextEncoding.Text = currentEncoding;
+            #endregion
         }
 
         private void menuItem43_Click(object sender, EventArgs e)
@@ -551,10 +580,19 @@ namespace Text_Editor
             switch (keyData)
             {
                 case Keys.Control | Keys.Shift | Keys.Z:
-                    if (Properties.Settings.Default.RedoShortcut == "Both" && mainEditor.CanRedo)
+                    if ((Properties.Settings.Default.RedoShortcut == "Both" || Properties.Settings.Default.RedoShortcut == "Ctrl+Shift+Z") && mainEditor.CanRedo)
                     {
                         mainEditor.Redo();
                     }
+                    return true;
+                case Keys.Control | Keys.Y:
+                    if (Properties.Settings.Default.RedoShortcut == "Ctrl+Shift+Z")
+                    {
+                        return true;
+                    }
+                    return false;
+                case Keys.Shift | Keys.Insert:
+                    mainEditor.Paste(DataFormats.GetFormat("Text"));
                     return true;
             }
             return base.ProcessCmdKey(ref msg, keyData);

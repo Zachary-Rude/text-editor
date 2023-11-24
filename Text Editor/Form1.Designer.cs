@@ -87,12 +87,14 @@
             this.menuItem47 = new System.Windows.Forms.MenuItem();
             this.menuItem48 = new System.Windows.Forms.MenuItem();
             this.sbpLineCol = new System.Windows.Forms.StatusBarPanel();
-            this.mainEditor = new Text_Editor.FixedRichTextBox();
             this.sbpZoomPercent = new System.Windows.Forms.StatusBarPanel();
+            this.sbpTextEncoding = new System.Windows.Forms.StatusBarPanel();
+            this.mainEditor = new Text_Editor.FixedRichTextBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.vistaMenu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sbpLineCol)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sbpZoomPercent)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sbpTextEncoding)).BeginInit();
             this.SuspendLayout();
             // 
             // mainMenu1
@@ -486,6 +488,7 @@
             // 
             // enableDisableTimer
             // 
+            this.enableDisableTimer.Interval = 10;
             this.enableDisableTimer.Tick += new System.EventHandler(this.enableDisableTimer_Tick);
             // 
             // printDocument1
@@ -500,7 +503,8 @@
             this.statusBar1.Name = "statusBar1";
             this.statusBar1.Panels.AddRange(new System.Windows.Forms.StatusBarPanel[] {
             this.sbpLineCol,
-            this.sbpZoomPercent});
+            this.sbpZoomPercent,
+            this.sbpTextEncoding});
             this.statusBar1.ShowPanels = true;
             this.statusBar1.Size = new System.Drawing.Size(800, 22);
             this.statusBar1.TabIndex = 2;
@@ -522,6 +526,17 @@
             this.sbpLineCol.Text = "Ln 1, Col 1";
             this.sbpLineCol.Width = 150;
             // 
+            // sbpZoomPercent
+            // 
+            this.sbpZoomPercent.Name = "sbpZoomPercent";
+            this.sbpZoomPercent.Text = "100%";
+            this.sbpZoomPercent.Width = 45;
+            // 
+            // sbpTextEncoding
+            // 
+            this.sbpTextEncoding.Name = "sbpTextEncoding";
+            this.sbpTextEncoding.Text = "Unicode (UTF-8)";
+            // 
             // mainEditor
             // 
             this.mainEditor.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -534,12 +549,6 @@
             this.mainEditor.Text = "";
             this.mainEditor.WordWrap = false;
             this.mainEditor.TextChanged += new System.EventHandler(this.mainEditor_TextChanged);
-            // 
-            // sbpZoomPercent
-            // 
-            this.sbpZoomPercent.Name = "sbpZoomPercent";
-            this.sbpZoomPercent.Text = "100%";
-            this.sbpZoomPercent.Width = 45;
             // 
             // Form1
             // 
@@ -557,6 +566,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.vistaMenu)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.sbpLineCol)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.sbpZoomPercent)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sbpTextEncoding)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -622,6 +632,7 @@
         private System.Windows.Forms.MenuItem menuItem48;
         private System.Windows.Forms.StatusBarPanel sbpLineCol;
         private System.Windows.Forms.StatusBarPanel sbpZoomPercent;
+        private System.Windows.Forms.StatusBarPanel sbpTextEncoding;
     }
 }
 
