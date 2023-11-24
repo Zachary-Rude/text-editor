@@ -243,7 +243,7 @@ namespace Text_Editor
 
         private void menuItem26_Click(object sender, EventArgs e)
         {
-            new SearchForm().Show();
+            new SearchForm().Show(this);
         }
 
         private void menuItem27_Click(object sender, EventArgs e)

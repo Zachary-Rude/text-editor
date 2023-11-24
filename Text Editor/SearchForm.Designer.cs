@@ -50,6 +50,7 @@
             this.txtSearchTerm.Name = "txtSearchTerm";
             this.txtSearchTerm.Size = new System.Drawing.Size(163, 23);
             this.txtSearchTerm.TabIndex = 1;
+            this.txtSearchTerm.TextChanged += new System.EventHandler(this.txtSearchTerm_TextChanged);
             // 
             // btnFindNext
             // 
@@ -60,6 +61,7 @@
             this.btnFindNext.TabIndex = 2;
             this.btnFindNext.Text = "&Find Next";
             this.btnFindNext.UseVisualStyleBackColor = true;
+            this.btnFindNext.Click += new System.EventHandler(this.btnFindNext_Click);
             // 
             // btnCancel
             // 
@@ -83,6 +85,7 @@
             this.chkMatchCase.TabIndex = 4;
             this.chkMatchCase.Text = "Match &case";
             this.chkMatchCase.UseVisualStyleBackColor = true;
+            this.chkMatchCase.CheckedChanged += new System.EventHandler(this.chkMatchCase_CheckedChanged);
             // 
             // SearchForm
             // 
