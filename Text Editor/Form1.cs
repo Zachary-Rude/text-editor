@@ -69,7 +69,7 @@ namespace Text_Editor
         {
             if (this.Text.StartsWith("*"))
             {
-                DialogResult dr = MessageBox.Show(path + " has unsaved changes.\r\nDo you want to save them?", "Unsaved changes", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Warning);
+                DialogResult dr = MessageBox.Show(Path.GetFileName(path) + " has unsaved changes.\r\nDo you want to save them?", "Unsaved changes", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Warning);
                 if (dr == DialogResult.Yes)
                 {
                     menuItem5.PerformClick();
