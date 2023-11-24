@@ -552,6 +552,7 @@
             // 
             // Form1
             // 
+            this.AllowDrop = true;
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.ClientSize = new System.Drawing.Size(800, 457);
             this.Controls.Add(this.panel1);
@@ -562,6 +563,8 @@
             this.Name = "Form1";
             this.Text = "Untitled - Notepad.NET";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
+            this.DragDrop += new System.Windows.Forms.DragEventHandler(this.Form1_DragDrop);
+            this.DragEnter += new System.Windows.Forms.DragEventHandler(this.Form1_DragEnter);
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.vistaMenu)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.sbpLineCol)).EndInit();

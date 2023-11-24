@@ -21,10 +21,14 @@ namespace Text_Editor
         string path;
         private int firstCharOnPage;
         private string currentEncoding;
+        private bool openedFromDrop = false;
 
         public Form1()
         {
             InitializeComponent();
+            mainEditor.AllowDrop = true;
+            mainEditor.DragEnter += mainEditor_DragEnter;
+            mainEditor.DragDrop += mainEditor_DragDrop;
             this.MinimumSize = new Size(0, 0);
             this.Icon = Properties.Resources.icon_72;
             menuItem18.Checked = Properties.Settings.Default.EnableWordWrap;
@@ -231,6 +235,7 @@ namespace Text_Editor
 
         private void menuItem4_Click(object sender, EventArgs e)
         {
+            mainEditor.TextChanged -= mainEditor_TextChanged;
             using (OpenFileDialog ofd = new OpenFileDialog() { DefaultExt = ".txt", Filter = "Text Files|*.txt|All Files|*.*", ValidateNames = true, Multiselect = false })
             {
                 if (ofd.ShowDialog() == DialogResult.OK)
@@ -245,7 +250,6 @@ namespace Text_Editor
                             currentEncoding = sr.CurrentEncoding.EncodingName;
                             Task<string> text = sr.ReadToEndAsync();
                             mainEditor.Text = text.Result;
-                            this.Text = this.Text.Replace("*", "");
                         }
                         if (Properties.Settings.Default.SaveRecentFiles)
                         {
@@ -268,6 +272,7 @@ namespace Text_Editor
                     }
                 }
             }
+            mainEditor.TextChanged += mainEditor_TextChanged;
         }
 
         private async void menuItem5_Click(object sender, EventArgs e)
@@ -440,6 +445,11 @@ namespace Text_Editor
 
         private void mainEditor_TextChanged(object sender, EventArgs e)
         {
+            if (openedFromDrop)
+            {
+                openedFromDrop = false;
+                return;
+            }
             if (!this.Text.StartsWith("*"))
             {
                 this.Text = "*" + this.Text;
@@ -639,6 +649,80 @@ namespace Text_Editor
         private void menuItem48_Click(object sender, EventArgs e)
         {
             Properties.Settings.Default.ShowStatusBar ^= true;
+        }
+
+        private void Form1_DragEnter(object sender, DragEventArgs e)
+        {
+            if (e.Data.GetDataPresent(DataFormats.FileDrop)) e.Effect = DragDropEffects.Copy;
+        }
+
+        private void Form1_DragDrop(object sender, DragEventArgs e)
+        {
+            mainEditor.TextChanged -= mainEditor_TextChanged;
+            object filename = e.Data.GetData("FileDrop");
+            if (filename != null)
+            {
+                if (filename is string[] list && !string.IsNullOrWhiteSpace(list[0]))
+                {
+                    openedFromDrop = true;
+                    path = list[0];
+                    mainEditor.LoadFile(list[0], RichTextBoxStreamType.PlainText);
+                    this.Text = this.Text.Replace("*", "");
+                    this.Text = string.Format("{0} - Notepad.NET", Path.GetFileName(list[0]));
+                    if (Properties.Settings.Default.SaveRecentFiles)
+                    {
+                        if (Properties.Settings.Default.RecentFiles.Count > Properties.Settings.Default.MaxRecentFiles - 1)
+                        {
+                            Properties.Settings.Default.RecentFiles.RemoveAt(Properties.Settings.Default.MaxRecentFiles - 1);
+                        }
+                        if (Properties.Settings.Default.RecentFiles.Contains(list[0]))
+                        {
+                            Properties.Settings.Default.RecentFiles.Remove(list[0]);
+                        }
+                        Properties.Settings.Default.RecentFiles.Insert(0, list[0]);
+                        Properties.Settings.Default.Save();
+                    }
+                    UpdateRecentFileList();
+                }
+            }
+            mainEditor.TextChanged += mainEditor_TextChanged;
+        }
+
+        private void mainEditor_DragEnter(object sender, DragEventArgs e)
+        {
+            if (e.Data.GetDataPresent(DataFormats.FileDrop)) e.Effect = DragDropEffects.Copy;
+        }
+
+        private void mainEditor_DragDrop(object sender, DragEventArgs e)
+        {
+            mainEditor.TextChanged -= mainEditor_TextChanged;
+            object filename = e.Data.GetData("FileDrop");
+            if (filename != null)
+            {
+                if (filename is string[] list && !string.IsNullOrWhiteSpace(list[0]))
+                {
+                    openedFromDrop = true;
+                    path = list[0];
+                    mainEditor.LoadFile(list[0], RichTextBoxStreamType.PlainText);
+                    this.Text = this.Text.Replace("*", "");
+                    this.Text = string.Format("{0} - Notepad.NET", Path.GetFileName(list[0]));
+                    if (Properties.Settings.Default.SaveRecentFiles)
+                    {
+                        if (Properties.Settings.Default.RecentFiles.Count > Properties.Settings.Default.MaxRecentFiles - 1)
+                        {
+                            Properties.Settings.Default.RecentFiles.RemoveAt(Properties.Settings.Default.MaxRecentFiles - 1);
+                        }
+                        if (Properties.Settings.Default.RecentFiles.Contains(list[0]))
+                        {
+                            Properties.Settings.Default.RecentFiles.Remove(list[0]);
+                        }
+                        Properties.Settings.Default.RecentFiles.Insert(0, list[0]);
+                        Properties.Settings.Default.Save();
+                    }
+                    UpdateRecentFileList();
+                }
+            }
+            mainEditor.TextChanged += mainEditor_TextChanged;
         }
     }
 }
