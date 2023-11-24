@@ -19,6 +19,8 @@ namespace Text_Editor
     public partial class Form1 : Form
     {
         string path;
+        private int firstCharOnPage;
+
         public Form1()
         {
             InitializeComponent();
@@ -539,6 +541,44 @@ namespace Text_Editor
                     return true;
             }
             return base.ProcessCmdKey(ref msg, keyData);
+        }
+
+        private void printDocument1_BeginPrint(object sender, System.Drawing.Printing.PrintEventArgs e)
+        {
+            // Start at the beginning of the text
+            firstCharOnPage = 0;
+        }
+
+        private void printDocument1_EndPrint(object sender, System.Drawing.Printing.PrintEventArgs e)
+        {
+            // Clean up cached information
+            mainEditor.FormatRangeDone();
+        }
+
+        private void printDocument1_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
+        {
+            firstCharOnPage = mainEditor.FormatRange(false, e, firstCharOnPage, mainEditor.TextLength);
+            // check if there are more pages to print
+            if (firstCharOnPage < mainEditor.TextLength)
+                e.HasMorePages = true;
+            else
+                e.HasMorePages = false;
+        }
+
+        private void menuItem46_Click(object sender, EventArgs e)
+        {
+            using (PrintDialog print = new PrintDialog() { Document = printDocument1 })
+            {
+                print.ShowDialog();
+            }
+        }
+
+        private void menuItem45_Click(object sender, EventArgs e)
+        {
+            using (PageSetupDialog pageSetup = new PageSetupDialog() { Document = printDocument1 })
+            {
+                pageSetup.ShowDialog();
+            }
         }
     }
 }
