@@ -233,18 +233,20 @@
             this.menuItem17.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
             this.menuItem18,
             this.menuItem29});
-            this.menuItem17.Text = "View";
+            this.menuItem17.Text = "&View";
             // 
             // menuItem18
             // 
+            this.vistaMenu.SetImage(this.menuItem18, global::Text_Editor.Properties.Resources.baseline_wrap_text_black_24dp);
             this.menuItem18.Index = 0;
-            this.menuItem18.Text = "Word Wrap";
+            this.menuItem18.Text = "&Word Wrap";
             this.menuItem18.Click += new System.EventHandler(this.menuItem18_Click);
             // 
             // menuItem29
             // 
+            this.vistaMenu.SetImage(this.menuItem29, global::Text_Editor.Properties.Resources.baseline_text_fields_black_24dp);
             this.menuItem29.Index = 1;
-            this.menuItem29.Text = "Change Font...";
+            this.menuItem29.Text = "&Font...";
             this.menuItem29.Click += new System.EventHandler(this.menuItem29_Click);
             // 
             // menuItem23
