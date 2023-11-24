@@ -60,7 +60,7 @@ namespace Text_Editor
 
 
 
-        public static void QuickReplace(RichTextBox rtb, String word, String word2)
+        public static void QuickReplace(RichTextBox rtb, string word, string word2)
         {
             rtb.Text = rtb.Text.Replace(word, word2);
         }
