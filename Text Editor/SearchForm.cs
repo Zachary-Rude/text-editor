@@ -36,5 +36,10 @@ namespace Text_Editor
             ((Form1)this.ParentForm).mainEditor.ScrollToCaret();
             ((Form1)this.ParentForm).Focus();
         }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }
