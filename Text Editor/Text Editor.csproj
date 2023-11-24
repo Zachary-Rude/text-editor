@@ -160,6 +160,7 @@
     <Content Include="help files\copypastecut.htm" />
     <Content Include="help files\saving.html" />
     <Content Include="Inno\installer.iss" />
+    <None Include="Resources\baseline_select_all_black_24dp.png" />
     <None Include="Resources\baseline_zoom_out_black_24dp.png" />
     <None Include="Resources\baseline_zoom_in_black_24dp.png" />
     <None Include="Resources\baseline_info_black_24dp.png" />
