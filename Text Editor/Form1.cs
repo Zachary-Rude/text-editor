@@ -12,6 +12,7 @@ using System.Reflection;
 using System.Text.RegularExpressions;
 using System.Diagnostics;
 using Microsoft.VisualBasic;
+using System.Collections;
 
 namespace Text_Editor
 {
@@ -28,6 +29,7 @@ namespace Text_Editor
             mainEditor.AutoWordSelection = false;
             mainEditor.ContextMenu = contextMenu1;
             enableDisableTimer.Start();
+            UpdateRecentFileList();
             path = null;
         }
 
@@ -52,6 +54,17 @@ namespace Text_Editor
                             mainEditor.Text = text.Result;
                             this.Text = this.Text.Replace("*", "");
                         }
+                        if (Properties.Settings.Default.RecentFiles.Count > Properties.Settings.Default.MaxRecentFiles - 1)
+                        {
+                            Properties.Settings.Default.RecentFiles.RemoveAt(Properties.Settings.Default.MaxRecentFiles - 1);
+                        }
+                        if (Properties.Settings.Default.RecentFiles.Contains(fileName))
+                        {
+                            Properties.Settings.Default.RecentFiles.Remove(fileName);
+                        }
+                        Properties.Settings.Default.RecentFiles.Insert(0, fileName);
+                        Properties.Settings.Default.Save();
+                        UpdateRecentFileList();
                     }
                     catch (Exception e)
                     {
@@ -80,7 +93,71 @@ namespace Text_Editor
             }
         }
 
+        private void UpdateRecentFileList()
+        {
+            if (menuItem40.MenuItems.Count > 0)
+            {
+                menuItem40.MenuItems.Clear();
+                if (Properties.Settings.Default.RecentFiles.Count > 0)
+                {
+                    int index = 0;
+                    var uniques = Properties.Settings.Default.RecentFiles.Cast<IEnumerable>();
+                    var unique = uniques.Distinct();
+                    foreach (string fldr in unique)
+                    {
+                        if (!string.IsNullOrEmpty(fldr) || !string.IsNullOrWhiteSpace(fldr))
+                        {
+                            index++;
+                            MenuItem item = new MenuItem(fldr);
+                            item.Click += recentFile_Click;
+                            item.Index = index;
+                            menuItem40.MenuItems.Add(item);
+                        }
+                    }
+                    MenuItem separator = new MenuItem("-");
+                    menuItem40.MenuItems.Add(separator);
+                }
+            }
+            menuItem40.MenuItems.Add(menuClear);
+            menuClear.Enabled = Properties.Settings.Default.RecentFiles.Count != 0;
+        }
 
+        private void recentFile_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                this.Text = Path.GetFileName(((MenuItem)sender).Text) + " - Notepad.NET";
+                using (StreamReader sr = new StreamReader(((MenuItem)sender).Text))
+                {
+                    path = ((MenuItem)sender).Text;
+                    Task<string> text = sr.ReadToEndAsync();
+                    mainEditor.Text = text.Result;
+                    this.Text = this.Text.Replace("*", "");
+                }
+                if (Properties.Settings.Default.RecentFiles.Count > Properties.Settings.Default.MaxRecentFiles - 1)
+                {
+                    Properties.Settings.Default.RecentFiles.RemoveAt(Properties.Settings.Default.MaxRecentFiles - 1);
+                }
+                if (Properties.Settings.Default.RecentFiles.Contains(((MenuItem)sender).Text))
+                {
+                    Properties.Settings.Default.RecentFiles.Remove(((MenuItem)sender).Text);
+                }
+                Properties.Settings.Default.RecentFiles.Insert(0, ((MenuItem)sender).Text);
+                Properties.Settings.Default.Save();
+                UpdateRecentFileList();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Cannot open file", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void menuClear_Click(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.RecentFiles.Clear();
+            Properties.Settings.Default.Save();
+            UpdateRecentFileList();
+        }
 
         public static void QuickReplace(RichTextBox rtb, string word, string word2)
         {
@@ -128,6 +205,17 @@ namespace Text_Editor
                             mainEditor.Text = text.Result;
                             this.Text = this.Text.Replace("*", "");
                         }
+                        if (Properties.Settings.Default.RecentFiles.Count > Properties.Settings.Default.MaxRecentFiles - 1)
+                        {
+                            Properties.Settings.Default.RecentFiles.RemoveAt(Properties.Settings.Default.MaxRecentFiles - 1);
+                        }
+                        if (Properties.Settings.Default.RecentFiles.Contains(ofd.FileName))
+                        {
+                            Properties.Settings.Default.RecentFiles.Remove(ofd.FileName);
+                        }
+                        Properties.Settings.Default.RecentFiles.Insert(0, ofd.FileName);
+                        Properties.Settings.Default.Save();
+                        UpdateRecentFileList();
                     }
                     catch (Exception ex)
                     {
@@ -153,6 +241,17 @@ namespace Text_Editor
                                 await sw.WriteLineAsync(mainEditor.Text.Replace("\n", "\r\n"));//Write data to text file
                                 this.Text = Path.GetFileName(sfd.FileName) + " - Notepad.NET";
                             }
+                            if (Properties.Settings.Default.RecentFiles.Count > Properties.Settings.Default.MaxRecentFiles - 1)
+                            {
+                                Properties.Settings.Default.RecentFiles.RemoveAt(Properties.Settings.Default.MaxRecentFiles - 1);
+                            }
+                            if (Properties.Settings.Default.RecentFiles.Contains(sfd.FileName))
+                            {
+                                Properties.Settings.Default.RecentFiles.Remove(sfd.FileName);
+                            }
+                            Properties.Settings.Default.RecentFiles.Insert(0, sfd.FileName);
+                            Properties.Settings.Default.Save();
+                            UpdateRecentFileList();
                         }
                         catch (Exception ex)
                         {
@@ -190,9 +289,20 @@ namespace Text_Editor
                         path = sfd.FileName;
                         using (StreamWriter sw = new StreamWriter(sfd.FileName))
                         {
-                            await sw.WriteLineAsync(mainEditor.Text);//Write data to text file
+                            await sw.WriteLineAsync(mainEditor.Text); // Write data to text file
                             this.Text = Path.GetFileName(sfd.FileName) + " - Notepad.NET";
                         }
+                        if (Properties.Settings.Default.RecentFiles.Count > Properties.Settings.Default.MaxRecentFiles - 1)
+                        {
+                            Properties.Settings.Default.RecentFiles.RemoveAt(Properties.Settings.Default.MaxRecentFiles - 1);
+                        }
+                        if (Properties.Settings.Default.RecentFiles.Contains(sfd.FileName))
+                        {
+                            Properties.Settings.Default.RecentFiles.Remove(sfd.FileName);
+                        }
+                        Properties.Settings.Default.RecentFiles.Insert(0, sfd.FileName);
+                        Properties.Settings.Default.Save();
+                        UpdateRecentFileList();
                     }
                     catch (Exception ex)
                     {
