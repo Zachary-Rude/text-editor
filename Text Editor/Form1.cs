@@ -243,13 +243,7 @@ namespace Text_Editor
 
         private void menuItem26_Click(object sender, EventArgs e)
         {
-            using (SearchForm searchForm = new SearchForm())
-            {
-                if (searchForm.ShowDialog() == DialogResult.OK)
-                {
-                    QuickReplace(mainEditor, searchForm.txtSearchString.Text, searchForm.txtReplaceString.Text);
-                }
-            }
+            new SearchForm().Show();
         }
 
         private void menuItem27_Click(object sender, EventArgs e)

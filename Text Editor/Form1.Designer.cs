@@ -205,8 +205,8 @@
             // menuItem26
             // 
             this.menuItem26.Index = 7;
-            this.menuItem26.Shortcut = System.Windows.Forms.Shortcut.CtrlH;
-            this.menuItem26.Text = "Replace...";
+            this.menuItem26.Shortcut = System.Windows.Forms.Shortcut.CtrlF;
+            this.menuItem26.Text = "Find...";
             this.menuItem26.Click += new System.EventHandler(this.menuItem26_Click);
             // 
             // menuItem15
