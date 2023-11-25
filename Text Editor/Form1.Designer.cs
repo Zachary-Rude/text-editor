@@ -58,6 +58,7 @@
             this.menuItem30 = new System.Windows.Forms.MenuItem();
             this.menuItem15 = new System.Windows.Forms.MenuItem();
             this.menuItem16 = new System.Windows.Forms.MenuItem();
+            this.menuItem51 = new System.Windows.Forms.MenuItem();
             this.menuItem42 = new System.Windows.Forms.MenuItem();
             this.menuItem43 = new System.Windows.Forms.MenuItem();
             this.menuItem17 = new System.Windows.Forms.MenuItem();
@@ -92,7 +93,6 @@
             this.vistaMenu = new wyDay.Controls.VistaMenu(this.components);
             this.enableDisableTimer = new System.Windows.Forms.Timer(this.components);
             this.printDocument1 = new System.Drawing.Printing.PrintDocument();
-            this.menuItem51 = new System.Windows.Forms.MenuItem();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.sbpLineCol)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sbpZoomPercent)).BeginInit();
@@ -324,6 +324,14 @@
             this.menuItem16.Shortcut = System.Windows.Forms.Shortcut.CtrlA;
             this.menuItem16.Text = "Select &All";
             this.menuItem16.Click += new System.EventHandler(this.menuItem16_Click);
+            // 
+            // menuItem51
+            // 
+            this.vistaMenu.SetImage(this.menuItem51, global::Text_Editor.Properties.Resources.baseline_today_black_24dp);
+            this.menuItem51.Index = 12;
+            this.menuItem51.Shortcut = System.Windows.Forms.Shortcut.F5;
+            this.menuItem51.Text = "Time/&Date";
+            this.menuItem51.Click += new System.EventHandler(this.menuItem51_Click);
             // 
             // menuItem42
             // 
@@ -571,14 +579,6 @@
             this.printDocument1.BeginPrint += new System.Drawing.Printing.PrintEventHandler(this.printDocument1_BeginPrint);
             this.printDocument1.EndPrint += new System.Drawing.Printing.PrintEventHandler(this.printDocument1_EndPrint);
             this.printDocument1.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocument1_PrintPage);
-            // 
-            // menuItem51
-            // 
-            this.vistaMenu.SetImage(this.menuItem51, global::Text_Editor.Properties.Resources.baseline_today_black_24dp);
-            this.menuItem51.Index = 12;
-            this.menuItem51.Shortcut = System.Windows.Forms.Shortcut.F5;
-            this.menuItem51.Text = "Time/&Date";
-            this.menuItem51.Click += new System.EventHandler(this.menuItem51_Click);
             // 
             // Form1
             // 
