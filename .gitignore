@@ -265,3 +265,4 @@ __pycache__/
 /Text Editor/Inno/Text_Editor_1_1_2_Setup.exe
 /Text Editor/Inno/Text_Editor_1_1_2_Setup.exe.exe
 /Text Editor/Inno/Text_Editor_1_1_3_Setup.exe
+*.exe
