@@ -732,5 +732,20 @@ namespace Text_Editor
         {
             mainEditor.SelectedText = "";
         }
+
+        private void menuItem51_Click(object sender, EventArgs e)
+        {
+            string currentDate = DateTime.Now.ToString("h:mm tt M/dd/yyyy");
+            int selectionIndex = mainEditor.SelectionStart;
+            if (mainEditor.SelectionLength != 0)
+            {
+                mainEditor.SelectedText = currentDate;
+            }
+            else
+            {
+                mainEditor.Text = mainEditor.Text.Insert(selectionIndex, currentDate);
+            }
+            mainEditor.SelectionStart = selectionIndex + currentDate.Length;
+        }
     }
 }

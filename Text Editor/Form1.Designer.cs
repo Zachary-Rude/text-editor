@@ -78,6 +78,7 @@
             this.sbpLineCol = new System.Windows.Forms.StatusBarPanel();
             this.sbpZoomPercent = new System.Windows.Forms.StatusBarPanel();
             this.sbpTextEncoding = new System.Windows.Forms.StatusBarPanel();
+            this.mainEditor = new Text_Editor.FixedRichTextBox();
             this.contextMenu1 = new System.Windows.Forms.ContextMenu();
             this.menuItem20 = new System.Windows.Forms.MenuItem();
             this.menuItem21 = new System.Windows.Forms.MenuItem();
@@ -85,13 +86,13 @@
             this.menuItem35 = new System.Windows.Forms.MenuItem();
             this.menuItem36 = new System.Windows.Forms.MenuItem();
             this.menuItem37 = new System.Windows.Forms.MenuItem();
+            this.menuItem50 = new System.Windows.Forms.MenuItem();
             this.menuItem38 = new System.Windows.Forms.MenuItem();
             this.menuItem39 = new System.Windows.Forms.MenuItem();
             this.vistaMenu = new wyDay.Controls.VistaMenu(this.components);
             this.enableDisableTimer = new System.Windows.Forms.Timer(this.components);
             this.printDocument1 = new System.Drawing.Printing.PrintDocument();
-            this.menuItem50 = new System.Windows.Forms.MenuItem();
-            this.mainEditor = new Text_Editor.FixedRichTextBox();
+            this.menuItem51 = new System.Windows.Forms.MenuItem();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.sbpLineCol)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sbpZoomPercent)).BeginInit();
@@ -232,6 +233,7 @@
             this.menuItem30,
             this.menuItem15,
             this.menuItem16,
+            this.menuItem51,
             this.menuItem42,
             this.menuItem43});
             this.menuItem9.Text = "&Edit";
@@ -286,7 +288,7 @@
             this.vistaMenu.SetImage(this.menuItem49, global::Text_Editor.Properties.Resources.baseline_backspace_black_24dp);
             this.menuItem49.Index = 6;
             this.menuItem49.Shortcut = System.Windows.Forms.Shortcut.Del;
-            this.menuItem49.Text = "&Delete";
+            this.menuItem49.Text = "De&lete";
             this.menuItem49.Click += new System.EventHandler(this.menuItem49_Click);
             // 
             // menuItem25
@@ -325,13 +327,13 @@
             // 
             // menuItem42
             // 
-            this.menuItem42.Index = 12;
+            this.menuItem42.Index = 13;
             this.menuItem42.Text = "-";
             // 
             // menuItem43
             // 
             this.vistaMenu.SetImage(this.menuItem43, global::Text_Editor.Properties.Resources.baseline_settings_black_24dp);
-            this.menuItem43.Index = 13;
+            this.menuItem43.Index = 14;
             this.menuItem43.Text = "&Preferences";
             this.menuItem43.Click += new System.EventHandler(this.menuItem43_Click);
             // 
@@ -469,6 +471,20 @@
             this.sbpTextEncoding.Name = "sbpTextEncoding";
             this.sbpTextEncoding.Text = "Unicode (UTF-8)";
             // 
+            // mainEditor
+            // 
+            this.mainEditor.AcceptsTab = true;
+            this.mainEditor.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.mainEditor.DetectUrls = false;
+            this.mainEditor.Font = new System.Drawing.Font("Consolas", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.mainEditor.Location = new System.Drawing.Point(0, 0);
+            this.mainEditor.Name = "mainEditor";
+            this.mainEditor.Size = new System.Drawing.Size(800, 435);
+            this.mainEditor.TabIndex = 0;
+            this.mainEditor.Text = "";
+            this.mainEditor.WordWrap = false;
+            this.mainEditor.TextChanged += new System.EventHandler(this.mainEditor_TextChanged);
+            // 
             // contextMenu1
             // 
             this.contextMenu1.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
@@ -522,6 +538,13 @@
             this.menuItem37.Text = "&Paste";
             this.menuItem37.Click += new System.EventHandler(this.menuItem14_Click);
             // 
+            // menuItem50
+            // 
+            this.vistaMenu.SetImage(this.menuItem50, global::Text_Editor.Properties.Resources.baseline_backspace_black_24dp);
+            this.menuItem50.Index = 6;
+            this.menuItem50.Text = "De&lete";
+            this.menuItem50.Click += new System.EventHandler(this.menuItem49_Click);
+            // 
             // menuItem38
             // 
             this.menuItem38.Index = 7;
@@ -549,26 +572,13 @@
             this.printDocument1.EndPrint += new System.Drawing.Printing.PrintEventHandler(this.printDocument1_EndPrint);
             this.printDocument1.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocument1_PrintPage);
             // 
-            // menuItem50
+            // menuItem51
             // 
-            this.vistaMenu.SetImage(this.menuItem50, global::Text_Editor.Properties.Resources.baseline_backspace_black_24dp);
-            this.menuItem50.Index = 6;
-            this.menuItem50.Text = "&Delete";
-            this.menuItem50.Click += new System.EventHandler(this.menuItem49_Click);
-            // 
-            // mainEditor
-            // 
-            this.mainEditor.AcceptsTab = true;
-            this.mainEditor.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.mainEditor.DetectUrls = false;
-            this.mainEditor.Font = new System.Drawing.Font("Consolas", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.mainEditor.Location = new System.Drawing.Point(0, 0);
-            this.mainEditor.Name = "mainEditor";
-            this.mainEditor.Size = new System.Drawing.Size(800, 435);
-            this.mainEditor.TabIndex = 0;
-            this.mainEditor.Text = "";
-            this.mainEditor.WordWrap = false;
-            this.mainEditor.TextChanged += new System.EventHandler(this.mainEditor_TextChanged);
+            this.vistaMenu.SetImage(this.menuItem51, global::Text_Editor.Properties.Resources.baseline_today_black_24dp);
+            this.menuItem51.Index = 12;
+            this.menuItem51.Shortcut = System.Windows.Forms.Shortcut.F5;
+            this.menuItem51.Text = "Time/&Date";
+            this.menuItem51.Click += new System.EventHandler(this.menuItem51_Click);
             // 
             // Form1
             // 
@@ -658,6 +668,7 @@
         private System.Windows.Forms.StatusBarPanel sbpTextEncoding;
         private System.Windows.Forms.MenuItem menuItem49;
         private System.Windows.Forms.MenuItem menuItem50;
+        private System.Windows.Forms.MenuItem menuItem51;
     }
 }
 
