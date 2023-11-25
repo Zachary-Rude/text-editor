@@ -4,10 +4,10 @@
 #define MyAppName "Notepad.NET"
 #define MyAppVersion "1.2.0"
 #define MyAppPublisher "Zach, Inc."
-#define MyAppExeName "Text Editor.exe"
+#define MyAppExeName "Notepad.NET.exe"
 #define MyAppAssocName "Text File"
 #define MyAppAssocExt ".txt"
-#define MyAppAssocKey StringChange(MyAppAssocName, " ", "") + MyAppAssocExt
+#define MyAppAssocKey StringChange(MyAppName, ".", "") + MyAppAssocExt
 
 [Setup]
 ; NOTE: The value of AppId uniquely identifies this application. Do not use the same AppId value in installers for other applications.
@@ -23,13 +23,14 @@ DisableProgramGroupPage=yes
 LicenseFile=C:\Users\zacha\Documents\License Agreement.rtf
 ; Uncomment the following line to run in non administrative install mode (install for current user only.)
 ;PrivilegesRequired=lowest
-OutputDir=C:\Users\zacha\source\repos\Text Editor\Text Editor\Inno
+OutputDir=.
 OutputBaseFilename=NotepadNETSetup
 Compression=lzma
 SolidCompression=yes
 WizardStyle=classic 
 UninstallDisplayIcon={app}\{#MyAppExeName},0
 UninstallDisplayName={#MyAppName}
+SetupIconFile=..\Resources\icon-72.ico
 WizardImageFile=compiler:WizClassicImage.bmp 
 WizardSmallImageFile=compiler:WizClassicSmallImage.bmp
 DisableWelcomePage=no
@@ -64,14 +65,12 @@ end;
 Name: "english"; MessagesFile: "compiler:Default.isl"
 
 [Tasks]
-Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked
-Name: "txtedtcontext"; Description: "Show Edit with Notepad.NET in Explorer context menu (recommended)"; GroupDescription: "{cm:RegistryEntries}" 
-
-[CustomMessages]
-RegistryEntries=Additional Registry entries:
+Name: "desktopicon"; Description: "Create a &desktop icon"; GroupDescription: "Additional icons:"; Flags: unchecked
+Name: "npdneditcontext"; Description: "{cm:AddContextMenuFiles,{#MyAppName}}"; GroupDescription: "{cm:Other}"
+Name: "associate"; Description: "Associate Notepad.NET with text files"; GroupDescription: "{cm:Other}"
 
 [Files]
-Source: "C:\Users\zacha\source\repos\Text Editor\Text Editor\bin\Debug\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs
+Source: "C:\Users\zacha\source\repos\Text Editor\Text Editor\bin\Debug\*"; Excludes: "*.pdb"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
 [Messages]
@@ -81,17 +80,18 @@ SetupWindowTitle=%1 Setup
 SetupAppTitle=%1 Setup  
 BeveledLabel=Powered by Inno Setup
 
+[CustomMessages]
+AddContextMenuFiles=Add "Edit with %1" action to File Explorer file context menu
+Other=Other:
+
 [Registry]
-Root: HKCR; Subkey: "{#MyAppAssocExt}\OpenWithProgids"; ValueType: string; ValueName: "{#MyAppAssocKey}"; ValueData: ""; Flags: uninsdeletevalue
-Root: HKCR; Subkey: "{#MyAppAssocKey}"; ValueType: string; ValueName: ""; ValueData: "{#MyAppAssocName}"; Flags: uninsdeletekey
-Root: HKCR; Subkey: "{#MyAppAssocKey}\DefaultIcon"; ValueType: string; ValueName: ""; ValueData: "C:\Windows\System32\imageres.dll,246"
-Root: HKCR; Subkey: "{#MyAppAssocKey}\shell\open"; ValueType: string; ValueName: ""; ValueData: "Edit"
-Root: HKCR; Subkey: "{#MyAppAssocKey}\shell\open"; ValueType: string; ValueName: "Icon"; ValueData: "{app}\{#MyAppExeName},0"
-Root: HKCR; Subkey: "{#MyAppAssocKey}\shell\open\command"; ValueType: string; ValueName: ""; ValueData: """{app}\{#MyAppExeName}"" ""%1"""
-Root: HKCR; Subkey: "*\shell\TXTEdit"; ValueType: string; ValueName: ""; ValueData: "Edit with {#MyAppName}"; Tasks: txtedtcontext; Flags: uninsdeletekey
-Root: HKCR; Subkey: "*\shell\TXTEdit"; ValueType: string; ValueName: "Icon"; ValueData: "{app}\{#MyAppExeName},0"; Tasks: txtedtcontext
-Root: HKCR; Subkey: "*\shell\TXTEdit\command"; ValueType: string; ValueName: ""; ValueData: """{app}\{#MyAppExeName}"" ""%1"""; Tasks: txtedtcontext
-Root: HKCR; Subkey: "Applications\{#MyAppExeName}\SupportedTypes"; ValueType: string; ValueName: ".txt"; ValueData: ""
+Root: HKCR; Subkey: "{#MyAppAssocExt}\OpenWithProgids"; ValueType: string; ValueName: "{#MyAppAssocKey}"; ValueData: ""; Tasks: associate; Flags: uninsdeletevalue
+Root: HKCR; Subkey: "{#MyAppAssocKey}"; ValueType: string; ValueName: ""; ValueData: "{#MyAppAssocName}"; Tasks: associate; Flags: uninsdeletekey
+Root: HKCR; Subkey: "{#MyAppAssocKey}\DefaultIcon"; ValueType: string; ValueName: ""; ValueData: "C:\Windows\System32\imageres.dll,246"; Tasks: associate
+Root: HKCR; Subkey: "{#MyAppAssocKey}\shell\open\command"; ValueType: string; ValueName: ""; ValueData: """{app}\{#MyAppExeName}"" ""%1"""; Tasks: associate
+Root: HKCR; Subkey: "*\shell\Edit with {#MyAppName}"; ValueType: string; ValueName: "Icon"; ValueData: "{app}\{#MyAppExeName},0"; Tasks: npdneditcontext; Flags: uninsdeletekey
+Root: HKCR; Subkey: "*\shell\Edit with {#MyAppName}\command"; ValueType: string; ValueName: ""; ValueData: """{app}\{#MyAppExeName}"" ""%1"""; Tasks: npdneditcontext
+Root: HKCR; Subkey: "Applications\{#MyAppExeName}\SupportedTypes"; ValueType: string; ValueName: ".txt"; ValueData: ""; Tasks: associate; Flags: uninsdeletekey 
 
 [Icons]
 Name: "{autoprograms}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"
