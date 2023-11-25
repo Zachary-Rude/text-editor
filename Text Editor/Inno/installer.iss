@@ -70,7 +70,7 @@ Name: "npdneditcontext"; Description: "{cm:AddContextMenuFiles,{#MyAppName}}"; G
 Name: "associate"; Description: "Associate Notepad.NET with text files"; GroupDescription: "{cm:Other}"
 
 [Files]
-Source: "C:\Users\zacha\source\repos\Text Editor\Text Editor\bin\Debug\*"; Excludes: "*.pdb"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs
+Source: "..\bin\Debug\*"; Excludes: "*.pdb"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
 [Messages]
