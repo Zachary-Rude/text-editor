@@ -514,12 +514,12 @@ namespace Text_Editor
 
         private void menuItem32_Click(object sender, EventArgs e)
         {
-            mainEditor.ZoomFactor += 0.25F;
+            mainEditor.ZoomFactor += 0.1F;
         }
 
         private void menuItem33_Click(object sender, EventArgs e)
         {
-            mainEditor.ZoomFactor -= 0.25F;
+            mainEditor.ZoomFactor -= 0.1F;
         }
 
         private void menuItem34_Click(object sender, EventArgs e)
@@ -605,6 +605,14 @@ namespace Text_Editor
                     return false;
                 case Keys.Shift | Keys.Insert:
                     mainEditor.Paste(DataFormats.GetFormat("Text"));
+                    return true;
+                case Keys.Control | Keys.Oemplus:
+                    if (mainEditor.ZoomFactor < 5.0F)
+                        mainEditor.ZoomFactor += 0.1F;
+                    return true;
+                case Keys.Control | Keys.OemMinus:
+                    if (mainEditor.ZoomFactor > 1.0F)
+                        mainEditor.ZoomFactor -= 0.1F;
                     return true;
             }
             return base.ProcessCmdKey(ref msg, keyData);
