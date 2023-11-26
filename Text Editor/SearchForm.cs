@@ -17,10 +17,11 @@ namespace Text_Editor
         {
             InitializeComponent();
             searchStart = 0;
+            timer1.Start();
         }
         private void btnFindNext_Click(object sender, EventArgs e)
         {
-            searchStart = ((Form1)this.Owner).mainEditor.Find(txtSearchTerm.Text, searchStart, chkMatchCase.Checked ? RichTextBoxFinds.MatchCase : RichTextBoxFinds.None);
+            searchStart = ((Form1)this.Owner).mainEditor.Find(txtSearchTerm.Text, searchStart, (chkMatchCase.Checked ? RichTextBoxFinds.MatchCase : RichTextBoxFinds.None) | (chkWholeWord.Checked ? RichTextBoxFinds.WholeWord : RichTextBoxFinds.None));
 
             if (searchStart == -1)
             {
@@ -39,8 +40,6 @@ namespace Text_Editor
             this.Close();
         }
 
-        private int searchStart;
-
         private void txtSearchTerm_TextChanged(object sender, EventArgs e)
         {
             searchStart = 0;
@@ -50,5 +49,17 @@ namespace Text_Editor
         {
             searchStart = 0;
         }
+
+        private void chkWholeWord_CheckedChanged(object sender, EventArgs e)
+        {
+            searchStart = 0;
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            btnFindNext.Enabled = !string.IsNullOrEmpty(txtSearchTerm.Text);
+        }
+
+        private int searchStart;
     }
 }

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
             this.txtSearchTerm = new System.Windows.Forms.TextBox();
             this.btnFindNext = new System.Windows.Forms.Button();
@@ -37,16 +38,18 @@
             this.btnReplaceAll = new System.Windows.Forms.Button();
             this.txtReplacementText = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.chkWholeWord = new System.Windows.Forms.CheckBox();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 9);
+            this.label1.Location = new System.Drawing.Point(12, 10);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(62, 15);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Find what:";
+            this.label1.Text = "Fi&nd what:";
             // 
             // txtSearchTerm
             // 
@@ -83,7 +86,7 @@
             // 
             this.chkMatchCase.AutoSize = true;
             this.chkMatchCase.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.chkMatchCase.Location = new System.Drawing.Point(12, 96);
+            this.chkMatchCase.Location = new System.Drawing.Point(15, 109);
             this.chkMatchCase.Name = "chkMatchCase";
             this.chkMatchCase.Size = new System.Drawing.Size(92, 20);
             this.chkMatchCase.TabIndex = 4;
@@ -125,18 +128,36 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 38);
+            this.label2.Location = new System.Drawing.Point(12, 39);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(77, 15);
             this.label2.TabIndex = 6;
-            this.label2.Text = "Replace with:";
+            this.label2.Text = "Re&place with:";
+            // 
+            // chkWholeWord
+            // 
+            this.chkWholeWord.AutoSize = true;
+            this.chkWholeWord.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.chkWholeWord.Location = new System.Drawing.Point(15, 83);
+            this.chkWholeWord.Name = "chkWholeWord";
+            this.chkWholeWord.Size = new System.Drawing.Size(157, 20);
+            this.chkWholeWord.TabIndex = 8;
+            this.chkWholeWord.Text = "Match &whole word only";
+            this.chkWholeWord.UseVisualStyleBackColor = true;
+            this.chkWholeWord.CheckedChanged += new System.EventHandler(this.chkWholeWord_CheckedChanged);
+            // 
+            // timer1
+            // 
+            this.timer1.Interval = 10;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // ReplaceForm
             // 
             this.AcceptButton = this.btnFindNext;
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.CancelButton = this.btnCancel;
-            this.ClientSize = new System.Drawing.Size(336, 127);
+            this.ClientSize = new System.Drawing.Size(336, 159);
+            this.Controls.Add(this.chkWholeWord);
             this.Controls.Add(this.txtReplacementText);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.btnReplaceAll);
@@ -171,5 +192,7 @@
         private System.Windows.Forms.Button btnReplaceAll;
         private System.Windows.Forms.TextBox txtReplacementText;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.CheckBox chkWholeWord;
+        private System.Windows.Forms.Timer timer1;
     }
 }
