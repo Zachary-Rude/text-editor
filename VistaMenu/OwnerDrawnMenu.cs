@@ -59,7 +59,7 @@ namespace wyDay.Controls
 
         static void MenuItem_MeasureItem(object sender, MeasureItemEventArgs e)
         {
-            Font font = ((MenuItem) sender).DefaultItem
+            Font font = ((MenuItem)sender).DefaultItem
                             ? menuBoldFont
                             : SystemFonts.MenuFont;
 

@@ -85,12 +85,12 @@ namespace wyDay.Controls
 
         bool IExtenderProvider.CanExtend(object o)
         {
-            if(o is MenuItem)
+            if (o is MenuItem)
             {
                 // reject the menuitem if it's a top level element on a MainMenu bar
                 if (((MenuItem)o).Parent != null)
                     return ((MenuItem)o).Parent.GetType() != typeof(MainMenu);
-                
+
                 // parent is null - meaning it's a context menu
                 return true;
             }
@@ -128,7 +128,7 @@ namespace wyDay.Controls
         public void SetImage(MenuItem mnuItem, Image value)
         {
             Properties prop = EnsurePropertiesExists(mnuItem);
-            
+
             prop.Image = value;
 
             if (!DesignMode && isVistaOrLater)
@@ -268,14 +268,14 @@ namespace wyDay.Controls
             {
                 if (mi[i].Visible)
                 {
-                    Properties p = ((Properties) properties[mi[i]]);
+                    Properties p = ((Properties)properties[mi[i]]);
 
                     if (p != null)
                     {
                         menuItemInfo.hbmpItem = p.renderBmpHbitmap;
 
                         //refresh the menu item where ((Menu)sender).Handle is the parent handle
-                        SetMenuItemInfo(new HandleRef(null, ((Menu) sender).Handle),
+                        SetMenuItemInfo(new HandleRef(null, ((Menu)sender).Handle),
                                         miOn,
                                         true,
                                         menuItemInfo);
