@@ -26,6 +26,8 @@ namespace Text_Editor
 		public Form1()
 		{
 			InitializeComponent();
+			MessageBoxManager.Yes = "&Save";
+			MessageBoxManager.No = "Do&n't Save";
 			mainEditor.AllowDrop = true;
 			mainEditor.DragEnter += mainEditor_DragEnter;
 			mainEditor.DragDrop += mainEditor_DragDrop;
@@ -69,8 +71,7 @@ namespace Text_Editor
 						using (StreamReader sr = new StreamReader(fileName, true))
 						{
 							path = fileName;
-							sr.Peek();
-							currentEncoding = sr.CurrentEncoding.EncodingName;
+							currentEncoding = Encoding.UTF8.EncodingName;
 							Task<string> text = sr.ReadToEndAsync();
 							mainEditor.Text = text.Result;
 							this.Text = this.Text.Replace("*", "");
@@ -106,8 +107,7 @@ namespace Text_Editor
 				using (StreamReader sr = new StreamReader(fileName))
 				{
 					path = fileName;
-					sr.Peek();
-					currentEncoding = sr.CurrentEncoding.EncodingName;
+					currentEncoding = GetEncoding(fileName);
 					Task<string> text = sr.ReadToEndAsync();
 					mainEditor.Text = text.Result;
 					this.Text = this.Text.Replace("*", "");
@@ -135,15 +135,15 @@ namespace Text_Editor
 
 		public string GetEncoding(string filename)
 		{
-            byte[] bytes = File.ReadAllBytes(filename);
+			byte[] bytes = File.ReadAllBytes(filename);
 			Encoding encoding = null;
-            string text = null;
+			string text = null;
 			// Test UTF8 with BOM. This check can easily be copied and adapted
 			// to detect many other encodings that use BOMs.
 			UTF8Encoding encUtf8Bom = new UTF8Encoding(true, true);
-            bool couldBeUtf8 = true;
-            byte[] preamble = encUtf8Bom.GetPreamble();
-            int prLen = preamble.Length;
+			bool couldBeUtf8 = true;
+			byte[] preamble = encUtf8Bom.GetPreamble();
+			int prLen = preamble.Length;
 			if (bytes.Length >= prLen && preamble.SequenceEqual(bytes.Take(prLen)))
 			{
 				// UTF8 BOM found; use encUtf8Bom to decode.
@@ -183,7 +183,7 @@ namespace Text_Editor
 				text = encoding.GetString(bytes);
 			}
 
-			return text;
+			return encoding.EncodingName;
 		}
 
 		private void UpdateRecentFileList()
@@ -217,6 +217,21 @@ namespace Text_Editor
 
 		private void recentFile_Click(object sender, EventArgs e)
 		{
+			if (this.Text.StartsWith("*"))
+			{
+				MessageBoxManager.Register();
+				DialogResult dr = MessageBox.Show(Path.GetFileName(path) + " has unsaved changes.\r\nDo you want to save them?", "Unsaved changes", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Warning);
+				if (dr == DialogResult.Yes)
+				{
+					menuItem5.PerformClick();
+				}
+				else if (dr == DialogResult.Cancel)
+				{
+					MessageBoxManager.Unregister();
+					return;
+				}
+				MessageBoxManager.Unregister();
+			}
 			try
 			{
 				this.Text = Path.GetFileName(((MenuItem)sender).Text) + " - Notepad.NET";
@@ -225,6 +240,7 @@ namespace Text_Editor
 					path = ((MenuItem)sender).Text;
 					Task<string> text = sr.ReadToEndAsync();
 					mainEditor.Text = text.Result;
+					currentEncoding = GetEncoding(((MenuItem)sender).Text);
 					this.Text = this.Text.Replace("*", "");
 				}
 				if (Properties.Settings.Default.SaveRecentFiles)
@@ -264,6 +280,7 @@ namespace Text_Editor
 		{
 			if (this.Text.StartsWith("*"))
 			{
+				MessageBoxManager.Register();
 				DialogResult dr = MessageBox.Show(Path.GetFileName(path) + " has unsaved changes.\r\nDo you want to save them?", "Unsaved changes", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Warning);
 				if (dr == DialogResult.Yes)
 				{
@@ -271,14 +288,16 @@ namespace Text_Editor
 				}
 				else if (dr == DialogResult.Cancel)
 				{
+					MessageBoxManager.Unregister();
 					return;
 				}
+				MessageBoxManager.Unregister();
 			}
 			this.Text = "Untitled - Notepad.NET";
 			path = null;
 			mainEditor.Clear();
 			this.Text = this.Text.Replace("*", "");
-			currentEncoding = "Unicode (UTF-8)";
+			currentEncoding = Encoding.UTF8.EncodingName;
 		}
 
 		private void menuItem3_Click(object sender, EventArgs e)
@@ -288,6 +307,21 @@ namespace Text_Editor
 
 		private void menuItem4_Click(object sender, EventArgs e)
 		{
+			if (this.Text.StartsWith("*"))
+			{
+				MessageBoxManager.Register();
+				DialogResult dr = MessageBox.Show(Path.GetFileName(path) + " has unsaved changes.\r\nDo you want to save them?", "Unsaved changes", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Warning);
+				if (dr == DialogResult.Yes)
+				{
+					menuItem5.PerformClick();
+				}
+				else if (dr == DialogResult.Cancel)
+				{
+					MessageBoxManager.Unregister();
+					return;
+				}
+				MessageBoxManager.Unregister();
+			}
 			mainEditor.TextChanged -= mainEditor_TextChanged;
 			using (OpenFileDialog ofd = new OpenFileDialog() { DefaultExt = ".txt", Filter = "Text Files|*.txt|All Files|*.*", ValidateNames = true, Multiselect = false })
 			{
@@ -299,8 +333,7 @@ namespace Text_Editor
 						using (StreamReader sr = new StreamReader(ofd.FileName))
 						{
 							path = ofd.FileName;
-							sr.Peek();
-							currentEncoding = sr.CurrentEncoding.EncodingName;
+							currentEncoding = GetEncoding(ofd.FileName);
 							Task<string> text = sr.ReadToEndAsync();
 							mainEditor.Text = text.Result;
 						}
@@ -521,6 +554,7 @@ namespace Text_Editor
 						string fileNameOld = this.Text.Replace(" - Notepad.NET", "");
 						var regex = new Regex(Regex.Escape("*"));
 						string fileName = regex.Replace(fileNameOld, "", 1);
+						MessageBoxManager.Register();
 						DialogResult dr = MessageBox.Show(fileName + " has unsaved changes.\r\nDo you want to save them?", "Unsaved changes", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Warning);
 						if (dr == DialogResult.Yes)
 						{
@@ -528,8 +562,10 @@ namespace Text_Editor
 						}
 						else if (dr == DialogResult.Cancel)
 						{
+							MessageBoxManager.Unregister();
 							e.Cancel = true;
 						}
+						MessageBoxManager.Unregister();
 						break;
 				}
 			}

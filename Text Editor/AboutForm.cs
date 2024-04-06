@@ -10,11 +10,11 @@ using System.Windows.Forms;
 
 namespace Text_Editor
 {
-    public partial class AboutForm : Form
-    {
-        public AboutForm()
-        {
-            InitializeComponent();
-        }
-    }
+	public partial class AboutForm : Form
+	{
+		public AboutForm()
+		{
+			InitializeComponent();
+		}
+	}
 }
