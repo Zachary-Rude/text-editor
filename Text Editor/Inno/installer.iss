@@ -35,6 +35,8 @@ WizardImageFile=compiler:WizClassicImage.bmp
 WizardSmallImageFile=compiler:WizClassicSmallImage.bmp
 DisableWelcomePage=no
 UsePreviousAppDir=no
+ArchitecturesAllowed=x64
+ArchitecturesInstallIn64BitMode=x64
 
 [Code]
 procedure InitializeWizard();
@@ -70,18 +72,15 @@ Name: "npdneditcontext"; Description: "{cm:AddContextMenuFiles,{#MyAppName}}"; G
 Name: "associate"; Description: "Associate Notepad.NET with text files"; GroupDescription: "{cm:Other}"
 
 [Files]
-Source: "..\bin\Debug\*"; Excludes: "*.pdb"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs
+Source: "..\bin\x64\Release\*"; Excludes: "*.pdb"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
 [Messages]
-WelcomeLabel2=Setup will guide you through the installation of {#MyAppName}.%n%nIt is recommended that you close all other applications before starting Setup. This will make it possible to update relevant system files without having to reboot your computer.
-ClickNext=Click Next to continue.
 SetupWindowTitle=%1 Setup
-SetupAppTitle=%1 Setup  
-BeveledLabel=Powered by Inno Setup
+SetupAppTitle=%1 Setup
 
 [CustomMessages]
-AddContextMenuFiles=Add "Edit with %1" action to File Explorer file context menu
+AddContextMenuFiles=Add "Edit with %1" action to File Explorer context menu
 Other=Other:
 
 [Registry]
