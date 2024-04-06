@@ -220,7 +220,7 @@ namespace Text_Editor
 			if (this.Text.StartsWith("*"))
 			{
 				MessageBoxManager.Register();
-				DialogResult dr = MessageBox.Show(Path.GetFileName(path) + " has unsaved changes.\r\nDo you want to save them?", "Unsaved changes", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Warning);
+				DialogResult dr = MessageBox.Show((Path.GetFileName(path) ?? "Untitled") + " has unsaved changes.\r\nDo you want to save them?", "Unsaved changes", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Warning);
 				if (dr == DialogResult.Yes)
 				{
 					menuItem5.PerformClick();
@@ -281,7 +281,7 @@ namespace Text_Editor
 			if (this.Text.StartsWith("*"))
 			{
 				MessageBoxManager.Register();
-				DialogResult dr = MessageBox.Show(Path.GetFileName(path) + " has unsaved changes.\r\nDo you want to save them?", "Unsaved changes", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Warning);
+				DialogResult dr = MessageBox.Show((Path.GetFileName(path) ?? "Untitled") + " has unsaved changes.\r\nDo you want to save them?", "Unsaved changes", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Warning);
 				if (dr == DialogResult.Yes)
 				{
 					menuItem5.PerformClick();
@@ -310,7 +310,7 @@ namespace Text_Editor
 			if (this.Text.StartsWith("*"))
 			{
 				MessageBoxManager.Register();
-				DialogResult dr = MessageBox.Show(Path.GetFileName(path) + " has unsaved changes.\r\nDo you want to save them?", "Unsaved changes", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Warning);
+				DialogResult dr = MessageBox.Show((Path.GetFileName(path) ?? "Untitled") + " has unsaved changes.\r\nDo you want to save them?", "Unsaved changes", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Warning);
 				if (dr == DialogResult.Yes)
 				{
 					menuItem5.PerformClick();
@@ -428,7 +428,7 @@ namespace Text_Editor
 						path = sfd.FileName;
 						using (StreamWriter sw = new StreamWriter(sfd.FileName))
 						{
-							await sw.WriteAsync(mainEditor.Text); // Write data to text file
+							await sw.WriteAsync(mainEditor.Text.Replace("\n", "\r\n")); // Write data to text file
 							this.Text = Path.GetFileName(sfd.FileName) + " - Notepad.NET";
 						}
 						if (Properties.Settings.Default.SaveRecentFiles)
