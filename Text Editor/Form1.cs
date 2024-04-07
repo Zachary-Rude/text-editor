@@ -883,9 +883,9 @@ namespace Text_Editor
 			mainEditor.SelectionStart = selectionIndex + currentDate.Length;
 		}
 
-        private void menuItem53_Click(object sender, EventArgs e)
-        {
+		private void menuItem53_Click(object sender, EventArgs e)
+		{
 			mainEditor.RightToLeft ^= RightToLeft.Yes;
-        }
-    }
+		}
+	}
 }

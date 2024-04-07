@@ -1,33 +1,33 @@
 ﻿namespace Text_Editor
 {
-    partial class Form1
-    {
-        /// <summary>
-        /// Required designer variable.
-        /// </summary>
-        private System.ComponentModel.IContainer components = null;
+	partial class Form1
+	{
+		/// <summary>
+		/// Required designer variable.
+		/// </summary>
+		private System.ComponentModel.IContainer components = null;
 
-        /// <summary>
-        /// Clean up any resources being used.
-        /// </summary>
-        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing && (components != null))
-            {
-                components.Dispose();
-            }
-            base.Dispose(disposing);
-        }
+		/// <summary>
+		/// Clean up any resources being used.
+		/// </summary>
+		/// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+		protected override void Dispose(bool disposing)
+		{
+			if (disposing && (components != null))
+			{
+				components.Dispose();
+			}
+			base.Dispose(disposing);
+		}
 
-        #region Windows Form Designer generated code
+		#region Windows Form Designer generated code
 
-        /// <summary>
-        /// Required method for Designer support - do not modify
-        /// the contents of this method with the code editor.
-        /// </summary>
-        private void InitializeComponent()
-        {
+		/// <summary>
+		/// Required method for Designer support - do not modify
+		/// the contents of this method with the code editor.
+		/// </summary>
+		private void InitializeComponent()
+		{
 			this.components = new System.ComponentModel.Container();
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
 			this.mainMenu1 = new System.Windows.Forms.MainMenu(this.components);
@@ -105,27 +105,27 @@
 			// mainMenu1
 			// 
 			this.mainMenu1.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
-            this.menuItem1,
-            this.menuItem9,
-            this.menuItem17,
-            this.menuItem23});
+			this.menuItem1,
+			this.menuItem9,
+			this.menuItem17,
+			this.menuItem23});
 			// 
 			// menuItem1
 			// 
 			this.menuItem1.Index = 0;
 			this.menuItem1.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
-            this.menuItem2,
-            this.menuItem3,
-            this.menuItem4,
-            this.menuItem40,
-            this.menuItem41,
-            this.menuItem5,
-            this.menuItem6,
-            this.menuItem44,
-            this.menuItem45,
-            this.menuItem46,
-            this.menuItem7,
-            this.menuItem8});
+			this.menuItem2,
+			this.menuItem3,
+			this.menuItem4,
+			this.menuItem40,
+			this.menuItem41,
+			this.menuItem5,
+			this.menuItem6,
+			this.menuItem44,
+			this.menuItem45,
+			this.menuItem46,
+			this.menuItem7,
+			this.menuItem8});
 			this.menuItem1.Text = "&File";
 			// 
 			// menuItem2
@@ -157,7 +157,7 @@
 			this.vistaMenu.SetImage(this.menuItem40, global::Text_Editor.Properties.Resources.baseline_history_black_24dp);
 			this.menuItem40.Index = 3;
 			this.menuItem40.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
-            this.menuClear});
+			this.menuClear});
 			this.menuItem40.Text = "Recent Files";
 			// 
 			// menuClear
@@ -223,21 +223,21 @@
 			// 
 			this.menuItem9.Index = 1;
 			this.menuItem9.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
-            this.menuItem10,
-            this.menuItem19,
-            this.menuItem11,
-            this.menuItem12,
-            this.menuItem13,
-            this.menuItem14,
-            this.menuItem49,
-            this.menuItem25,
-            this.menuItem26,
-            this.menuItem30,
-            this.menuItem15,
-            this.menuItem16,
-            this.menuItem51,
-            this.menuItem42,
-            this.menuItem43});
+			this.menuItem10,
+			this.menuItem19,
+			this.menuItem11,
+			this.menuItem12,
+			this.menuItem13,
+			this.menuItem14,
+			this.menuItem49,
+			this.menuItem25,
+			this.menuItem26,
+			this.menuItem30,
+			this.menuItem15,
+			this.menuItem16,
+			this.menuItem51,
+			this.menuItem42,
+			this.menuItem43});
 			this.menuItem9.Text = "&Edit";
 			// 
 			// menuItem10
@@ -351,14 +351,14 @@
 			// 
 			this.menuItem17.Index = 2;
 			this.menuItem17.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
-            this.menuItem32,
-            this.menuItem33,
-            this.menuItem34,
-            this.menuItem31,
-            this.menuItem18,
-            this.menuItem29,
-            this.menuItem47,
-            this.menuItem48});
+			this.menuItem32,
+			this.menuItem33,
+			this.menuItem34,
+			this.menuItem31,
+			this.menuItem18,
+			this.menuItem29,
+			this.menuItem47,
+			this.menuItem48});
 			this.menuItem17.Text = "&View";
 			// 
 			// menuItem32
@@ -416,9 +416,9 @@
 			// 
 			this.menuItem23.Index = 3;
 			this.menuItem23.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
-            this.menuItem27,
-            this.menuItem28,
-            this.menuItem24});
+			this.menuItem27,
+			this.menuItem28,
+			this.menuItem24});
 			this.menuItem23.Text = "&Help";
 			// 
 			// menuItem27
@@ -457,9 +457,9 @@
 			this.statusBar1.Location = new System.Drawing.Point(0, 435);
 			this.statusBar1.Name = "statusBar1";
 			this.statusBar1.Panels.AddRange(new System.Windows.Forms.StatusBarPanel[] {
-            this.sbpLineCol,
-            this.sbpZoomPercent,
-            this.sbpTextEncoding});
+			this.sbpLineCol,
+			this.sbpZoomPercent,
+			this.sbpTextEncoding});
 			this.statusBar1.RightToLeft = System.Windows.Forms.RightToLeft.No;
 			this.statusBar1.ShowPanels = true;
 			this.statusBar1.Size = new System.Drawing.Size(800, 22);
@@ -499,17 +499,17 @@
 			// contextMenu1
 			// 
 			this.contextMenu1.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
-            this.menuItem20,
-            this.menuItem21,
-            this.menuItem22,
-            this.menuItem35,
-            this.menuItem36,
-            this.menuItem37,
-            this.menuItem50,
-            this.menuItem38,
-            this.menuItem39,
-            this.menuItem52,
-            this.menuItem53});
+			this.menuItem20,
+			this.menuItem21,
+			this.menuItem22,
+			this.menuItem35,
+			this.menuItem36,
+			this.menuItem37,
+			this.menuItem50,
+			this.menuItem38,
+			this.menuItem39,
+			this.menuItem52,
+			this.menuItem53});
 			// 
 			// menuItem20
 			// 
@@ -619,75 +619,75 @@
 			((System.ComponentModel.ISupportInitialize)(this.vistaMenu)).EndInit();
 			this.ResumeLayout(false);
 
-        }
+		}
 
-        #endregion
+		#endregion
 
-        private System.Windows.Forms.MainMenu mainMenu1;
-        private System.Windows.Forms.MenuItem menuItem1;
-        private System.Windows.Forms.MenuItem menuItem2;
-        private System.Windows.Forms.MenuItem menuItem3;
-        private System.Windows.Forms.MenuItem menuItem4;
-        private System.Windows.Forms.MenuItem menuItem5;
-        private System.Windows.Forms.MenuItem menuItem6;
-        private System.Windows.Forms.MenuItem menuItem7;
-        private System.Windows.Forms.MenuItem menuItem8;
-        private System.Windows.Forms.MenuItem menuItem9;
-        private System.Windows.Forms.MenuItem menuItem10;
-        private System.Windows.Forms.MenuItem menuItem11;
-        private System.Windows.Forms.MenuItem menuItem12;
-        private System.Windows.Forms.MenuItem menuItem13;
-        private System.Windows.Forms.MenuItem menuItem14;
-        private System.Windows.Forms.MenuItem menuItem15;
-        private System.Windows.Forms.MenuItem menuItem16;
-        private System.Windows.Forms.MenuItem menuItem17;
-        private System.Windows.Forms.MenuItem menuItem18;
-        private System.Windows.Forms.MenuItem menuItem23;
-        private System.Windows.Forms.MenuItem menuItem24;
-        private System.Windows.Forms.MenuItem menuItem25;
-        private System.Windows.Forms.MenuItem menuItem27;
-        private System.Windows.Forms.MenuItem menuItem28;
-        private System.Windows.Forms.MenuItem menuItem29;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.MenuItem menuItem19;
-        private System.Windows.Forms.ContextMenu contextMenu1;
-        private System.Windows.Forms.MenuItem menuItem20;
-        private System.Windows.Forms.MenuItem menuItem21;
-        private System.Windows.Forms.MenuItem menuItem22;
-        private wyDay.Controls.VistaMenu vistaMenu;
-        public FixedRichTextBox mainEditor;
-        private System.Windows.Forms.MenuItem menuItem26;
-        private System.Windows.Forms.MenuItem menuItem30;
-        private System.Windows.Forms.MenuItem menuItem31;
-        private System.Windows.Forms.MenuItem menuItem32;
-        private System.Windows.Forms.MenuItem menuItem33;
-        private System.Windows.Forms.MenuItem menuItem34;
-        private System.Windows.Forms.MenuItem menuItem35;
-        private System.Windows.Forms.MenuItem menuItem36;
-        private System.Windows.Forms.MenuItem menuItem37;
-        private System.Windows.Forms.MenuItem menuItem38;
-        private System.Windows.Forms.MenuItem menuItem39;
-        private System.Windows.Forms.Timer enableDisableTimer;
-        private System.Windows.Forms.MenuItem menuItem40;
-        private System.Windows.Forms.MenuItem menuItem41;
-        private System.Windows.Forms.MenuItem menuClear;
-        private System.Windows.Forms.MenuItem menuItem42;
-        private System.Windows.Forms.MenuItem menuItem43;
-        private System.Drawing.Printing.PrintDocument printDocument1;
-        private System.Windows.Forms.MenuItem menuItem44;
-        private System.Windows.Forms.MenuItem menuItem45;
-        private System.Windows.Forms.MenuItem menuItem46;
-        private System.Windows.Forms.StatusBar statusBar1;
-        private System.Windows.Forms.MenuItem menuItem47;
-        private System.Windows.Forms.MenuItem menuItem48;
-        private System.Windows.Forms.StatusBarPanel sbpLineCol;
-        private System.Windows.Forms.StatusBarPanel sbpZoomPercent;
-        private System.Windows.Forms.StatusBarPanel sbpTextEncoding;
-        private System.Windows.Forms.MenuItem menuItem49;
-        private System.Windows.Forms.MenuItem menuItem50;
-        private System.Windows.Forms.MenuItem menuItem51;
-        private System.Windows.Forms.MenuItem menuItem52;
-        private System.Windows.Forms.MenuItem menuItem53;
-    }
+		private System.Windows.Forms.MainMenu mainMenu1;
+		private System.Windows.Forms.MenuItem menuItem1;
+		private System.Windows.Forms.MenuItem menuItem2;
+		private System.Windows.Forms.MenuItem menuItem3;
+		private System.Windows.Forms.MenuItem menuItem4;
+		private System.Windows.Forms.MenuItem menuItem5;
+		private System.Windows.Forms.MenuItem menuItem6;
+		private System.Windows.Forms.MenuItem menuItem7;
+		private System.Windows.Forms.MenuItem menuItem8;
+		private System.Windows.Forms.MenuItem menuItem9;
+		private System.Windows.Forms.MenuItem menuItem10;
+		private System.Windows.Forms.MenuItem menuItem11;
+		private System.Windows.Forms.MenuItem menuItem12;
+		private System.Windows.Forms.MenuItem menuItem13;
+		private System.Windows.Forms.MenuItem menuItem14;
+		private System.Windows.Forms.MenuItem menuItem15;
+		private System.Windows.Forms.MenuItem menuItem16;
+		private System.Windows.Forms.MenuItem menuItem17;
+		private System.Windows.Forms.MenuItem menuItem18;
+		private System.Windows.Forms.MenuItem menuItem23;
+		private System.Windows.Forms.MenuItem menuItem24;
+		private System.Windows.Forms.MenuItem menuItem25;
+		private System.Windows.Forms.MenuItem menuItem27;
+		private System.Windows.Forms.MenuItem menuItem28;
+		private System.Windows.Forms.MenuItem menuItem29;
+		private System.Windows.Forms.Panel panel1;
+		private System.Windows.Forms.MenuItem menuItem19;
+		private System.Windows.Forms.ContextMenu contextMenu1;
+		private System.Windows.Forms.MenuItem menuItem20;
+		private System.Windows.Forms.MenuItem menuItem21;
+		private System.Windows.Forms.MenuItem menuItem22;
+		private wyDay.Controls.VistaMenu vistaMenu;
+		public FixedRichTextBox mainEditor;
+		private System.Windows.Forms.MenuItem menuItem26;
+		private System.Windows.Forms.MenuItem menuItem30;
+		private System.Windows.Forms.MenuItem menuItem31;
+		private System.Windows.Forms.MenuItem menuItem32;
+		private System.Windows.Forms.MenuItem menuItem33;
+		private System.Windows.Forms.MenuItem menuItem34;
+		private System.Windows.Forms.MenuItem menuItem35;
+		private System.Windows.Forms.MenuItem menuItem36;
+		private System.Windows.Forms.MenuItem menuItem37;
+		private System.Windows.Forms.MenuItem menuItem38;
+		private System.Windows.Forms.MenuItem menuItem39;
+		private System.Windows.Forms.Timer enableDisableTimer;
+		private System.Windows.Forms.MenuItem menuItem40;
+		private System.Windows.Forms.MenuItem menuItem41;
+		private System.Windows.Forms.MenuItem menuClear;
+		private System.Windows.Forms.MenuItem menuItem42;
+		private System.Windows.Forms.MenuItem menuItem43;
+		private System.Drawing.Printing.PrintDocument printDocument1;
+		private System.Windows.Forms.MenuItem menuItem44;
+		private System.Windows.Forms.MenuItem menuItem45;
+		private System.Windows.Forms.MenuItem menuItem46;
+		private System.Windows.Forms.StatusBar statusBar1;
+		private System.Windows.Forms.MenuItem menuItem47;
+		private System.Windows.Forms.MenuItem menuItem48;
+		private System.Windows.Forms.StatusBarPanel sbpLineCol;
+		private System.Windows.Forms.StatusBarPanel sbpZoomPercent;
+		private System.Windows.Forms.StatusBarPanel sbpTextEncoding;
+		private System.Windows.Forms.MenuItem menuItem49;
+		private System.Windows.Forms.MenuItem menuItem50;
+		private System.Windows.Forms.MenuItem menuItem51;
+		private System.Windows.Forms.MenuItem menuItem52;
+		private System.Windows.Forms.MenuItem menuItem53;
+	}
 }
 
