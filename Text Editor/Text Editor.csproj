@@ -192,6 +192,7 @@
     <Content Include="help files\copypastecut.htm" />
     <Content Include="help files\saving.html" />
     <Content Include="Inno\installer.iss" />
+    <None Include="Resources\baseline_format_textdirection_r_to_l_black_24dp.png" />
     <None Include="Resources\baseline_today_black_24dp.png" />
     <None Include="Resources\baseline_backspace_black_24dp.png" />
     <None Include="Resources\baseline_description_black_24dp.png" />
