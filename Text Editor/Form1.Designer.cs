@@ -130,7 +130,7 @@
 			// 
 			// menuItem2
 			// 
-			this.vistaMenu.SetImage(this.menuItem2, global::Text_Editor.Properties.Resources.baseline_create_black_24dp);
+			this.vistaMenu.SetImage(this.menuItem2, ((System.Drawing.Image)(resources.GetObject("menuItem2.Image"))));
 			this.menuItem2.Index = 0;
 			this.menuItem2.Shortcut = System.Windows.Forms.Shortcut.CtrlN;
 			this.menuItem2.Text = "&New";
@@ -689,6 +689,6 @@
 		private System.Windows.Forms.MenuItem menuItem51;
 		private System.Windows.Forms.MenuItem menuItem52;
 		private System.Windows.Forms.MenuItem menuItem53;
-	}
+    }
 }
 
