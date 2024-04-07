@@ -659,6 +659,13 @@ namespace Text_Editor
 
 			// Disable the menu item for zooming out if the user has reached the minimum zoom level
 			menuItem33.Enabled = mainEditor.ZoomFactor > 1.0F;
+			
+			// Fix bug where pressing Ctrl+Minus to zoom out will sometimes go to 90% zoom
+			if (mainEditor.ZoomFactor < 1.0F)
+				mainEditor.ZoomFactor = 1.0F;
+
+			if (mainEditor.ZoomFactor > 5.0F)
+				mainEditor.ZoomFactor = 5.0F;
 
 			// Automatically show/hide the status bar based on the user's preferences
 			statusBar1.Visible = Properties.Settings.Default.ShowStatusBar;
