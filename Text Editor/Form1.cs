@@ -239,7 +239,7 @@ namespace Text_Editor
 		{
 			if (this.Text.StartsWith("*"))
 			{
-				taskDialog.MainInstruction = $"Do you want to save {Path.GetFileName(path) ?? "Untitled"}";
+				taskDialog.MainInstruction = $"Do you want to save {Path.GetFileName(path) ?? "Untitled"}?";
 				DialogResult dr = (DialogResult)taskDialog.Show(this, out _, out _);
 				if (dr == (DialogResult)100)
 				{
@@ -304,7 +304,7 @@ namespace Text_Editor
 		{
 			if (this.Text.StartsWith("*"))
 			{
-				taskDialog.MainInstruction = $"Do you want to save {Path.GetFileName(path) ?? "Untitled"}";
+				taskDialog.MainInstruction = $"Do you want to save {Path.GetFileName(path) ?? "Untitled"}?";
 				DialogResult dr = (DialogResult)taskDialog.Show(this, out _, out _);
 				if (dr == (DialogResult)100)
 				{
@@ -331,7 +331,7 @@ namespace Text_Editor
 		{
 			if (this.Text.StartsWith("*"))
 			{
-				taskDialog.MainInstruction = $"Do you want to save {Path.GetFileName(path) ?? "Untitled"}";
+				taskDialog.MainInstruction = $"Do you want to save {Path.GetFileName(path) ?? "Untitled"}?";
 				DialogResult dr = (DialogResult)taskDialog.Show(this, out _, out _);
 				if (dr == (DialogResult)100)
 				{
@@ -571,7 +571,7 @@ namespace Text_Editor
 				{
 					case CloseReason.UserClosing:
 					case CloseReason.WindowsShutDown:
-						taskDialog.MainInstruction = $"Do you want to save {Path.GetFileName(path) ?? "Untitled"}";
+						taskDialog.MainInstruction = $"Do you want to save {Path.GetFileName(path) ?? "Untitled"}?";
 						DialogResult dr = (DialogResult)taskDialog.Show(this, out _, out _);
 						if (dr == (DialogResult)100)
 						{
@@ -776,7 +776,7 @@ namespace Text_Editor
 			object filename = e.Data.GetData("FileDrop");
 			if (this.Text.StartsWith("*"))
 			{
-				taskDialog.MainInstruction = $"Do you want to save {Path.GetFileName(path) ?? "Untitled"}";
+				taskDialog.MainInstruction = $"Do you want to save {Path.GetFileName(path) ?? "Untitled"}?";
 				DialogResult dr = (DialogResult)taskDialog.Show(this, out _, out _);
 				if (dr == (DialogResult)100)
 				{
