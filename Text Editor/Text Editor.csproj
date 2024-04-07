@@ -164,9 +164,7 @@
       <DependentUpon>SettingsForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="help files\textedit-help-toc.hhc" />
-    <None Include="help files\textedit-help.chm">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
+    <None Include="help files\textedit-help.chm" />
     <None Include="help files\textedit-help.hhp" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -228,4 +226,7 @@
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>XCOPY "$(ProjectDir)help files\textedit-help.chm" "$(TargetDir)" /E /Y</PostBuildEvent>
+  </PropertyGroup>
 </Project>
