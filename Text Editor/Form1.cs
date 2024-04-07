@@ -623,12 +623,14 @@ namespace Text_Editor
 
 		private void menuItem32_Click(object sender, EventArgs e)
 		{
-			mainEditor.ZoomFactor += 0.1F;
+			if (mainEditor.ZoomFactor < 5.0F)
+				mainEditor.ZoomFactor += 0.1F;
 		}
 
 		private void menuItem33_Click(object sender, EventArgs e)
 		{
-			mainEditor.ZoomFactor -= 0.1F;
+			if (mainEditor.ZoomFactor > 1.0F)
+				mainEditor.ZoomFactor -= 0.1F;
 		}
 
 		private void menuItem34_Click(object sender, EventArgs e)
