@@ -221,11 +221,5 @@
     <None Include="Resources\baseline_content_cut_black_24dp.png" />
     <None Include="Resources\baseline_content_copy_black_24dp.png" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\TaskDialog\TaskDialog.csproj">
-      <Project>{5bf15af5-deb8-46a8-99c7-21993617d0c8}</Project>
-      <Name>TaskDialog</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
