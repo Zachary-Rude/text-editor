@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Text Editor", "Text Editor\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VistaMenu", "VistaMenu\VistaMenu.csproj", "{7C2CCE0A-A288-4869-A7B7-CC0D18AF3B8C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskDialog", "TaskDialog\TaskDialog.csproj", "{5BF15AF5-DEB8-46A8-99C7-21993617D0C8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		All|Any CPU = All|Any CPU
@@ -40,6 +42,18 @@ Global
 		{7C2CCE0A-A288-4869-A7B7-CC0D18AF3B8C}.Release|Any CPU.Build.0 = Release|Any CPU
 		{7C2CCE0A-A288-4869-A7B7-CC0D18AF3B8C}.Release|x64.ActiveCfg = Release|x64
 		{7C2CCE0A-A288-4869-A7B7-CC0D18AF3B8C}.Release|x64.Build.0 = Release|x64
+		{5BF15AF5-DEB8-46A8-99C7-21993617D0C8}.All|Any CPU.ActiveCfg = Debug|Any CPU
+		{5BF15AF5-DEB8-46A8-99C7-21993617D0C8}.All|Any CPU.Build.0 = Debug|Any CPU
+		{5BF15AF5-DEB8-46A8-99C7-21993617D0C8}.All|x64.ActiveCfg = Debug|x64
+		{5BF15AF5-DEB8-46A8-99C7-21993617D0C8}.All|x64.Build.0 = Debug|x64
+		{5BF15AF5-DEB8-46A8-99C7-21993617D0C8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5BF15AF5-DEB8-46A8-99C7-21993617D0C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5BF15AF5-DEB8-46A8-99C7-21993617D0C8}.Debug|x64.ActiveCfg = Debug|x64
+		{5BF15AF5-DEB8-46A8-99C7-21993617D0C8}.Debug|x64.Build.0 = Debug|x64
+		{5BF15AF5-DEB8-46A8-99C7-21993617D0C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5BF15AF5-DEB8-46A8-99C7-21993617D0C8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5BF15AF5-DEB8-46A8-99C7-21993617D0C8}.Release|x64.ActiveCfg = Release|x64
+		{5BF15AF5-DEB8-46A8-99C7-21993617D0C8}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
