@@ -7,7 +7,7 @@
     <ProjectGuid>{8A82FA64-B600-4A9A-8BA9-7790026E09E8}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>Text_Editor</RootNamespace>
-    <AssemblyName>Notepad.NET</AssemblyName>
+    <AssemblyName>notepaddotnet</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>

@@ -4,7 +4,7 @@
 #define MyAppName "Notepad.NET"
 #define MyAppVersion "1.2.0"
 #define MyAppPublisher "Zach, Inc."
-#define MyAppExeName "Notepad.NET.exe"
+#define MyAppExeName "notepaddotnet.exe"
 #define MyAppAssocName "Text File"
 #define MyAppAssocExt ".txt"
 #define MyAppAssocKey StringChange(MyAppName, ".", "") + MyAppAssocExt
