@@ -662,7 +662,7 @@ namespace Text_Editor
 			statusBar1.Visible = Properties.Settings.Default.ShowStatusBar;
 			menuItem48.Checked = Properties.Settings.Default.ShowStatusBar;
 
-			// Set the main RichTextBox's dock style to Fill if the status bar is visible; otherwise, disable the docking for it and instead set the anchor to all 4 sides
+			// Set the main RichTextBox's dock style to Fill if the status bar is not visible; otherwise, disable the docking for it and instead set the anchor to all 4 sides
 			if (statusBar1.Visible)
 			{
 				mainEditor.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
@@ -673,6 +673,9 @@ namespace Text_Editor
 				mainEditor.Anchor = AnchorStyles.Top | AnchorStyles.Left;
 				mainEditor.Dock = DockStyle.Fill;
 			}
+
+			// Enable the "checked" status for the right to left context menu item if the text box has right-to-left enabled
+			menuItem53.Checked = mainEditor.RightToLeft == RightToLeft.Yes;
 
 			#region Status Bar
 			sbpLineCol.Text = string.Format("Ln {0}, Col {1}", mainEditor.CurrentLine, mainEditor.CurrentColumn);
@@ -877,5 +880,10 @@ namespace Text_Editor
 			}
 			mainEditor.SelectionStart = selectionIndex + currentDate.Length;
 		}
-	}
+
+        private void menuItem53_Click(object sender, EventArgs e)
+        {
+			mainEditor.RightToLeft ^= RightToLeft.Yes;
+        }
+    }
 }

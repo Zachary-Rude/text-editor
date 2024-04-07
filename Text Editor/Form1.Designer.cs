@@ -93,6 +93,8 @@
 			this.vistaMenu = new wyDay.Controls.VistaMenu(this.components);
 			this.enableDisableTimer = new System.Windows.Forms.Timer(this.components);
 			this.printDocument1 = new System.Drawing.Printing.PrintDocument();
+			this.menuItem52 = new System.Windows.Forms.MenuItem();
+			this.menuItem53 = new System.Windows.Forms.MenuItem();
 			this.panel1.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.sbpLineCol)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.sbpZoomPercent)).BeginInit();
@@ -505,7 +507,9 @@
             this.menuItem37,
             this.menuItem50,
             this.menuItem38,
-            this.menuItem39});
+            this.menuItem39,
+            this.menuItem52,
+            this.menuItem53});
 			// 
 			// menuItem20
 			// 
@@ -580,6 +584,18 @@
 			this.printDocument1.BeginPrint += new System.Drawing.Printing.PrintEventHandler(this.printDocument1_BeginPrint);
 			this.printDocument1.EndPrint += new System.Drawing.Printing.PrintEventHandler(this.printDocument1_EndPrint);
 			this.printDocument1.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocument1_PrintPage);
+			// 
+			// menuItem52
+			// 
+			this.menuItem52.Index = 9;
+			this.menuItem52.Text = "-";
+			// 
+			// menuItem53
+			// 
+			this.vistaMenu.SetImage(this.menuItem53, global::Text_Editor.Properties.Resources.baseline_format_textdirection_r_to_l_black_24dp);
+			this.menuItem53.Index = 10;
+			this.menuItem53.Text = "Right to left Reading order";
+			this.menuItem53.Click += new System.EventHandler(this.menuItem53_Click);
 			// 
 			// Form1
 			// 
@@ -670,6 +686,8 @@
         private System.Windows.Forms.MenuItem menuItem49;
         private System.Windows.Forms.MenuItem menuItem50;
         private System.Windows.Forms.MenuItem menuItem51;
+        private System.Windows.Forms.MenuItem menuItem52;
+        private System.Windows.Forms.MenuItem menuItem53;
     }
 }
 
