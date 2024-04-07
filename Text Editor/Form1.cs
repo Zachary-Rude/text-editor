@@ -42,7 +42,7 @@ namespace Text_Editor
 			taskDialog = new TaskDialog()
 			{
 				WindowTitle = "Notepad.NET",
-				MainInstruction = "Do you want to save ${FILE_NAME}?",
+				MainInstruction = "Save changes to ${FILE_NAME}?",
 				Content = "Your changes will be lost if you don't save them.",
 				CommonButtons = TaskDialogCommonButtons.Cancel,
 				MainIcon = TaskDialogIcon.Warning,
@@ -81,7 +81,7 @@ namespace Text_Editor
 
 			if (!File.Exists(fileName))
 			{
-				DialogResult dr = MessageBox.Show(string.Format("Could not find the {0} file.\r\nDo you want to create it?", fileName), "Notepad.NET", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+				DialogResult dr = MessageBox.Show(string.Format("Could not find {0}.\r\nDo you want to create it?", fileName), "Notepad.NET", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Warning);
 				if (dr == DialogResult.Yes)
 				{
 					try
@@ -115,6 +115,11 @@ namespace Text_Editor
 					{
 						MessageBox.Show(e.Message, "Cannot create file", MessageBoxButtons.OK, MessageBoxIcon.Error);
 					}
+				}
+				else if (dr == DialogResult.Cancel)
+				{
+					this.Close();
+					return;
 				}
 				else
 				{
@@ -239,7 +244,7 @@ namespace Text_Editor
 		{
 			if (this.Text.StartsWith("*"))
 			{
-				taskDialog.MainInstruction = $"Do you want to save {Path.GetFileName(path) ?? "Untitled"}?";
+				taskDialog.MainInstruction = $"Save changes to {Path.GetFileName(path) ?? "Untitled"}?";
 				DialogResult dr = (DialogResult)taskDialog.Show(this, out _, out _);
 				if (dr == (DialogResult)100)
 				{
@@ -304,7 +309,7 @@ namespace Text_Editor
 		{
 			if (this.Text.StartsWith("*"))
 			{
-				taskDialog.MainInstruction = $"Do you want to save {Path.GetFileName(path) ?? "Untitled"}?";
+				taskDialog.MainInstruction = $"Save changes to {Path.GetFileName(path) ?? "Untitled"}?";
 				DialogResult dr = (DialogResult)taskDialog.Show(this, out _, out _);
 				if (dr == (DialogResult)100)
 				{
@@ -331,7 +336,7 @@ namespace Text_Editor
 		{
 			if (this.Text.StartsWith("*"))
 			{
-				taskDialog.MainInstruction = $"Do you want to save {Path.GetFileName(path) ?? "Untitled"}?";
+				taskDialog.MainInstruction = $"Save changes to {Path.GetFileName(path) ?? "Untitled"}?";
 				DialogResult dr = (DialogResult)taskDialog.Show(this, out _, out _);
 				if (dr == (DialogResult)100)
 				{
@@ -571,7 +576,7 @@ namespace Text_Editor
 				{
 					case CloseReason.UserClosing:
 					case CloseReason.WindowsShutDown:
-						taskDialog.MainInstruction = $"Do you want to save {Path.GetFileName(path) ?? "Untitled"}?";
+						taskDialog.MainInstruction = $"Save changes to {Path.GetFileName(path) ?? "Untitled"}?";
 						DialogResult dr = (DialogResult)taskDialog.Show(this, out _, out _);
 						if (dr == (DialogResult)100)
 						{
@@ -776,7 +781,7 @@ namespace Text_Editor
 			object filename = e.Data.GetData("FileDrop");
 			if (this.Text.StartsWith("*"))
 			{
-				taskDialog.MainInstruction = $"Do you want to save {Path.GetFileName(path) ?? "Untitled"}?";
+				taskDialog.MainInstruction = $"Save changes to {Path.GetFileName(path) ?? "Untitled"}?";
 				DialogResult dr = (DialogResult)taskDialog.Show(this, out _, out _);
 				if (dr == (DialogResult)100)
 				{
