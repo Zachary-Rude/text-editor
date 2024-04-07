@@ -36,6 +36,7 @@
 			this.rbCtrlY = new System.Windows.Forms.RadioButton();
 			this.label1 = new System.Windows.Forms.Label();
 			this.tabPage2 = new System.Windows.Forms.TabPage();
+			this.chkRecentAutoLoad = new System.Windows.Forms.CheckBox();
 			this.numRecentFilesMax = new System.Windows.Forms.NumericUpDown();
 			this.lblMaxRecent = new System.Windows.Forms.Label();
 			this.chkSaveRecentFiles = new System.Windows.Forms.CheckBox();
@@ -132,6 +133,7 @@
 			// 
 			// tabPage2
 			// 
+			this.tabPage2.Controls.Add(this.chkRecentAutoLoad);
 			this.tabPage2.Controls.Add(this.numRecentFilesMax);
 			this.tabPage2.Controls.Add(this.lblMaxRecent);
 			this.tabPage2.Controls.Add(this.chkSaveRecentFiles);
@@ -143,23 +145,35 @@
 			this.tabPage2.Text = "Recent Files";
 			this.tabPage2.UseVisualStyleBackColor = true;
 			// 
+			// chkRecentAutoLoad
+			// 
+			this.chkRecentAutoLoad.AutoSize = true;
+			this.chkRecentAutoLoad.FlatStyle = System.Windows.Forms.FlatStyle.System;
+			this.chkRecentAutoLoad.Location = new System.Drawing.Point(6, 77);
+			this.chkRecentAutoLoad.Name = "chkRecentAutoLoad";
+			this.chkRecentAutoLoad.Size = new System.Drawing.Size(293, 20);
+			this.chkRecentAutoLoad.TabIndex = 3;
+			this.chkRecentAutoLoad.Text = "Automatically open the most recently opened file";
+			this.chkRecentAutoLoad.UseVisualStyleBackColor = true;
+			this.chkRecentAutoLoad.CheckedChanged += new System.EventHandler(this.chkRecentAutoLoad_CheckedChanged);
+			// 
 			// numRecentFilesMax
 			// 
 			this.numRecentFilesMax.Enabled = false;
 			this.numRecentFilesMax.Location = new System.Drawing.Point(250, 27);
 			this.numRecentFilesMax.Minimum = new decimal(new int[] {
-			1,
-			0,
-			0,
-			0});
+            1,
+            0,
+            0,
+            0});
 			this.numRecentFilesMax.Name = "numRecentFilesMax";
 			this.numRecentFilesMax.Size = new System.Drawing.Size(69, 23);
 			this.numRecentFilesMax.TabIndex = 2;
 			this.numRecentFilesMax.Value = new decimal(new int[] {
-			1,
-			0,
-			0,
-			0});
+            1,
+            0,
+            0,
+            0});
 			// 
 			// lblMaxRecent
 			// 
@@ -250,5 +264,6 @@
 		private System.Windows.Forms.RadioButton rbCtrlY;
 		private System.Windows.Forms.RadioButton rbAcceptBoth;
 		private System.Windows.Forms.RadioButton rbCtrlShiftZ;
-	}
+        private System.Windows.Forms.CheckBox chkRecentAutoLoad;
+    }
 }

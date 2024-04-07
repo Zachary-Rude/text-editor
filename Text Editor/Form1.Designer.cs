@@ -90,11 +90,11 @@
 			this.menuItem50 = new System.Windows.Forms.MenuItem();
 			this.menuItem38 = new System.Windows.Forms.MenuItem();
 			this.menuItem39 = new System.Windows.Forms.MenuItem();
+			this.menuItem52 = new System.Windows.Forms.MenuItem();
+			this.menuItem53 = new System.Windows.Forms.MenuItem();
 			this.vistaMenu = new wyDay.Controls.VistaMenu(this.components);
 			this.enableDisableTimer = new System.Windows.Forms.Timer(this.components);
 			this.printDocument1 = new System.Drawing.Printing.PrintDocument();
-			this.menuItem52 = new System.Windows.Forms.MenuItem();
-			this.menuItem53 = new System.Windows.Forms.MenuItem();
 			this.panel1.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.sbpLineCol)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.sbpZoomPercent)).BeginInit();
@@ -105,27 +105,27 @@
 			// mainMenu1
 			// 
 			this.mainMenu1.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
-			this.menuItem1,
-			this.menuItem9,
-			this.menuItem17,
-			this.menuItem23});
+            this.menuItem1,
+            this.menuItem9,
+            this.menuItem17,
+            this.menuItem23});
 			// 
 			// menuItem1
 			// 
 			this.menuItem1.Index = 0;
 			this.menuItem1.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
-			this.menuItem2,
-			this.menuItem3,
-			this.menuItem4,
-			this.menuItem40,
-			this.menuItem41,
-			this.menuItem5,
-			this.menuItem6,
-			this.menuItem44,
-			this.menuItem45,
-			this.menuItem46,
-			this.menuItem7,
-			this.menuItem8});
+            this.menuItem2,
+            this.menuItem3,
+            this.menuItem4,
+            this.menuItem40,
+            this.menuItem41,
+            this.menuItem5,
+            this.menuItem6,
+            this.menuItem44,
+            this.menuItem45,
+            this.menuItem46,
+            this.menuItem7,
+            this.menuItem8});
 			this.menuItem1.Text = "&File";
 			// 
 			// menuItem2
@@ -157,7 +157,7 @@
 			this.vistaMenu.SetImage(this.menuItem40, global::Text_Editor.Properties.Resources.baseline_history_black_24dp);
 			this.menuItem40.Index = 3;
 			this.menuItem40.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
-			this.menuClear});
+            this.menuClear});
 			this.menuItem40.Text = "Recent Files";
 			// 
 			// menuClear
@@ -223,21 +223,21 @@
 			// 
 			this.menuItem9.Index = 1;
 			this.menuItem9.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
-			this.menuItem10,
-			this.menuItem19,
-			this.menuItem11,
-			this.menuItem12,
-			this.menuItem13,
-			this.menuItem14,
-			this.menuItem49,
-			this.menuItem25,
-			this.menuItem26,
-			this.menuItem30,
-			this.menuItem15,
-			this.menuItem16,
-			this.menuItem51,
-			this.menuItem42,
-			this.menuItem43});
+            this.menuItem10,
+            this.menuItem19,
+            this.menuItem11,
+            this.menuItem12,
+            this.menuItem13,
+            this.menuItem14,
+            this.menuItem49,
+            this.menuItem25,
+            this.menuItem26,
+            this.menuItem30,
+            this.menuItem15,
+            this.menuItem16,
+            this.menuItem51,
+            this.menuItem42,
+            this.menuItem43});
 			this.menuItem9.Text = "&Edit";
 			// 
 			// menuItem10
@@ -351,14 +351,14 @@
 			// 
 			this.menuItem17.Index = 2;
 			this.menuItem17.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
-			this.menuItem32,
-			this.menuItem33,
-			this.menuItem34,
-			this.menuItem31,
-			this.menuItem18,
-			this.menuItem29,
-			this.menuItem47,
-			this.menuItem48});
+            this.menuItem32,
+            this.menuItem33,
+            this.menuItem34,
+            this.menuItem31,
+            this.menuItem18,
+            this.menuItem29,
+            this.menuItem47,
+            this.menuItem48});
 			this.menuItem17.Text = "&View";
 			// 
 			// menuItem32
@@ -416,9 +416,9 @@
 			// 
 			this.menuItem23.Index = 3;
 			this.menuItem23.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
-			this.menuItem27,
-			this.menuItem28,
-			this.menuItem24});
+            this.menuItem27,
+            this.menuItem28,
+            this.menuItem24});
 			this.menuItem23.Text = "&Help";
 			// 
 			// menuItem27
@@ -457,9 +457,9 @@
 			this.statusBar1.Location = new System.Drawing.Point(0, 435);
 			this.statusBar1.Name = "statusBar1";
 			this.statusBar1.Panels.AddRange(new System.Windows.Forms.StatusBarPanel[] {
-			this.sbpLineCol,
-			this.sbpZoomPercent,
-			this.sbpTextEncoding});
+            this.sbpLineCol,
+            this.sbpZoomPercent,
+            this.sbpTextEncoding});
 			this.statusBar1.RightToLeft = System.Windows.Forms.RightToLeft.No;
 			this.statusBar1.ShowPanels = true;
 			this.statusBar1.Size = new System.Drawing.Size(800, 22);
@@ -499,17 +499,17 @@
 			// contextMenu1
 			// 
 			this.contextMenu1.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
-			this.menuItem20,
-			this.menuItem21,
-			this.menuItem22,
-			this.menuItem35,
-			this.menuItem36,
-			this.menuItem37,
-			this.menuItem50,
-			this.menuItem38,
-			this.menuItem39,
-			this.menuItem52,
-			this.menuItem53});
+            this.menuItem20,
+            this.menuItem21,
+            this.menuItem22,
+            this.menuItem35,
+            this.menuItem36,
+            this.menuItem37,
+            this.menuItem50,
+            this.menuItem38,
+            this.menuItem39,
+            this.menuItem52,
+            this.menuItem53});
 			// 
 			// menuItem20
 			// 
@@ -570,6 +570,18 @@
 			this.menuItem39.Text = "Select &All";
 			this.menuItem39.Click += new System.EventHandler(this.menuItem16_Click);
 			// 
+			// menuItem52
+			// 
+			this.menuItem52.Index = 9;
+			this.menuItem52.Text = "-";
+			// 
+			// menuItem53
+			// 
+			this.vistaMenu.SetImage(this.menuItem53, global::Text_Editor.Properties.Resources.baseline_format_textdirection_r_to_l_black_24dp);
+			this.menuItem53.Index = 10;
+			this.menuItem53.Text = "Right to left Reading order";
+			this.menuItem53.Click += new System.EventHandler(this.menuItem53_Click);
+			// 
 			// vistaMenu
 			// 
 			this.vistaMenu.ContainerControl = this;
@@ -585,18 +597,6 @@
 			this.printDocument1.EndPrint += new System.Drawing.Printing.PrintEventHandler(this.printDocument1_EndPrint);
 			this.printDocument1.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocument1_PrintPage);
 			// 
-			// menuItem52
-			// 
-			this.menuItem52.Index = 9;
-			this.menuItem52.Text = "-";
-			// 
-			// menuItem53
-			// 
-			this.vistaMenu.SetImage(this.menuItem53, global::Text_Editor.Properties.Resources.baseline_format_textdirection_r_to_l_black_24dp);
-			this.menuItem53.Index = 10;
-			this.menuItem53.Text = "Right to left Reading order";
-			this.menuItem53.Click += new System.EventHandler(this.menuItem53_Click);
-			// 
 			// Form1
 			// 
 			this.AllowDrop = true;
@@ -610,6 +610,7 @@
 			this.Name = "Form1";
 			this.Text = "Untitled - Notepad.NET";
 			this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
+			this.Load += new System.EventHandler(this.Form1_Load);
 			this.DragDrop += new System.Windows.Forms.DragEventHandler(this.Form1_DragDrop);
 			this.DragEnter += new System.Windows.Forms.DragEventHandler(this.Form1_DragEnter);
 			this.panel1.ResumeLayout(false);

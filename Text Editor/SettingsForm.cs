@@ -16,6 +16,7 @@ namespace Text_Editor
 		{
 			InitializeComponent();
 			chkSaveRecentFiles.Checked = Properties.Settings.Default.SaveRecentFiles;
+			chkRecentAutoLoad.Checked = Properties.Settings.Default.SaveRecentFiles;
 			numRecentFilesMax.Value = Properties.Settings.Default.MaxRecentFiles;
 			switch (Properties.Settings.Default.RedoShortcut)
 			{
@@ -65,11 +66,15 @@ namespace Text_Editor
 			this.Close();
 		}
 
+		private void chkRecentAutoLoad_CheckedChanged(object sender, EventArgs e)
+		{
+			Properties.Settings.Default.AutoLoadRecentFiles = chkRecentAutoLoad.Checked;
+		}
 		private void btnCancel_Click(object sender, EventArgs e)
 		{
 			this.Close();
 		}
 
 		private string redoShortcutValue;
-	}
+    }
 }

@@ -887,5 +887,95 @@ namespace Text_Editor
 		{
 			mainEditor.RightToLeft ^= RightToLeft.Yes;
 		}
+
+		private void Form1_Load(object sender, EventArgs e)
+		{
+			if (string.IsNullOrEmpty(path) && Properties.Settings.Default.AutoLoadRecentFiles)
+			{
+				try
+				{
+					if (!string.IsNullOrEmpty(Properties.Settings.Default.RecentFiles[0]))
+					{
+						string fileName = Properties.Settings.Default.RecentFiles[0];
+						if (!File.Exists(fileName))
+						{
+							DialogResult dr = MessageBox.Show(string.Format("Could not find {0}.\r\nDo you want to create it?", fileName), "Notepad.NET", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+							if (dr == DialogResult.Yes)
+							{
+								try
+								{
+									File.Create(fileName).Close();
+									this.Text = Path.GetFileName(fileName) + " - Notepad.NET";
+									using (StreamReader sr = new StreamReader(fileName, true))
+									{
+										path = fileName;
+										currentEncoding = Encoding.UTF8.EncodingName;
+										Task<string> text = sr.ReadToEndAsync();
+										mainEditor.Text = text.Result;
+										this.Text = this.Text.Replace("*", "");
+									}
+									if (Properties.Settings.Default.SaveRecentFiles)
+									{
+										if (Properties.Settings.Default.RecentFiles.Count > Properties.Settings.Default.MaxRecentFiles - 1)
+										{
+											Properties.Settings.Default.RecentFiles.RemoveAt(Properties.Settings.Default.MaxRecentFiles - 1);
+										}
+										if (Properties.Settings.Default.RecentFiles.Contains(fileName))
+										{
+											Properties.Settings.Default.RecentFiles.Remove(fileName);
+										}
+										Properties.Settings.Default.RecentFiles.Insert(0, fileName);
+										Properties.Settings.Default.Save();
+									}
+									UpdateRecentFileList();
+								}
+								catch (Exception ex)
+								{
+									MessageBox.Show(ex.Message, "Cannot create file", MessageBoxButtons.OK, MessageBoxIcon.Error);
+								}
+							}
+							else
+							{
+								return;
+							}
+						}
+						try
+						{
+							this.Text = Path.GetFileName(fileName) + " - Notepad.NET";
+							using (StreamReader sr = new StreamReader(fileName))
+							{
+								path = fileName;
+								currentEncoding = GetEncoding(fileName);
+								Task<string> text = sr.ReadToEndAsync();
+								mainEditor.Text = text.Result;
+								this.Text = this.Text.Replace("*", "");
+							}
+							if (Properties.Settings.Default.SaveRecentFiles)
+							{
+								if (Properties.Settings.Default.RecentFiles.Count > Properties.Settings.Default.MaxRecentFiles - 1)
+								{
+									Properties.Settings.Default.RecentFiles.RemoveAt(Properties.Settings.Default.MaxRecentFiles - 1);
+								}
+								if (Properties.Settings.Default.RecentFiles.Contains(fileName))
+								{
+									Properties.Settings.Default.RecentFiles.Remove(fileName);
+								}
+								Properties.Settings.Default.RecentFiles.Insert(0, fileName);
+								Properties.Settings.Default.Save();
+							}
+							UpdateRecentFileList();
+						}
+						catch (Exception ex)
+						{
+							MessageBox.Show(ex.Message, "Cannot open file", MessageBoxButtons.OK, MessageBoxIcon.Error);
+						}
+					}
+				}
+				catch (Exception)
+				{
+
+				}
+			}
+		}
 	}
 }
