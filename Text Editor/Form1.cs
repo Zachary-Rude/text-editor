@@ -234,7 +234,6 @@ namespace Text_Editor
 			}
 			try
 			{
-				this.Text = Path.GetFileName(((MenuItem)sender).Text) + " - Notepad.NET";
 				using (StreamReader sr = new StreamReader(((MenuItem)sender).Text))
 				{
 					path = ((MenuItem)sender).Text;
@@ -243,6 +242,7 @@ namespace Text_Editor
 					currentEncoding = GetEncoding(((MenuItem)sender).Text);
 					this.Text = this.Text.Replace("*", "");
 				}
+				this.Text = Path.GetFileName(((MenuItem)sender).Text) + " - Notepad.NET";
 				if (Properties.Settings.Default.SaveRecentFiles)
 				{
 					if (Properties.Settings.Default.RecentFiles.Count > Properties.Settings.Default.MaxRecentFiles - 1)
@@ -261,6 +261,12 @@ namespace Text_Editor
 			catch (Exception ex)
 			{
 				MessageBox.Show(ex.Message, "Cannot open file", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				if (!File.Exists(((MenuItem)sender).Text))
+				{
+					Properties.Settings.Default.RecentFiles.Remove(((MenuItem)sender).Text);
+					Properties.Settings.Default.Save();
+					UpdateRecentFileList();
+				}
 			}
 		}
 
