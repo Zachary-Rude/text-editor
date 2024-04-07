@@ -13,6 +13,7 @@ using System.Text.RegularExpressions;
 using System.Diagnostics;
 using Microsoft.VisualBasic;
 using System.Collections;
+using Microsoft.Samples;
 
 namespace Text_Editor
 {
@@ -22,12 +23,31 @@ namespace Text_Editor
 		private int firstCharOnPage;
 		private string currentEncoding;
 		private bool openedFromDrop = false;
-
+		TaskDialog taskDialog;
 		public Form1()
 		{
 			InitializeComponent();
 			MessageBoxManager.Yes = "&Save";
 			MessageBoxManager.No = "Do&n't Save";
+			TaskDialogButton saveButton = new TaskDialogButton()
+			{
+				ButtonId = 100,
+				ButtonText = "&Save"
+			};
+			TaskDialogButton dontSaveButton = new TaskDialogButton()
+			{
+				ButtonId = 101,
+				ButtonText = "Do&n't Save"
+			};
+			taskDialog = new TaskDialog()
+			{
+				WindowTitle = "Notepad.NET",
+				MainInstruction = "Do you want to save ${FILE_NAME}?",
+				Content = "Your changes will be lost if you don't save them.",
+				CommonButtons = TaskDialogCommonButtons.Cancel,
+				MainIcon = TaskDialogIcon.Warning,
+				Buttons = new TaskDialogButton[] { saveButton, dontSaveButton }
+			};
 			mainEditor.AllowDrop = true;
 			mainEditor.DragEnter += mainEditor_DragEnter;
 			mainEditor.DragDrop += mainEditor_DragDrop;
@@ -51,7 +71,7 @@ namespace Text_Editor
 			enableDisableTimer.Start();
 			UpdateRecentFileList();
 			path = null;
-			currentEncoding = "Unicode (UTF-8)";
+			currentEncoding = Encoding.UTF8.EncodingName;
 		}
 
 		public Form1(string fileName) : this()
@@ -219,18 +239,16 @@ namespace Text_Editor
 		{
 			if (this.Text.StartsWith("*"))
 			{
-				MessageBoxManager.Register();
-				DialogResult dr = MessageBox.Show((Path.GetFileName(path) ?? "Untitled") + " has unsaved changes.\r\nDo you want to save them?", "Unsaved changes", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Warning);
-				if (dr == DialogResult.Yes)
+				taskDialog.MainInstruction = $"Do you want to save {Path.GetFileName(path) ?? "Untitled"}";
+				DialogResult dr = (DialogResult)taskDialog.Show(this, out _, out _);
+				if (dr == (DialogResult)100)
 				{
 					menuItem5.PerformClick();
 				}
 				else if (dr == DialogResult.Cancel)
 				{
-					MessageBoxManager.Unregister();
 					return;
 				}
-				MessageBoxManager.Unregister();
 			}
 			try
 			{
@@ -286,18 +304,16 @@ namespace Text_Editor
 		{
 			if (this.Text.StartsWith("*"))
 			{
-				MessageBoxManager.Register();
-				DialogResult dr = MessageBox.Show((Path.GetFileName(path) ?? "Untitled") + " has unsaved changes.\r\nDo you want to save them?", "Unsaved changes", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Warning);
-				if (dr == DialogResult.Yes)
+				taskDialog.MainInstruction = $"Do you want to save {Path.GetFileName(path) ?? "Untitled"}";
+				DialogResult dr = (DialogResult)taskDialog.Show(this, out _, out _);
+				if (dr == (DialogResult)100)
 				{
 					menuItem5.PerformClick();
 				}
 				else if (dr == DialogResult.Cancel)
 				{
-					MessageBoxManager.Unregister();
 					return;
 				}
-				MessageBoxManager.Unregister();
 			}
 			this.Text = "Untitled - Notepad.NET";
 			path = null;
@@ -315,18 +331,16 @@ namespace Text_Editor
 		{
 			if (this.Text.StartsWith("*"))
 			{
-				MessageBoxManager.Register();
-				DialogResult dr = MessageBox.Show((Path.GetFileName(path) ?? "Untitled") + " has unsaved changes.\r\nDo you want to save them?", "Unsaved changes", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Warning);
-				if (dr == DialogResult.Yes)
+				taskDialog.MainInstruction = $"Do you want to save {Path.GetFileName(path) ?? "Untitled"}";
+				DialogResult dr = (DialogResult)taskDialog.Show(this, out _, out _);
+				if (dr == (DialogResult)100)
 				{
 					menuItem5.PerformClick();
 				}
 				else if (dr == DialogResult.Cancel)
 				{
-					MessageBoxManager.Unregister();
 					return;
 				}
-				MessageBoxManager.Unregister();
 			}
 			mainEditor.TextChanged -= mainEditor_TextChanged;
 			using (OpenFileDialog ofd = new OpenFileDialog() { DefaultExt = ".txt", Filter = "Text Files|*.txt|All Files|*.*", ValidateNames = true, Multiselect = false })
@@ -557,21 +571,16 @@ namespace Text_Editor
 				{
 					case CloseReason.UserClosing:
 					case CloseReason.WindowsShutDown:
-						string fileNameOld = this.Text.Replace(" - Notepad.NET", "");
-						var regex = new Regex(Regex.Escape("*"));
-						string fileName = regex.Replace(fileNameOld, "", 1);
-						MessageBoxManager.Register();
-						DialogResult dr = MessageBox.Show(fileName + " has unsaved changes.\r\nDo you want to save them?", "Unsaved changes", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Warning);
-						if (dr == DialogResult.Yes)
+						taskDialog.MainInstruction = $"Do you want to save {Path.GetFileName(path) ?? "Untitled"}";
+						DialogResult dr = (DialogResult)taskDialog.Show(this, out _, out _);
+						if (dr == (DialogResult)100)
 						{
-							this.menuItem5.PerformClick();
+							menuItem5.PerformClick();
 						}
 						else if (dr == DialogResult.Cancel)
 						{
-							MessageBoxManager.Unregister();
 							e.Cancel = true;
 						}
-						MessageBoxManager.Unregister();
 						break;
 				}
 			}
@@ -765,6 +774,19 @@ namespace Text_Editor
 		{
 			mainEditor.TextChanged -= mainEditor_TextChanged;
 			object filename = e.Data.GetData("FileDrop");
+			if (this.Text.StartsWith("*"))
+			{
+				taskDialog.MainInstruction = $"Do you want to save {Path.GetFileName(path) ?? "Untitled"}";
+				DialogResult dr = (DialogResult)taskDialog.Show(this, out _, out _);
+				if (dr == (DialogResult)100)
+				{
+					menuItem5.PerformClick();
+				}
+				else if (dr == DialogResult.Cancel)
+				{
+					return;
+				}
+			}
 			if (filename != null)
 			{
 				if (filename is string[] list && !string.IsNullOrWhiteSpace(list[0]))
