@@ -46,7 +46,8 @@ namespace Text_Editor
 				Content = "Your changes will be lost if you don't save them.",
 				CommonButtons = TaskDialogCommonButtons.Cancel,
 				MainIcon = TaskDialogIcon.Warning,
-				Buttons = new TaskDialogButton[] { saveButton, dontSaveButton }
+				Buttons = new TaskDialogButton[] { saveButton, dontSaveButton },
+				AllowDialogCancellation = true
 			};
 			mainEditor.AllowDrop = true;
 			mainEditor.DragEnter += mainEditor_DragEnter;
