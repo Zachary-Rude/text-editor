@@ -70,6 +70,7 @@ namespace Text_Editor
 					break;
 			}
 			enableDisableTimer.Start();
+			autoSaveTimer.Start();
 			UpdateRecentFileList();
 			path = null;
 			currentEncoding = Encoding.UTF8.EncodingName;
@@ -687,11 +688,31 @@ namespace Text_Editor
 			// Enable the "checked" status for the right to left context menu item if the text box has right-to-left enabled
 			menuItem53.Checked = mainEditor.RightToLeft == RightToLeft.Yes;
 
+			// Enable the "checked" status for the autosave menu item if autosave is enabled
+			menuItem55.Checked = Properties.Settings.Default.AutoSave;
+
 			#region Status Bar
 			sbpLineCol.Text = string.Format("Ln {0}, Col {1}", mainEditor.CurrentLine, mainEditor.CurrentColumn);
 			sbpZoomPercent.Text = string.Format("{0}%", (int)(mainEditor.ZoomFactor * 100));
 			sbpTextEncoding.Text = currentEncoding;
 			#endregion
+		}
+
+		private void menuItem55_Click(object sender, EventArgs e)
+		{
+			Properties.Settings.Default.AutoSave ^= true;
+			Properties.Settings.Default.Save();
+		}
+
+		private void autoSaveTimer_Tick(object sender, EventArgs e)
+		{
+			if (Properties.Settings.Default.AutoSave)
+			{
+				if (!string.IsNullOrEmpty(path))
+				{
+					menuItem5.PerformClick();
+				}
+			}
 		}
 
 		private void menuItem43_Click(object sender, EventArgs e)

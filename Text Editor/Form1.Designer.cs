@@ -79,7 +79,6 @@
 			this.sbpLineCol = new System.Windows.Forms.StatusBarPanel();
 			this.sbpZoomPercent = new System.Windows.Forms.StatusBarPanel();
 			this.sbpTextEncoding = new System.Windows.Forms.StatusBarPanel();
-			this.mainEditor = new Text_Editor.FixedRichTextBox();
 			this.contextMenu1 = new System.Windows.Forms.ContextMenu();
 			this.menuItem20 = new System.Windows.Forms.MenuItem();
 			this.menuItem21 = new System.Windows.Forms.MenuItem();
@@ -95,6 +94,10 @@
 			this.vistaMenu = new wyDay.Controls.VistaMenu(this.components);
 			this.enableDisableTimer = new System.Windows.Forms.Timer(this.components);
 			this.printDocument1 = new System.Drawing.Printing.PrintDocument();
+			this.mainEditor = new Text_Editor.FixedRichTextBox();
+			this.menuItem54 = new System.Windows.Forms.MenuItem();
+			this.menuItem55 = new System.Windows.Forms.MenuItem();
+			this.autoSaveTimer = new System.Windows.Forms.Timer(this.components);
 			this.panel1.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.sbpLineCol)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.sbpZoomPercent)).BeginInit();
@@ -125,6 +128,8 @@
             this.menuItem45,
             this.menuItem46,
             this.menuItem7,
+            this.menuItem55,
+            this.menuItem54,
             this.menuItem8});
 			this.menuItem1.Text = "&File";
 			// 
@@ -215,7 +220,7 @@
 			// menuItem8
 			// 
 			this.vistaMenu.SetImage(this.menuItem8, global::Text_Editor.Properties.Resources.baseline_close_black_24dp);
-			this.menuItem8.Index = 11;
+			this.menuItem8.Index = 13;
 			this.menuItem8.Text = "E&xit";
 			this.menuItem8.Click += new System.EventHandler(this.menuItem8_Click);
 			// 
@@ -449,7 +454,7 @@
 			this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.panel1.Location = new System.Drawing.Point(0, 0);
 			this.panel1.Name = "panel1";
-			this.panel1.Size = new System.Drawing.Size(800, 457);
+			this.panel1.Size = new System.Drawing.Size(784, 457);
 			this.panel1.TabIndex = 0;
 			// 
 			// statusBar1
@@ -462,7 +467,7 @@
             this.sbpTextEncoding});
 			this.statusBar1.RightToLeft = System.Windows.Forms.RightToLeft.No;
 			this.statusBar1.ShowPanels = true;
-			this.statusBar1.Size = new System.Drawing.Size(800, 22);
+			this.statusBar1.Size = new System.Drawing.Size(784, 22);
 			this.statusBar1.TabIndex = 2;
 			// 
 			// sbpLineCol
@@ -481,20 +486,6 @@
 			// 
 			this.sbpTextEncoding.Name = "sbpTextEncoding";
 			this.sbpTextEncoding.Text = "Unicode (UTF-8)";
-			// 
-			// mainEditor
-			// 
-			this.mainEditor.AcceptsTab = true;
-			this.mainEditor.BorderStyle = System.Windows.Forms.BorderStyle.None;
-			this.mainEditor.DetectUrls = false;
-			this.mainEditor.Font = new System.Drawing.Font("Consolas", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.mainEditor.Location = new System.Drawing.Point(0, 0);
-			this.mainEditor.Name = "mainEditor";
-			this.mainEditor.Size = new System.Drawing.Size(800, 435);
-			this.mainEditor.TabIndex = 0;
-			this.mainEditor.Text = "";
-			this.mainEditor.WordWrap = false;
-			this.mainEditor.TextChanged += new System.EventHandler(this.mainEditor_TextChanged);
 			// 
 			// contextMenu1
 			// 
@@ -597,16 +588,46 @@
 			this.printDocument1.EndPrint += new System.Drawing.Printing.PrintEventHandler(this.printDocument1_EndPrint);
 			this.printDocument1.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocument1_PrintPage);
 			// 
+			// mainEditor
+			// 
+			this.mainEditor.AcceptsTab = true;
+			this.mainEditor.BorderStyle = System.Windows.Forms.BorderStyle.None;
+			this.mainEditor.DetectUrls = false;
+			this.mainEditor.Font = new System.Drawing.Font("Consolas", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.mainEditor.Location = new System.Drawing.Point(0, 0);
+			this.mainEditor.Name = "mainEditor";
+			this.mainEditor.Size = new System.Drawing.Size(784, 435);
+			this.mainEditor.TabIndex = 0;
+			this.mainEditor.Text = "";
+			this.mainEditor.WordWrap = false;
+			this.mainEditor.TextChanged += new System.EventHandler(this.mainEditor_TextChanged);
+			// 
+			// menuItem54
+			// 
+			this.menuItem54.Index = 12;
+			this.menuItem54.Text = "-";
+			// 
+			// menuItem55
+			// 
+			this.menuItem55.Index = 11;
+			this.menuItem55.Text = "Autosave";
+			this.menuItem55.Click += new System.EventHandler(this.menuItem55_Click);
+			// 
+			// autoSaveTimer
+			// 
+			this.autoSaveTimer.Interval = 5000;
+			this.autoSaveTimer.Tick += new System.EventHandler(this.autoSaveTimer_Tick);
+			// 
 			// Form1
 			// 
 			this.AllowDrop = true;
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-			this.ClientSize = new System.Drawing.Size(800, 457);
+			this.ClientSize = new System.Drawing.Size(784, 457);
 			this.Controls.Add(this.panel1);
 			this.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
 			this.Menu = this.mainMenu1;
-			this.MinimumSize = new System.Drawing.Size(0, 496);
+			this.MinimumSize = new System.Drawing.Size(16, 496);
 			this.Name = "Form1";
 			this.Text = "Untitled - Notepad.NET";
 			this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
@@ -689,6 +710,9 @@
 		private System.Windows.Forms.MenuItem menuItem51;
 		private System.Windows.Forms.MenuItem menuItem52;
 		private System.Windows.Forms.MenuItem menuItem53;
+        private System.Windows.Forms.MenuItem menuItem55;
+        private System.Windows.Forms.MenuItem menuItem54;
+        private System.Windows.Forms.Timer autoSaveTimer;
     }
 }
 
