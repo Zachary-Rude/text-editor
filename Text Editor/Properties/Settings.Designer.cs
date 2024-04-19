@@ -131,5 +131,17 @@ namespace Text_Editor.Properties {
                 this["AutoSave"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string AutoSavePath {
+            get {
+                return ((string)(this["AutoSavePath"]));
+            }
+            set {
+                this["AutoSavePath"] = value;
+            }
+        }
     }
 }

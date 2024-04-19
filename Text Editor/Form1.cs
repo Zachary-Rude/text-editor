@@ -23,10 +23,23 @@ namespace Text_Editor
 		private int firstCharOnPage;
 		private string currentEncoding;
 		private bool openedFromDrop = false;
+		private string autoSavePath = Path.Combine(Path.GetTempPath(), "Notepad.NET", "AutoSave.tmp");
 		TaskDialog taskDialog;
 		public Form1()
 		{
 			InitializeComponent();
+			if (!File.Exists(autoSavePath))
+			{
+				try
+				{
+					File.Create(autoSavePath).Close();
+				}
+				catch (DirectoryNotFoundException)
+				{
+					Directory.CreateDirectory(Path.GetDirectoryName(autoSavePath));
+					File.Create(autoSavePath).Close();
+				}
+			}
 			MessageBoxManager.Yes = "&Save";
 			MessageBoxManager.No = "Do&n't Save";
 			TaskDialogButton saveButton = new TaskDialogButton()
@@ -583,6 +596,7 @@ namespace Text_Editor
 						if (dr == (DialogResult)100)
 						{
 							menuItem5.PerformClick();
+							if (File.Exists(autoSavePath)) File.Delete(autoSavePath);
 						}
 						else if (dr == DialogResult.Cancel)
 						{
@@ -640,7 +654,7 @@ namespace Text_Editor
 			mainEditor.ZoomFactor = 1.0F;
 		}
 
-		private void enableDisableTimer_Tick(object sender, EventArgs e)
+		private async void enableDisableTimer_Tick(object sender, EventArgs e)
 		{
 			// Enable the menu items for undo and redo only when you are able to undo and redo (gray them out otherwise)
 			menuItem10.Enabled = mainEditor.CanUndo;
@@ -690,6 +704,14 @@ namespace Text_Editor
 
 			// Enable the "checked" status for the autosave menu item if autosave is enabled
 			menuItem55.Checked = Properties.Settings.Default.AutoSave;
+
+			// Automatically save files to a temporary location
+			using (StreamWriter sw = new StreamWriter(autoSavePath))
+			{
+				await sw.WriteAsync(mainEditor.Text.Replace("\n", "\r\n")); // Write data to text file
+				Properties.Settings.Default.AutoSavePath = path;
+				Properties.Settings.Default.Save();
+			}
 
 			#region Status Bar
 			sbpLineCol.Text = string.Format("Ln {0}, Col {1}", mainEditor.CurrentLine, mainEditor.CurrentColumn);
