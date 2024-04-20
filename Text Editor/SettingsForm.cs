@@ -16,7 +16,7 @@ namespace Text_Editor
 		{
 			InitializeComponent();
 			chkSaveRecentFiles.Checked = Properties.Settings.Default.SaveRecentFiles;
-			chkRecentAutoLoad.Checked = Properties.Settings.Default.SaveRecentFiles;
+			chkRecentAutoLoad.Checked = Properties.Settings.Default.AutoLoadRecentFiles;
 			numRecentFilesMax.Value = Properties.Settings.Default.MaxRecentFiles;
 			switch (Properties.Settings.Default.RedoShortcut)
 			{

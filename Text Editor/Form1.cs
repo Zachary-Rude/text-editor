@@ -14,6 +14,7 @@ using System.Diagnostics;
 using Microsoft.VisualBasic;
 using System.Collections;
 using Microsoft.Samples;
+using System.Runtime.InteropServices;
 
 namespace Text_Editor
 {
@@ -28,18 +29,7 @@ namespace Text_Editor
 		public Form1()
 		{
 			InitializeComponent();
-			if (!File.Exists(autoSavePath))
-			{
-				try
-				{
-					File.Create(autoSavePath).Close();
-				}
-				catch (DirectoryNotFoundException)
-				{
-					Directory.CreateDirectory(Path.GetDirectoryName(autoSavePath));
-					File.Create(autoSavePath).Close();
-				}
-			}
+			AppDomain.CurrentDomain.UnhandledException += this.CurrentDomain_UnhandledException;
 			MessageBoxManager.Yes = "&Save";
 			MessageBoxManager.No = "Do&n't Save";
 			TaskDialogButton saveButton = new TaskDialogButton()
@@ -82,7 +72,8 @@ namespace Text_Editor
 					menuItem19.Shortcut = Shortcut.CtrlShiftZ;
 					break;
 			}
-			enableDisableTimer.Start();
+			if (!File.Exists(autoSavePath))
+				enableDisableTimer.Start();
 			autoSaveTimer.Start();
 			UpdateRecentFileList();
 			path = null;
@@ -106,7 +97,7 @@ namespace Text_Editor
 						using (StreamReader sr = new StreamReader(fileName, true))
 						{
 							path = fileName;
-							currentEncoding = Encoding.UTF8.EncodingName;
+							currentEncoding = GetEncoding(fileName);
 							Task<string> text = sr.ReadToEndAsync();
 							mainEditor.Text = text.Result;
 							this.Text = this.Text.Replace("*", "");
@@ -170,6 +161,33 @@ namespace Text_Editor
 			catch (Exception ex)
 			{
 				MessageBox.Show(ex.Message, "Cannot open file", MessageBoxButtons.OK, MessageBoxIcon.Error);
+			}
+		}
+
+		// function to test crash handling
+		[DllImport("kernel32.dll")]
+		static extern void RaiseException(uint dwExceptionCode, uint dwExceptionFlags, uint nNumberOfArguments, IntPtr lpArguments);
+
+		private void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e)
+		{
+			if (!File.Exists(autoSavePath))
+			{
+				try
+				{
+					File.Create(autoSavePath).Close();
+				}
+				catch (DirectoryNotFoundException)
+				{
+					Directory.CreateDirectory(Path.GetDirectoryName(autoSavePath));
+					File.Create(autoSavePath).Close();
+				}
+			}
+			using (StreamWriter sw = new StreamWriter(autoSavePath))
+			{
+				sw.Write(mainEditor.Text.Replace("\n", "\r\n")); // Write data to text file
+				Properties.Settings.Default.AutoSavePath = path;
+				Properties.Settings.Default.Save();
+				sw.Close();
 			}
 		}
 
@@ -412,6 +430,16 @@ namespace Text_Editor
 						try
 						{
 							path = sfd.FileName;
+							if (File.Exists(autoSavePath))
+							{
+								try
+								{
+									File.Delete(autoSavePath);
+								}
+								catch (Exception)
+								{
+								}
+							}
 							using (StreamWriter sw = new StreamWriter(sfd.FileName))
 							{
 								await sw.WriteAsync(mainEditor.Text.Replace("\n", "\r\n")); // Write data to text file
@@ -443,6 +471,16 @@ namespace Text_Editor
 			{
 				try
 				{
+					if (File.Exists(autoSavePath))
+					{
+						try
+						{
+							File.Delete(autoSavePath);
+						}
+						catch (Exception)
+						{
+						}
+					}
 					using (StreamWriter sw = new StreamWriter(path))
 					{
 						await sw.WriteAsync(mainEditor.Text.Replace("\n", "\r\n")); // Write data to text file
@@ -466,6 +504,16 @@ namespace Text_Editor
 					try
 					{
 						path = sfd.FileName;
+						if (File.Exists(autoSavePath))
+						{
+							try
+							{
+								File.Delete(autoSavePath);
+							}
+							catch (Exception)
+							{
+							}
+						}
 						using (StreamWriter sw = new StreamWriter(sfd.FileName))
 						{
 							await sw.WriteAsync(mainEditor.Text.Replace("\n", "\r\n")); // Write data to text file
@@ -579,6 +627,18 @@ namespace Text_Editor
 			if (!this.Text.StartsWith("*"))
 			{
 				this.Text = "*" + this.Text;
+				if (!File.Exists(autoSavePath))
+				{
+					try
+					{
+						File.Create(autoSavePath).Close();
+					}
+					catch (DirectoryNotFoundException)
+					{
+						Directory.CreateDirectory(Path.GetDirectoryName(autoSavePath));
+						File.Create(autoSavePath).Close();
+					}
+				}
 			}
 		}
 
@@ -601,6 +661,27 @@ namespace Text_Editor
 						else if (dr == DialogResult.Cancel)
 						{
 							e.Cancel = true;
+						}
+						else
+						{
+							// Automatically save files to a temporary location
+							using (StreamWriter sw = new StreamWriter(autoSavePath))
+							{
+								sw.Write(mainEditor.Text.Replace("\n", "\r\n")); // Write data to text file
+								Properties.Settings.Default.AutoSavePath = path;
+								Properties.Settings.Default.Save();
+								sw.Close();
+							}
+						}
+						break;
+					default:
+						// Automatically save files to a temporary location
+						using (StreamWriter sw = new StreamWriter(autoSavePath))
+						{
+							sw.Write(mainEditor.Text.Replace("\n", "\r\n")); // Write data to text file
+							Properties.Settings.Default.AutoSavePath = path;
+							Properties.Settings.Default.Save();
+							sw.Close();
 						}
 						break;
 				}
@@ -654,7 +735,7 @@ namespace Text_Editor
 			mainEditor.ZoomFactor = 1.0F;
 		}
 
-		private async void enableDisableTimer_Tick(object sender, EventArgs e)
+		private void enableDisableTimer_Tick(object sender, EventArgs e)
 		{
 			// Enable the menu items for undo and redo only when you are able to undo and redo (gray them out otherwise)
 			menuItem10.Enabled = mainEditor.CanUndo;
@@ -675,7 +756,7 @@ namespace Text_Editor
 
 			// Disable the menu item for zooming out if the user has reached the minimum zoom level
 			menuItem33.Enabled = mainEditor.ZoomFactor > 1.0F;
-			
+
 			// Fix bug where pressing Ctrl+Minus to zoom out will sometimes go to 90% zoom
 			if (mainEditor.ZoomFactor < 1.0F)
 				mainEditor.ZoomFactor = 1.0F;
@@ -706,11 +787,16 @@ namespace Text_Editor
 			menuItem55.Checked = Properties.Settings.Default.AutoSave;
 
 			// Automatically save files to a temporary location
-			using (StreamWriter sw = new StreamWriter(autoSavePath))
+			if (this.Text.StartsWith("*"))
 			{
-				await sw.WriteAsync(mainEditor.Text.Replace("\n", "\r\n")); // Write data to text file
-				Properties.Settings.Default.AutoSavePath = path;
-				Properties.Settings.Default.Save();
+				using (StreamWriter sw = new StreamWriter(autoSavePath))
+				{
+					Debug.WriteLine("Autosaving");
+					sw.Write(mainEditor.Text.Replace("\n", "\r\n")); // Write data to text file
+					Properties.Settings.Default.AutoSavePath = path;
+					Properties.Settings.Default.Save();
+					sw.Close();
+				}
 			}
 
 			#region Status Bar
@@ -778,6 +864,10 @@ namespace Text_Editor
 				case Keys.Control | Keys.OemMinus:
 					if (mainEditor.ZoomFactor > 1.0F)
 						mainEditor.ZoomFactor -= 0.1F;
+					return true;
+				case Keys.Control | Keys.Shift | Keys.C:
+					// test crash handling
+					RaiseException(0xC0000005, 0, 0, new IntPtr(1));
 					return true;
 			}
 			return base.ProcessCmdKey(ref msg, keyData);
@@ -855,6 +945,7 @@ namespace Text_Editor
 					openedFromDrop = true;
 					path = list[0];
 					mainEditor.LoadFile(list[0], RichTextBoxStreamType.PlainText);
+					currentEncoding = GetEncoding(list[0]);
 					this.Text = this.Text.Replace("*", "");
 					this.Text = string.Format("{0} - Notepad.NET", Path.GetFileName(list[0]));
 					if (Properties.Settings.Default.SaveRecentFiles)
@@ -939,8 +1030,55 @@ namespace Text_Editor
 			mainEditor.RightToLeft ^= RightToLeft.Yes;
 		}
 
-		private void Form1_Load(object sender, EventArgs e)
+		private void Form1_Shown(object sender, EventArgs e)
 		{
+			if (File.Exists(autoSavePath))
+			{
+				DialogResult dr = MessageBox.Show(string.Format("Autosaved files exist.\r\nDo you want to recover them?"), "Notepad.NET", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
+				if (dr == DialogResult.Yes)
+				{
+					try
+					{
+						this.Text = (Path.GetFileName(Properties.Settings.Default.AutoSavePath).NullIfEmpty() ?? "Untitled") + " - Notepad.NET";
+						using (StreamReader sr = new StreamReader(autoSavePath, true))
+						{
+							path = Properties.Settings.Default.AutoSavePath.NullIfEmpty();
+							currentEncoding = GetEncoding(autoSavePath);
+							Task<string> text = sr.ReadToEndAsync();
+							mainEditor.Text = text.Result;
+						}
+						if (Properties.Settings.Default.SaveRecentFiles && !string.IsNullOrEmpty(Properties.Settings.Default.AutoSavePath))
+						{
+							if (Properties.Settings.Default.RecentFiles.Count > Properties.Settings.Default.MaxRecentFiles - 1)
+							{
+								Properties.Settings.Default.RecentFiles.RemoveAt(Properties.Settings.Default.MaxRecentFiles - 1);
+							}
+							if (Properties.Settings.Default.RecentFiles.Contains(Properties.Settings.Default.AutoSavePath))
+							{
+								Properties.Settings.Default.RecentFiles.Remove(Properties.Settings.Default.AutoSavePath);
+							}
+							Properties.Settings.Default.RecentFiles.Insert(0, Properties.Settings.Default.AutoSavePath);
+							Properties.Settings.Default.Save();
+						}
+						UpdateRecentFileList();
+						enableDisableTimer.Start();
+						return;
+					}
+					catch (Exception ex)
+					{
+						MessageBox.Show(ex.Message, "Notepad.NET", MessageBoxButtons.OK, MessageBoxIcon.Error);
+					}
+				}
+				else if (dr == DialogResult.No)
+				{
+					enableDisableTimer.Start();
+					return;
+				}
+				else if (dr == DialogResult.Cancel)
+				{
+					this.Close();
+				}
+			}
 			if (string.IsNullOrEmpty(path) && Properties.Settings.Default.AutoLoadRecentFiles)
 			{
 				try
@@ -1027,6 +1165,17 @@ namespace Text_Editor
 
 				}
 			}
+		}
+	}
+	public static class StringExtensions
+	{
+		public static string NullIfEmpty(this string s)
+		{
+			return string.IsNullOrEmpty(s) ? null : s;
+		}
+		public static string NullIfWhiteSpace(this string s)
+		{
+			return string.IsNullOrWhiteSpace(s) ? null : s;
 		}
 	}
 }

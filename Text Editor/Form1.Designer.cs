@@ -44,6 +44,8 @@
 			this.menuItem45 = new System.Windows.Forms.MenuItem();
 			this.menuItem46 = new System.Windows.Forms.MenuItem();
 			this.menuItem7 = new System.Windows.Forms.MenuItem();
+			this.menuItem55 = new System.Windows.Forms.MenuItem();
+			this.menuItem54 = new System.Windows.Forms.MenuItem();
 			this.menuItem8 = new System.Windows.Forms.MenuItem();
 			this.menuItem9 = new System.Windows.Forms.MenuItem();
 			this.menuItem10 = new System.Windows.Forms.MenuItem();
@@ -94,10 +96,8 @@
 			this.vistaMenu = new wyDay.Controls.VistaMenu(this.components);
 			this.enableDisableTimer = new System.Windows.Forms.Timer(this.components);
 			this.printDocument1 = new System.Drawing.Printing.PrintDocument();
-			this.mainEditor = new Text_Editor.FixedRichTextBox();
-			this.menuItem54 = new System.Windows.Forms.MenuItem();
-			this.menuItem55 = new System.Windows.Forms.MenuItem();
 			this.autoSaveTimer = new System.Windows.Forms.Timer(this.components);
+			this.mainEditor = new Text_Editor.FixedRichTextBox();
 			this.panel1.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.sbpLineCol)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.sbpZoomPercent)).BeginInit();
@@ -216,6 +216,17 @@
 			// 
 			this.menuItem7.Index = 10;
 			this.menuItem7.Text = "-";
+			// 
+			// menuItem55
+			// 
+			this.menuItem55.Index = 11;
+			this.menuItem55.Text = "Autosave";
+			this.menuItem55.Click += new System.EventHandler(this.menuItem55_Click);
+			// 
+			// menuItem54
+			// 
+			this.menuItem54.Index = 12;
+			this.menuItem54.Text = "-";
 			// 
 			// menuItem8
 			// 
@@ -588,6 +599,11 @@
 			this.printDocument1.EndPrint += new System.Drawing.Printing.PrintEventHandler(this.printDocument1_EndPrint);
 			this.printDocument1.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocument1_PrintPage);
 			// 
+			// autoSaveTimer
+			// 
+			this.autoSaveTimer.Interval = 5000;
+			this.autoSaveTimer.Tick += new System.EventHandler(this.autoSaveTimer_Tick);
+			// 
 			// mainEditor
 			// 
 			this.mainEditor.AcceptsTab = true;
@@ -602,22 +618,6 @@
 			this.mainEditor.WordWrap = false;
 			this.mainEditor.TextChanged += new System.EventHandler(this.mainEditor_TextChanged);
 			// 
-			// menuItem54
-			// 
-			this.menuItem54.Index = 12;
-			this.menuItem54.Text = "-";
-			// 
-			// menuItem55
-			// 
-			this.menuItem55.Index = 11;
-			this.menuItem55.Text = "Autosave";
-			this.menuItem55.Click += new System.EventHandler(this.menuItem55_Click);
-			// 
-			// autoSaveTimer
-			// 
-			this.autoSaveTimer.Interval = 5000;
-			this.autoSaveTimer.Tick += new System.EventHandler(this.autoSaveTimer_Tick);
-			// 
 			// Form1
 			// 
 			this.AllowDrop = true;
@@ -631,7 +631,7 @@
 			this.Name = "Form1";
 			this.Text = "Untitled - Notepad.NET";
 			this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
-			this.Load += new System.EventHandler(this.Form1_Load);
+			this.Shown += new System.EventHandler(this.Form1_Shown);
 			this.DragDrop += new System.Windows.Forms.DragEventHandler(this.Form1_DragDrop);
 			this.DragEnter += new System.Windows.Forms.DragEventHandler(this.Form1_DragEnter);
 			this.panel1.ResumeLayout(false);
